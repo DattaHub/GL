@@ -1,0 +1,463 @@
+%\documentclass[manuscript]{biometrika}
+\documentclass[lineno]{biometrika}
+
+\usepackage{amsmath}
+
+%% Please use the following statements for
+%% managing the text and math fonts for your papers:
+\usepackage{times}
+%\usepackage[cmbold]{mathtime}
+\usepackage{bm}
+\usepackage{natbib}
+
+\usepackage[plain,noend]{algorithm2e}
+
+\makeatletter
+\renewcommand{\algocf@captiontext}[2]{#1\algocf@typo. \AlCapFnt{}#2} % text of caption
+\renewcommand{\AlTitleFnt}[1]{#1\unskip}% default definition
+\def\@algocf@capt@plain{top}
+\renewcommand{\algocf@makecaption}[2]{%
+  \addtolength{\hsize}{\algomargin}%
+  \sbox\@tempboxa{\algocf@captiontext{#1}{#2}}%
+  \ifdim\wd\@tempboxa >\hsize%     % if caption is longer than a line
+    \hskip .5\algomargin%
+    \parbox[t]{\hsize}{\algocf@captiontext{#1}{#2}}% then caption is not centered
+  \else%
+    \global\@minipagefalse%
+    \hbox to\hsize{\box\@tempboxa}% else caption is centered
+  \fi%
+  \addtolength{\hsize}{-\algomargin}%
+}
+\makeatother
+
+%%% User-defined macros should be placed here, but keep them to a minimum.
+\def\Bka{{\it Biometrika}}
+\def\AIC{\textsc{aic}}
+\def\T{{ \mathrm{\scriptscriptstyle T} }}
+\def\v{{\varepsilon}}
+
+\begin{document}
+
+\jname{Biometrika}
+%% The year, volume, and number are determined on publication
+\jyear{2012}
+\jvol{99}
+\jnum{1}
+%% The \doi{...} and \accessdate commands are used by the production team
+%\doi{10.1093/biomet/asm023}
+\accessdate{Advance Access publication on 31 July 2012}
+\copyrightinfo{\Copyright\ 2012 Biometrika Trust\goodbreak {\em Printed in Great Britain}}
+
+%% These dates are usually set by the production team
+\received{April 2012}
+\revised{September 2012}
+
+%% The left and right page headers are defined here:
+\markboth{A. C. Davison, R. Gessner \and D. M. Titterington}{Biometrika style}
+
+%% Here are the title, author names and addresses
+\title{Some notes on Biometrika style}
+
+\author{A. C. DAVISON, R. GESSNER}
+\affil{Institute of Mathematics, Ecole Polytechnique F\'ed\'erale de Lausanne, Station 8,\\ 1015 Lausanne, Switzerland \email{editor.biometrika@epfl.ch} \email{biometrika@epfl.ch}}
+
+\author{\and D. M. TITTERINGTON}
+\affil{Department of Statistics, University of Glasgow, Glasgow G12 8QQ, U.K. \email{mike@stats.gla.ac.uk}}
+
+\maketitle
+
+\begin{abstract}
+There must be a single paragraph summary which should not contain formulae or symbols, followed by some key words in alphabetical order.  Typically there are 3--8 key words, which should contain nouns and be singular rather than plural.  The summary contains bibliographic references only if they are essential.  It should indicate results rather than describe the contents of the paper: for example, `A simulation study is performed' should be replaced by a more informative phrase such as `In a simulation our estimator had smaller mean square error than its main competitors.'
+\end{abstract}
+
+\begin{keywords}
+Address; Appendix; Figure; Length; Reference; Style; Summary; Table.
+\end{keywords}
+
+\section{Introduction}
+
+These notes are intended both as a guide to journal style and as an example file for authors intending to prepare a paper using  the \Bka\ \LaTeX\ class.
+
+Before preparing a paper for submission, please examine a recent issue carefully and follow that arrangement of sections, formulae, references, tables, etc. closely. In particular please note the points given below. The preparation for press of a paper that is technically acceptable, but which does not follow these requirements, would involve the editors in a large amount of work, so it may be necessary to return such a manuscript for reformatting, leading to a delay in publication.
+
+Authors should not attempt to control page spacing in \LaTeX.\  Details such as the large white spaces around this section are corrected by the production team.
+
+\Bka\  papers do not contain a `contents of the paper' paragraph.
+
+\section{Address}
+
+For each author please give one postal address, including a department, postcode and country, and one e-mail address; these should be the best permanent addresses current at time of publication. Acknowledgements to other institutions should be put with other acknowledgements at the end of the paper. Names of states should be given in full, thus: California rather than CA, S\~ao Paulo rather than SP. Use U.S.A. and U.K. Note that England, Scotland and Wales should not be used.
+
+\section{Length}
+
+The average length for papers published in recent years is just under 13 sides.  The probability of acceptance drops sharply beyond this length, particularly if it is felt that a paper is long in relation to its original content.  Authors should endeavour to write as concisely as possible,  consistent with clarity.  Long or standard derivations should be omitted, referenced elsewhere, or made available in a supplementary document on the \Bka\ web site; see page~\pageref{SM}.  Essential technical details may be placed in an appendix.
+
+The maximum length for a paper in the Miscellanea section is 8 journal sides.
+
+\section{Style}
+
+\subsection{Sections, subsections and paragraphs}
+
+If subsections are used to divide a section, no text should appear before the first subsection; all text should appear within numbered subsections.  Subsubsections are not used.
+
+The end of a paragraph is marked in the .tex file by a blank line.  Extra characters such as \verb+\\+ at the end of lines or paragraphs should not be used.  Bad line breaks are corrected during the production process.
+
+\subsection{Spelling, abbreviations and special symbols}
+
+English spelling is used, with Oxford ``-ize'' endings.
+
+Verbal phrases inside brackets or dashes, or in italic or bold type, should not be used. Quotation marks should be used only for direct quotations, which should be attributed. Footnotes should be avoided except for tables.
+
+Abbreviations like a.s., i.i.d., d.f., w.r.t.,  ANOVA, AR, MCMC, MAP and ML may not be used.  Exceptions to this are common non-mathematical abbreviations such as DNA and HIV, which appear as ordinary upper-case letters.
+
+Do not create abbreviations to describe methods. Thus `our method is more efficient than Wellner and Zhang's method' should replace `our new method is better than method WZ'.
+
+Special symbols like $\mathop{\rightarrow}\limits^{\rm d}$, $\forall$, $\exists$, $:=$ and $=:$  should not be used.  The symbol $\mid$ should not be used in text as shorthand, and in mathematics the \TeX\ symbol \verb+\mid+ should be used to denote conditioning, rather than \verb+|+ or \verb"\vert".
+
+Symbols comprising several letters such as \AIC\ or \textsc{ar}$(p)$ may be used as mathematical objects if previously defined. They may not be used as abbreviations for English words; thus `the \textsc{ar} model' should be `the autoregressive model'.   In such cases small capital letters, for example the  \TeX\ syntax \verb+\textsc{aic}+ for \AIC,\ are used; consistency is best assured by defining a macro at the start of the \texttt{.tex}  file.
+
+One of the most common reasons that publication of scientifically acceptable papers is delayed is authorial  failure to adhere to journal policy on abbreviations, so it may be worthwhile to explain why \Bka\ eschews them. The purpose of scientific writing is to convey ideas as clearly and directly as possible.  Abbreviations militate against this: a reader who does not know them will spend time looking back through the paper to find what they mean, %they save little space;
+and they lead to sloppy mechanistic writing. A sentence such as `MLE for a GLMM may be performed using the BFGS, NR, CG or EM algorithms, but MCMC is an alternative' forces the reader to waste energy on parsing acronyms  rather than focusing on the underlying ideas.
+
+\subsection{English}
+
+English sentences containing mathematical expressions or displayed formulae should be punctuated in the usual way: in particular please check carefully that all displayed expressions are correctly punctuated.  Displayed expressions should be preceded by a colon only if grammatically warranted. Do not place a colon in the middle of a clause.
+
+Words in common terms such as central limit theorem or Brownian motion are capitalized only if they are derived from proper names: thus bootstrap,  lasso and mean square error rather than Bootstrap, Lasso and  Mean Square Error.
+
+Hyphens - (\verb+-+ in \TeX), n-dashes -- (\verb+--+), m-dashes --- (\verb+---+), and minus signs $-$ (\verb+$-$+) have different uses.  Hyphens are used to join two words, or in the double-barrelled name of a single person (e.g.\ non-user, Barndorff-Nielsen); n-dashes are used in ranges of numbers or to join the names of two different people (1--7, Neyman--Pearson); and minus signs are used in mathematics (e.g. $-2$). m-dashes are not used in \Bka.\  Parenthetical remarks, like this subordinate clause, are placed between two commas.
+
+Two bugbears: the phrase `note that' can almost always be deleted, and the phrase `is given by' should be cut to `is' in a sentence such as `The average is given by $\bar X=n^{-1}(X_1+\cdots+X_n)$.
+
+\subsection{Mathematics}
+
+ Equation numbers should be included only when equations are referred to; the
+numbers must be placed on the right. Long or important mathematical (not verbal)
+expressions should be displayed (i.e., shown on a separate line). Short formulae should be
+left in the text to save space where possible, but must not be more than one line high and
+not contain reduced-size type. For example $\frac{{\rm d}y}{{\rm d}x}$ must not be left in the text, but should be
+written ${{\rm d}y}/{{\rm d}x}$ or it should be displayed. Likewise write $n^{1/2}$ not $n^{\frac12}$.   Also $\displaystyle{a\choose{b}}$ and suchlike expressions
+ must not be left in the text. Equations
+involving lengthy expressions should, where possible, be avoided by introducing suitable
+notation.
+
+Symbols should not start sentences. Distinctive type (e.g. boldface) for matrices and
+vectors is not used in \Bka.\ Vectors are assumed to be column vectors, unless
+explicitly transposed. The use of an apostrophe to denote matrix or vector transposition should be avoided; it is preferable to write $A^\T$, $a^\T$.   Capital script letters may be used sparingly, typically to denote sets,
+but care should be taken as some are hard to distinguish.
+
+Please arrange brackets in the order $[\{(\ )\}]$, iterating as necessary,
+ and follow the usual conventions for $e$, exp, use of solidus, square root signs and so forth
+as in a recent issue. The sign $\sqrt{\hphantom{a}}$ is not used, and  the sign $\surd$ is used
+only sparingly; powers of complicated quantities should be represented as $(mnpq)^{a}$.
+
+Multiple overbars such as $\bar{\tilde{x}}$ must be avoided, as must $\widehat{ab}, (\widehat{a+b}), \widehat{\rm var}, \overline{ab},(\overline{a+b})$
+and symbols with underbars. Subscripts and superscripts (and second-order sub- and
+superscripts) should be aligned horizontally. Avoid sub- and superscripts of third, and greater, order.
+
+Please use: var($x$) not var $x$ or Var($x$); cov not Cov; pr for probability not Pr or P;
+tr not trace; $E(X)$ for expectation not $EX$ or ${\cal E}(X)$; $\log x$ not $\log_e x$ or $\ln x$; $r$th not $r$-th or $r^{\rm th}$.
+Please avoid: `$\cdot$' or `.' for product; $a/bc$, which should be written $a/(bc)$ or $a(bc)^{-1}$. Use the form $x_1,\ldots , x_n$ not $x_1, x_2,\ldots x_n$ and $\sum^{n}_{i=1}$ not $\sum^n_1$.  The typesetter will use a raised dot `$\cdot$' as a decimal point. Zeros precede decimal points: 0$\cdot$2 not $.2$.
+
+The use of `$\cdots$' and `$\ldots$' is  $\ldots$ in lists, such as $y_1,\ldots,y_n$, and $\cdots$ between binary operators,  giving $y_1+\cdots+y_n$.
+Ranges of integers are denoted $i=1,\ldots, n$, whereas $0\leq x\leq 1$ is used for ranges of real numbers.  %The support of density and other functions should always be given.
+
+\Bka\ deprecates the appearance of words in displayed equations, which should be formatted as
+\begin{equation}
+\label{one}
+\bar Y = n^{-1} \sum_{j=1}^n Y_j,\quad S^2 = \sum_{j=1}^n (Y_j-\bar Y)^2;
+\end{equation}
+note the punctuation and space between the expressions. Displays such as \eqref{one} should take no more space than necessary, being placed on a single line where possible.  Displayed mathematical expressions should be punctuated thus: indexed equations and similar quantities in text are formatted as
+$y_j = x_j^\T\beta + \v_j\ (j=1,\ldots, n)$, and are displayed as
+\[
+y_{ij} = x_j^\T\beta_i + \v_{ij}\quad (i=1,\ldots, m;\ j=1,\ldots, n).
+\]
+References to sequences of equations are (1)--(3), not (1--3).
+
+\subsection{Figures}
+
+Figures are a common source of delay during production, usually because elementary guidelines have not been respected.  General comments may be found in the document `RSSGraphs.pdf' enclosed with the \Bka\ formatting files, and more detail is given in standard references such as \citet{Cleveland:1993,Cleveland:1994} or \citet{Tufte:1983}.
+
+All the elements of a graph, including axis labels, should be large enough to be read easily, so the graph should be given a shape that will use the page space well. The use of large symbols, such as $\times$, for points should be avoided. If both axes of a panel show the same quantities, the panel should usually be square.  Many graphs are made using the statistical environment R \citep{R:2010}.  If so, they should be made at roughly the size at which they will appear in the journal.  Usually graphs reduced from A4 or US page sizes must be remade to ensure their legibility.
+
+Check that all the axes are labelled correctly and include units of measurement.  Axis labels should have the format `Difference of loglikelihoods': only the initial letter of the first word is upper-case.
+The numbers on the vertical axis should be parallel to the horizontal axis, and should be in the same font as the text; normally the change of font is left to the production process, but it is helpful if the numbers are placed horizontally.
+
+A panel should not contain an inset defining the line-types and symbols; this description should appear in the caption.
+
+Please submit figures in greyscale wherever possible.  \Bka\ publishes in colour where this is essential, but care should be taken to ensure that any colours chosen will be distinguishable on the cream paper used for the journal.
+
+Figures should be referred to consecutively by number. Use of the \LaTeX\ \verb+\label+ and \verb+\ref+ commands to refer to figures and tables helps to reduce errors and so is preferred.  Figure~\ref{fig1}  is a reference to a figure at the start of a sentence, whereas subsequent references are abbreviated, for example to Fig.~\ref{fig1}.
+
+\begin{figure}
+% The arguments in the next line are {height}{optional width}{used only by OUP for typesetting}[filename, in directory art]
+\figurebox{20pc}{25pc}{}[fig1.eps]
+% note that files may not be rotated
+\caption{A graph showing the truth (dot-dash), an estimate (dashes), another estimate (solid), and 95\% pointwise confidence limits (small dashes).}
+\label{fig1}
+\end{figure}
+
+\subsection{Tables}
+
+Tables should be referred to consecutively by number. Table is not abbreviated to Tab.
+
+Check that the arrangement makes effective use
+of the \Bka\ page. Layouts that have to be printed sideways should be avoided
+if possible. For this reason tables should not be more than 92 characters wide, including
+decimal points and brackets (1 character), and minus and other signs and spaces (at least 2
+characters).  Rules are not used in \Bka\ tables, which should be arranged to be clear without them.
+
+Often tables can be improved by multiplying all the entries by a power of ten, so that 0$\cdot$002 and
+0$\cdot$02 become 2 and 20 respectively, for example; this will often both save space and convey the message of the table more effectively. Table~\ref{tablelabel} uses the definition \verb+\def~{\hphantom{0}}+ to insert invisible spaces into columns of the table; see the source code for this document.
+
+Very often tables containing results of Monte Carlo simulations use more digits than can be justified by the size of the simulation, and space can be gained and clarity improved by appropriate rounding.
+Standard errors or some other measure of precision should be given for Monte Carlo results.
+Often it suffices to give a phrase such as `The largest standard error for the results in column 2 is 0$\cdot$01.' in the caption to the table.
+
+\begin{table}
+\def~{\hphantom{0}}
+\tbl{Perceptions about racial groups in the U.S. population}{%
+\begin{tabular}{lcccc}
+%\\
+ \\
+& 2000 Census& \multicolumn{3}{c}{Mean percent estimated for U.S.} \\
+& percent of  & \multicolumn{3}{c}{population } \\
+& U.S. population & White Rs & Black Rs & Hispanic Rs \\[5pt]
+White & 75 & 59 & 56 & 60 \\
+Black & 12 & 30 & 38 & 40 \\
+Asian & ~4 & 16 & 21 & 30 \\
+American Indian & ~1 & 13 & 17 & 23 \\
+More than two races & ~2 & 41 & 48 & 50 \\
+Hispanic & 13 & 23 & 27 & 42
+\end{tabular}}
+\label{tablelabel}
+\begin{tabnote}
+U.S., United States of America; R, respondent.
+\end{tabnote}
+\end{table}
+
+\subsection{Captions to figures and tables}
+
+The caption to a figure should contain descriptions of lines and symbols used, but these should not be duplicated in the text, which should give the interpretation of the figure.  The figure should not contain an inset.  Verify that the caption and the graph agree, that every line and symbol is described correctly and that all lines or symbols in the graph are described in the caption.
+
+Any abbreviations used in the body of a table should be explained in a footnote to it.
+
+Figure captions always end with a full stop. The last sentence of a table title does not have a full stop.
+
+\subsection{References}
+
+References in the text should follow the current style used in \Bka.\ It is preferable to use BibTeX
+if possible, as in this guide.  In citing
+references use `First author et al.' if there are three or more authors. The list of references at
+the end should correspond to those in the text, and be in exactly current \Bka\
+form.
+
+References to books should be to the latest edition; a page, section or chapter number
+is nearly always necessary. References to books of papers should include title of book,
+editor(s), first and final page numbers of paper, where published and publisher.
+
+Complete lists of authors and editors should be given; in exceptional cases they may be abbreviated at the discretion of the editor.
+
+PhD theses, unpublished reports and articles can be referred to in the text, using a phrase such as `as shown in a 2009 Euphoric State University PhD thesis by M.~Zapp' or `the proofs may be found in an unpublished 2003 technical report available from the first author', but should not be included in the References except where they have been accepted for publication. URLs should be avoided as they often become obsolete quickly and it is preferable to refer to the authors and institutions instead.
+
+\citet{Cox:1972} is an example of an active citation, and an example of a passive citation is  \citep{Hear:Holm:Step:quan:2006}.  The abbreviations for their journals should be noted.
+
+\subsection{Theorem-like environments}
+
+\Bka\ does not use \LaTeX\ list environments such as \texttt{itemise}, \texttt{description}, or \texttt{enumerate}.
+In this subsection we illustrate the use of theorem-like environments.
+
+\begin{definition}[Optional argument]
+This is a definition.
+\end{definition}
+
+\begin{assumption}[Another optional argument]
+\label{assumptionA}
+This is an assumption.
+\end{assumption}
+
+\begin{proposition}
+This is a proposition.
+\end{proposition}
+
+\begin{lemma}
+\label{lemma1}
+This lemma precedes a theorem.
+\end{lemma}
+
+\begin{proof}
+This is a proof of Lemma~\ref{lemma1}.  Perhaps it should be placed in the Appendix.
+\end{proof}
+
+\begin{theorem}
+\label{theorem1}
+This is a theorem.
+\end{theorem}
+
+Some text before we give the proof.
+
+\begin{proof}[of Theorem~\ref{theorem1}]
+The proof should be here.
+\end{proof}
+
+\begin{example}
+This is an example.
+\end{example}
+
+Some text before the next theorem.
+
+\begin{theorem}[Optional argument]
+Another important result.
+\end{theorem}
+
+\begin{corollary}
+This is a corollary.
+\end{corollary}
+
+\begin{remark}
+This is a remark.
+\end{remark}
+
+\begin{step}
+This is a step.
+\end{step}
+
+\begin{condition}
+This is a condition.
+\end{condition}
+
+
+\begin{property}
+This is a property.
+\end{property}
+
+\begin{restriction}
+This is a restriction.
+\end{restriction}
+
+\begin{algo}
+Finally, here is an algorithm.
+\end{algo}
+
+
+\begin{algorithm}[!h]
+\caption{A simple algorithm} \label{al1}
+\vspace*{-12pt}
+\begin{tabbing}
+   \enspace Set $s=0$\\
+   \enspace For $i=1$ to $i=n$ \\
+   \qquad Set $t=0$\\
+   \qquad For $j=1$ to $j=i$ \\\
+  \qquad\qquad  $t \leftarrow t + x_{ij}$ \\
+\qquad $s \leftarrow s + t$ \\
+\enspace Output $s$
+\end{tabbing}
+\end{algorithm}
+
+
+\section{Discussion}
+
+This is the concluding part of the paper.  It is only needed if it contains new material.
+It  should not repeat the summary or reiterate the contents of the paper.
+
+\section*{Acknowledgement}
+Acknowledgements should appear after the body of the paper but before any appendices and be as brief as possible
+subject to politeness. Information, such as contract numbers, of no interest to readers, must
+be excluded.
+
+\section*{Supplementary material}
+\label{SM}
+Further material such as technical details, extended proofs, code, or additional  simulations, figures and examples may appear online, and should be briefly mentioned as Supplementary Material where appropriate.  Please submit any such content as a PDF file along with your paper, entitled `Supplementary material for Title-of-paper'.  After the acknowledgements, include a section `Supplementary material' in your paper, with the sentence `Supplementary material available at \Bka\ online includes $\ldots$', giving a brief indication of what is available.  Further instructions will be given when a paper is accepted.
+
+
+\appendix
+
+\appendixone
+\section*{Appendix 1}
+\subsection*{General}
+
+Any appendices appear after the acknowledgement but before the references, and have titles. If there is more than one appendix, then they are numbered, as here.
+
+\begin{theorem}
+This is a rather dull theorem:
+\begin{equation}
+\label{A1}
+a + b = b + a;
+\end{equation}
+a little equation like this should only be displayed and labelled if it is referred to elsewhere.
+\end{theorem}
+
+\appendixtwo
+\section*{Appendix 2}
+\subsection*{Technical details}
+
+Often the appendices contain technical details of the main results.
+
+\begin{theorem}
+This is another theorem.
+\end{theorem}
+
+\appendixthree
+\section*{Appendix 3}
+
+Often the appendices contain technical details of the main results:
+\begin{equation}
+\label{C1}
+a + b = c.
+\end{equation}
+
+\begin{remark}
+This is a remark concerning equations~\eqref{A1} and \eqref{C1}.
+\end{remark}
+
+%\bibliographystyle{biometrika}
+%\bibliography{paper-ref}
+
+\begin{thebibliography}{7}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Cleveland(1993)}]{Cleveland:1993}
+\textsc{Cleveland, W.~S.} (1993).
+\newblock \textit{{Vizualizing Data}}.
+\newblock Summit: Hobart Press.
+
+\bibitem[{Cleveland(1994)}]{Cleveland:1994}
+\textsc{Cleveland, W.~S.} (1994).
+\newblock \textit{{The Elements of Graphing Data}}.
+\newblock Summit: Hobart Press, revised ed.
+
+\bibitem[{Cox(1972)}]{Cox:1972}
+\textsc{Cox, D.~R.} (1972).
+\newblock {Regression models and life tables (with Discussion)}.
+\newblock \textit{J. R. Statist. Soc. {\rm B}} \textbf{34}, 187--220.
+
+\bibitem[{Fan \& Peng(2004)}]{Fan:2004}
+\textsc{Fan, J.} \& \textsc{Peng, H.} (2004).
+\newblock {Nonconcave penalized likelihood with a diverging number of
+  parameters}.
+\newblock \textit{Ann. Statist.} \textbf{32}, 928--61.
+
+\bibitem[{Heard et~al.(2006)Heard, Holmes \&
+  Stephens}]{Hear:Holm:Step:quan:2006}
+\textsc{Heard, N.~A.}, \textsc{Holmes, C.~C.} \& \textsc{Stephens, D.~A.}
+  (2006).
+\newblock A quantitative study of gene regulation involved in the immune
+  response of {A}nopheline mosquitoes: {A}n application of {B}ayesian
+  hierarchical clustering of curves.
+\newblock \textit{J. Am. Statist. Assoc.} \textbf{101}, 18--29.
+
+\bibitem[{{R Development Core Team}(2012)}]{R:2010}
+\textsc{{R Development Core Team}} (2012).
+\newblock \textit{R: A Language and Environment for Statistical Computing}.
+\newblock Vienna, Austria: R Foundation for Statistical Computing.
+\newblock {ISBN} 3-900051-07-0, http://www.R-project.org.
+
+\bibitem[{Tufte(1983)}]{Tufte:1983}
+\textsc{Tufte, E.~R.} (1983).
+\newblock \textit{{The Visual Display of Quantitative Information}}.
+\newblock Cheshire: Graphics Press.
+
+\end{thebibliography}
+
+
+\end{document}
