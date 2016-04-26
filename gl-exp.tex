@@ -6,8 +6,6 @@
 \usepackage[top=8pc,bottom=8pc,left=8pc,right=8pc]{geometry}
 %\usepackage{ntheorem}
 
-%\usepackage{amssymb}
-%\usepackage{amsthm}
 \usepackage{subcaption}
 \usepackage{multirow}
 
@@ -16,7 +14,12 @@
 \usepackage{times}
 %\usepackage[cmbold]{mathtime}
 \usepackage{bm}
-\usepackage{natbib}
+
+% this order is important
+\RequirePackage[hyphens]{url}
+\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage[authoryear]{natbib}
+
 \usepackage[plain,noend]{algorithm2e}
 
 %% For compressing some space: 
@@ -58,7 +61,7 @@
 
 \author{Anindya Bhadra  \footnote{{\em Address:} 250 N. University St., West Lafayette, IN 47907, email: bhadra@purdue.edu.} \\Purdue University
 \and Jyotishka Datta  \footnote{{\em Address:} Box 90251, Durham, NC 27708, email: jd298@stat.duke.edu.}\\ Duke University and SAMSI\\
-\and Nicholas G. Polson \footnote{{\em Address:} 5807 S. Woodlawn Ave., Chicago, IL 60637, email: ngp@chicagobooth.edu.}  \ \ and Brandon Willard \footnote{{\em Address:} 5807 S. Woodlawn Ave., Chicago, IL 60637, email: brandonwillard@gmail.com.} \\The University of Chicago Booth School of Business}
+\and Nicholas G. Polson \footnote{{\em Address:} 5807 S. Woodlawn Ave., Chicago, IL 60637, email: ngp@chicagobooth.edu.}  \ \ and Brandon Willard \footnote{{\em Address:} 5807 S. Woodlawn Ave., Chicago, IL 60637, email: bwillard@uchicago.edu.} \\The University of Chicago Booth School of Business}
 
 \maketitle
 \begin{abstract}
@@ -72,10 +75,11 @@ Global-local mixture, Scale mixture, Stable laws, Bayes regularization.
 \section{Introduction}
 %\section{Global-Local Mixtures}
 Many statistical problems involve regularization penalties that can be viewed as global-local mixture prior distributions \citep{polson2011data, hans2011comment}. A $p$-dimensional random variable $X = (x_1, \ldots, x_p)^{\T}$ is said to have a global-local mixture distribution if we can write its marginal probability density function as: 
-\begin{align*}
-p(x_i) & = \int_{0}^{\infty} p(x_i \mid \tau) p(\tau) d\tau \text{ where, }\\
-p( x_i \mid \tau) & = \int_{0}^{\infty} p(x_i \mid \lambda_i, \tau) p(\lambda_i \mid \tau) p(\tau) d\lambda_i
-\end{align*}
+\begin{gather*}
+p(x_i) = \int_{0}^{\infty} p(x_i \mid \tau) p(\tau) d\tau \quad \text{ where } \quad
+p( x_i \mid \tau) = \int_{0}^{\infty} p(x_i \mid \lambda_i, \tau) p(\lambda_i \mid \tau) p(\tau) d\lambda_i
+\;.
+\end{gather*}
 Here $\tau$ is a global mixing parameter and $\lambda_i$'s are the local mixture ones. In many cases, we also model $\tau \sim p(\tau)$. There is great interest in being able to analytically calculate the marginal distribution, $p(x_i)$, of a global-local mixture. Primarily as a log-penalty, $\phi(x_i) = -\log p(x_i)$, in a sparse inference problem we show how two simple integral identities, namely Schl\"omilch and Liouville integrals, derive useful `closed-form' identities very quickly. Moreover. it provides a framework for generating new random variables via the transformation $Y = a X - b X^{-1}$ for hyper-parameters $a$ and $b$. It also provides a transformation framework that links together different global-local mixtures. 
 
 We start by stating the two key integral identities that we shall use throughout the Cauchy-Schl\"omilch transformation: 
@@ -86,18 +90,18 @@ and the Liouville transformation:
 \begin{equation}
 \int_{0}^{\infty} f\left(ax + \frac{b}{x} \right) \frac{dx}{\sqrt{x}} = \frac{1}{\sqrt{a}} \int_{0}^{\infty} f \left( 2\sqrt{ab} + y \right) \frac{dy}{\sqrt{y}}, a,b >0 \label{eq:liouville}
 \end{equation}
-See \citep{boros2006irresistible,baker2008probabilistic,amdeberhan2010cauchy,jones2014generating} for a detailed discussion of these identities. 
+See \cite{boros2006irresistible,baker2008probabilistic,amdeberhan2010cauchy,jones2014generating} for a detailed discussion of these identities. 
 
 \begin{proof}
 Equation \eqref{eq:identity} follows from the simple transformation $t = b/ax$: 
 \begin{equation*}
-  I = \int_{0}^{\infty} f \left\{(ax - b/x)^2 \right\} dx = \int_{0}^{\infty} f \left\{(at - b/t)^2 \right\} \frac{b}{at^2}.
+  I = \int_{0}^{\infty} f \left\{(ax - b/x)^2 \right\} dx = \int_{0}^{\infty} f \left\{(at - b/t)^2 \right\} \frac{b}{at^2} dt.
 \end{equation*}
 Now, adding we get: 
 \begin{align*}
 2 I & = \int_{0}^{\infty} f \left\{(at - b/t)^2 \right\} \left( 1+\frac{b}{at^2} \right) dt.
 \end{align*}
-Finally transforming $y = b/t - at$ implies $dy = -a (1+b/at^2)$, which yields $I = (2a)^{-1} \int_{0}^{\infty} f(y^2) dy$ as required. 
+Finally transforming $y = b/t - at$ implies $dy = -a (1+b/at^2) dt$, which yields $I = (2a)^{-1} \int_{0}^{\infty} f(y^2) dy$ as required. 
 \end{proof}
 The proof for the Liouville transformation follows in a similar manner which we omit for the sake of brevity. 
 
@@ -107,7 +111,7 @@ A useful generalization of the Cauchy-Schl\"omilch transformation is:
 \end{equation}
 where $g(x)=g^{-1}(x)$ is a self-inverse function such as $g(x) = b/x$ or $g(x) = -a^{-1}\log\{1-\exp(a x)\}$, see \citet{amdeberhan2010cauchy} for a detailed discussion. %The proof is along the same lines and we skip it for the sake of brevity. 
 
-\section{Global Local Scale Mixture}
+\section{Global-local Scale Mixtures}
 \subsection{Lasso as a Normal Scale Mixture}
 It is well known that the double exponential or Laplace distribution arises as a normal scale mixtures with a Gamma mixing density \citep{andrews1974scale}. A simple transformation proof follows from the \CS formula where, $ f(x) = e^{-x} $ in \eqref{eq:identity}. The normal integral identity, $ \int_{0}^{\infty} f(y^2) dy = \int_0^\infty e^{-y^2} d y = \sqrt{\pi}/2 $ becomes $\int_{0}^{\infty} f\{(ax-bx^{-1})^2\} dx$, namely,
 $$
@@ -122,16 +126,16 @@ The advantage of this short proof is that the Laplace density can be viewed as a
 \begin{remark}
 %(Need to check this carefully!) 
 The usual identity for lasso is the following proved by \citet{levy1940certains}.
-\beq
-\int_{0}^{\infty} \frac{a}{\sqrt{2\pi t^3}} e^{-a^2/2t} e^{-\lambda t} dt = e^{-a\sqrt{2\lambda}} \label{eq:levy}
-\eeq
+\begin{equation}
+  \int_{0}^{\infty} \frac{a}{\sqrt{2\pi t^3}} e^{-a^2/2t} e^{-\lambda t} dt = e^{-a\sqrt{2\lambda}} \label{eq:levy}
+\end{equation}
 %\end{remark}
 %Must apply to other exponential family mixtures? $ f(x ) = x^{\alpha-1} e^{-x} $ etc.
 %\begin{remark} 
 For $a = 1/2$, the above can be written as: 
-\beq
-E \left[\exp\{-\lambda^2/4 G \} \right] = \exp(-\lambda), \; \mbox{where } G \sim \mbox{Ga} (1/2, 1/2) \label{eq:gamma}
-\eeq 
+\begin{equation}
+  E \left[\exp\{-\lambda^2/4 G \} \right] = \exp(-\lambda), \; \text{ where } G \sim \operatorname{Ga} (1/2, 1/2) \label{eq:gamma}
+\end{equation}
 \end{remark}
 \begin{proof}
 The first relationship can be proved by substituting $t^{-1} = x^2$, which makes the left hand side in \eqref{eq:levy} equal to: 
@@ -176,7 +180,7 @@ $$
 p_{GIG}(x \mid \lambda, \delta, \gamma) = \frac{(\gamma/\delta)^{\lambda}}{2K_{\lambda}(\delta \gamma)} x^{\lambda-1} \exp \left\{ -\half (\delta^2 x^{-1} + 
 \gamma^2 x )  \right\}; \; x > 0
 $$
-where $K_{\lambda}$ is the modified Bessel function of the second kind. The Liouville formula directly applied here immediately shows its a probablity density function. 
+where $K_{\lambda}$ is the modified Bessel function of the second kind. The Liouville formula directly applied here immediately shows its a probability density function. 
 
 When $\delta$ or $\gamma$ is zero, the normalizing constant is to be replaced by the corresponding limits as $K_{\lambda}(u) \sim \Gamma(|\lambda|)2^{|\lambda|-1} u^{|\lambda|}$ when $\lambda \neq 0$. It turns out that if $\delta=0$, GIG is identical to a Gamma distribution with density 
 $$
