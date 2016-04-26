@@ -153,8 +153,8 @@ where the left hand side can be identified as $E \left[\exp\{-\lambda^2/4 G \} \
 \subsection{Logit and Quantile as Global-local Mixtures}
 Logistic modeling can be viewed as a global-local mixture via the \PG distribution \citep{polson2013bayesian}. This leads to efficient MCMC algorithms for inference. The two key marginal distributions for the hyperbolic-GIG \citep{barndorff1977infinite} and Z-\Polya mixtures \citep{polson2013bayesian,barndorff1982normal} are 
 \begin{align}
-\frac{\alpha^2-\kappa^2}{2\alpha} e^{-\alpha|x-\mu| + \kappa(x-\mu)} & = \int_0^{\infty} \phi(x \mid \mu + \kappa \lambda, \lambda) p_{GIG}(\lambda \mid 1,0,\sqrt{\alpha^2-\kappa^2}) (\lambda)  d\lambda \label{eq:GIG}\\
-\frac{1}{B(\alpha,\kappa)} \frac{e^{\alpha(x-\mu)}}{(1+e^{x-\mu})^{\alpha + \kappa}} & = \int_0^{\infty} \phi( x \mid \mu + \kappa \lambda, \lambda) p_{Polya}(\lambda \mid \alpha,\kappa) (\lambda) d\lambda \label{eq:polya}
+\frac{\alpha^2-\kappa^2}{2\alpha} e^{-\alpha|x-\mu| + \kappa(x-\mu)} & = \int_0^{\infty} \phi(x \mid \mu + \kappa \lambda, \lambda) p_{GIG}(\lambda \mid 1,0,\sqrt{\alpha^2-\kappa^2})  d\lambda \label{eq:GIG}\\
+\frac{1}{B(\alpha,\kappa)} \frac{e^{\alpha(x-\mu)}}{(1+e^{x-\mu})^{\alpha + \kappa}} & = \int_0^{\infty} \phi( x \mid \mu + \kappa \lambda, \lambda) p_{Polya}(\lambda \mid \alpha,\kappa) d\lambda \label{eq:polya}
 \end{align}
 where $\phi(\mu + \kappa \lambda, \lambda)$ denotes a normal density. The corresponding local mixture distributions are Generalized Inverse-Gaussian and the \Polya-Z denoted by $p_{GIG}$ and $p_{Polya}$ respectively. Rather surprisingly, the logit and quantile identities can be derived from the \CS transformation \eqref{eq:identity}. We give the proofs below: 
 
