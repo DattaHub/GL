@@ -1,7 +1,7 @@
 %%\documentclass[manuscript]{biometrika}
 %\documentclass[lineno]{biometrika}
 \documentclass[letterpaper,11pt]{article}
-%\usepackage[slantedGreek]{mathpazo}
+\usepackage[slantedGreek]{mathpazo}
 \usepackage{amsmath,amssymb,amsthm,amsfonts}
 \usepackage[top=8pc,bottom=8pc,left=8pc,right=8pc]{geometry}
 %\usepackage{ntheorem}
@@ -132,9 +132,9 @@ The usual identity for lasso is the following proved by \citet{levy1940certains}
 %\end{remark}
 %Must apply to other exponential family mixtures? $ f(x ) = x^{\alpha-1} e^{-x} $ etc.
 %\begin{remark} 
-For $a = 1/2$, the above can be written as: 
+For $a = 1$, and $\theta = (2\lambda)^{1/2}$, the above can be written as: 
 \begin{equation}
-  E \left[\exp\{-\lambda^2/4 G \} \right] = \exp(-\lambda), \; \text{ where } G \sim \operatorname{Ga} (1/2, 1/2) \label{eq:gamma}
+  E \left[\exp\{-\theta^2/2 G \} \right] = \exp(-\theta), \; \text{ where } G \sim \operatorname{Ga} (1/2, 1/2) \label{eq:gamma}
 \end{equation}
 \end{remark}
 \begin{proof}
@@ -143,18 +143,18 @@ The first relationship can be proved by substituting $t^{-1} = x^2$, which makes
 \int_{0}^{\infty} \frac{a}{\sqrt{2\pi t^3}} e^{-a^2/2t} e^{-\lambda t} dt & = \sqrt{\frac{2}{\pi}} a e^{-a\sqrt{2\lambda}} \int_0^{\infty} e^{-\left(\frac{a}{\sqrt{2}} x - \lambda x^{-1}\right)^2} dx \\
 & = \exp(-a\sqrt{2\lambda}).
 \end{align*}
-The last step follows from a direct application of the \CS formula. For the second relationship \eqref{eq:gamma}, fixing $a = 1$ and substituting $t = x^{-1}$ yields: 
+The last step follows from a direct application of the \CS formula. For the second relationship \eqref{eq:gamma}, fixing $a = 1$, $\theta = (2\lambda)^{1/2}$ and substituting $t = x^{-1}$ yields: 
 $$
-\int_{0}^{\infty} \frac{a}{\sqrt{2\pi t^3}} e^{-a^2/2t} e^{-\lambda t} dt = \int_{0}^{\infty} e^{-\lambda / x} \sqrt{\frac{1}{2\pi}} x^{-\half} e^{-\half x} dx, 
+\int_{0}^{\infty} \frac{a}{\sqrt{2\pi t^3}} e^{-a^2/2t} e^{-\lambda t} dt = \int_{0}^{\infty} e^{-\frac{\theta^2}{2x}} \sqrt{\frac{1}{2\pi}} x^{-\half} e^{-\half x} dx, 
 $$
-where the left hand side can be identified as $E \left[\exp\{-\lambda^2/4 G \} \right]$ for $G \sim \mbox{Ga}(1/2,1/2)$. \qedhere
+where the left hand side can be identified as $E \left[\exp\{-\theta^2/2 G \} \right]$ for $G \sim \mbox{Ga}(1/2,1/2)$. \qedhere
 \end{proof}
 
 \subsection{Logit and Quantile as Global-local Mixtures}
 Logistic modeling can be viewed as a global-local mixture via the \PG distribution \citep{polson2013bayesian}. This leads to efficient MCMC algorithms for inference. The two key marginal distributions for the hyperbolic-GIG \citep{barndorff1977infinite} and Z-\Polya mixtures \citep{polson2013bayesian,barndorff1982normal} are 
 \begin{align}
-\frac{\alpha^2-\kappa^2}{2\alpha} e^{-\alpha|x-\mu| + \kappa(x-\mu)} & = \int_0^{\infty} \phi(x \mid \mu + \kappa \lambda, \lambda) p_{GIG}(\lambda \mid 1,0,\sqrt{\alpha^2-\kappa^2})  d\lambda \label{eq:GIG}\\
-\frac{1}{B(\alpha,\kappa)} \frac{e^{\alpha(x-\mu)}}{(1+e^{x-\mu})^{\alpha + \kappa}} & = \int_0^{\infty} \phi( x \mid \mu + \kappa \lambda, \lambda) p_{Polya}(\lambda \mid \alpha,\kappa) d\lambda \label{eq:polya}
+\frac{\alpha^2-\kappa^2}{2\alpha} e^{-\alpha|x-\mu| + \kappa(x-\mu)} & = \int_0^{\infty} \phi(x \mid \mu + \kappa \lambda, \lambda) p_{GIG}(\lambda \mid 1,0,\sqrt{\alpha^2-\kappa^2}) d\lambda \label{eq:GIG}\\
+\frac{1}{B(\alpha,\kappa)} \frac{e^{\alpha(x-\mu)}}{(1+e^{x-\mu})^{\alpha + \kappa}} & = \int_0^{\infty} \phi( x \mid \mu + \kappa \lambda, \lambda) p_{Polya}(\lambda \mid \alpha,\kappa)  d\lambda \label{eq:polya}
 \end{align}
 where $\phi(\mu + \kappa \lambda, \lambda)$ denotes a normal density. The corresponding local mixture distributions are Generalized Inverse-Gaussian and the \Polya-Z denoted by $p_{GIG}$ and $p_{Polya}$ respectively. Rather surprisingly, the logit and quantile identities can be derived from the \CS transformation \eqref{eq:identity}. We give the proofs below: 
 
@@ -301,6 +301,38 @@ $$
 g(x) = \sqrt{\frac{2\lambda}{\pi}} \exp \left\{ - \frac{\lambda}{2} \left( x - \frac{1}{x} \right)^2 \right\}, x >0.
 $$
 Once again, the \CS transformation with $y = x - x^{-1}$ immediately shows its a density. 
+
+\section{Convolutions}
+
+The \CS transformation yields easy proofs for a number of classic convolution results. We show here the case for Cauchy and Inverse-Gamma. 
+\begin{lemma}
+Let $X_i \sim \mathrm{Cauchy}(0,1)$ for $i =1,2$, $Z \doteq \sum_{j=1}^{2} w_j X_j  \sim C \left( 0,\sum_{j=1}^{2} w_j \right)$.
+\end{lemma}
+\begin{lemma}
+Let $X_i \sim \mathrm{IG}(\alpha t_i, \alpha t_i^2)$ for $i = 1,2$, $Z \doteq \sum_{j=1}^{2} X_j \sim \mathrm{IG}(\alpha \sum_{j=1}^{m} t_i, \alpha (\sum_{j=1}^{m} t_i)^2)$, where $\mathrm{IG}(\alpha t, \alpha t^2)$ denotes the inverse-Gaussian density with probability density function given by:
+$$
+f(t) = \frac{t \sqrt{\alpha} e^t}{\sqrt{2 \pi x^3}} \exp \left( -\frac{\alpha t^2}{2x} - \frac{x}{2\alpha} \right) 1_{(0,\infty)}(x) 
+$$
+\end{lemma}
+
+\noindent Both these results follow from a straight-forward application of the \CS transformation. Exploiting the symmetry of Cauchy density and applying the Lagrange identity $(a^2 + b^2)(c^2 + d^2) = (ac+bd)^2 + (ad-bc)^2$, we get the convolution density as: 
+\begin{align*} 
+f_Z(z) & = 2 \int_{0}^{\infty} \frac{1}{ \pi w_1 \{ (1+ x^2/w_1^2) \} } \frac{1}{\pi w_2 \{1+ (z-x)^2/w_2^2 \} } dx \\
+& = \frac{2}{\pi^2 w_1 w_2} \int_{0}^{\infty} \frac{1}{ \{1+ w_1^{-1} w_2^{-1} x (z-x) \}^2 + \{w_2^{-1}z - (w_1^{-1}+ w_2^{-1}) x \}^2 } dx
+\end{align*}
+By replacing $x$ with $x + w_2^{-1}z (w_1^{-1} + w_2^{-1})^{-1}$, 
+\begin{align*}
+f_Z(z) & = \frac{2}{\pi^2 w_1 w_2} \int_{0}^{\infty} \frac{dx}{ \left( 1 + \frac{z^2}{(w_1+w_2)^2} - \frac{x^2}{w_1w_2} + xz \frac{w_2-w_1}{(w_1+w_2) w_1 w_2} \right)^2 + x^2 (\frac{w_1 + w_2}{w_1w_2})^2} \\
+& = \frac{2}{\pi^2 w_1 w_2} \int_{0}^{\infty} \frac{dx}{ \left( A - B x^2 + Cx \right)^2 + x^2 D^2 } = \frac{2}{\pi^2 w_1 w_2} \int_{0}^{\infty} \frac{dx/x^2}{ \left( A/x - B x + C \right)^2 + D^2 } 
+\end{align*}
+where $A = 1 + \frac{z^2}{(w_1+w_2)^2}, B = \frac{1}{w_1w_2}, C = z \frac{w_2-w_1}{(w_1+w_2) w_1 w_2}, D = z \frac{w_2-w_1}{(w_1+w_2) w_1 w_2}$. Transforming $y = x^{-1}$ and applying the \CS transformation we arrive at: 
+\begin{align*}
+f_Z(z) & = \frac{2}{\pi w_1 w_2} \int_{0}^{\infty} \frac{dy}{2A (y^2 + D^2)} = \frac{1}{\pi w_1 w_2} \frac{1}{A D} = \frac{1}{\pi (w_1+w_2)} \frac{1}{1+ z^2/(w_1+w_2)^2}
+%& = \frac{1}{\pi w_1 w_2} \frac{1}{1+ z^2/(w_1+w_2)^2} \frac{w_1 w_2}{w_1 + w_2} = \frac{1}{\pi (w_1+w_2)} \frac{1}{1+ z^2/(w_1+w_2)^2}
+\end{align*}
+In fact, it can be proved that the sum of any number of independent Cauchy random variates is also another Cauchy by a simple induction argument from the above result. One can also use the characteristic function of Cauchy distribution $\psi_X(t) = \exp(it \mu - |t| \sigma^2)$ for $X \sim C(\mu, \sigma)$ and the fact that $\psi_{X+Y}(t) = \psi_X(t) \psi_Y(t)$ to derive the result in just one step. The most general result in this category is due to \cite{pillai2015unexpected}, where they showed the following: 
+Let $(X_1,\cdots,X_m)$ and $(Y_1, \cdots,Y_m)$ be i.i.d. $\Nor(0,\Sigma)$ for an arbitray positive definite matrix $\Sigma$, then $Z = \sum_{j=1}^{m} w_j \frac{X_j}{Y_j} \sim \mathrm{Cauchy}(0,1)$ as long as $(w_1,\cdots,w_m)$ is independent of $(X,Y)$, $w_j \geq 0, j = 1, \cdots,m$ and $\sum_{j=1}^{m} w_j = 1$. 
+
 
 \section{Discussion}
 
