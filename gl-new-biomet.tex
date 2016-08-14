@@ -88,7 +88,7 @@
 \maketitle
 \begin{abstract}
 \noindent 
-We construct global-local mixtures using the \CS and the Liouville integral transformation identities. This provides simpler characterizations of well-known normal-scale mixture distributions such as the Laplace or Lasso, the logit and the quantile. We also show how they lead to new probability distributions as global-local mixtures of an appropriate baseline density. We also apply our methodology to convolution distributions that commonly arise in Bayesian inference. Finally, we conclude with a conjecture concerning the Bayesian bridge and uniform correlation mixture of a bivariate normal density with unit variances. 
+Global-local mixtures are derived from the \CS and Liouville integral transformation identities. We characterize well-known normal-scale mixture distributions such as the Laplace or Lasso, logit and quantile as well as providing new global-local mixtures. We apply our methodology to convolutions that commonly arise in Bayesian inference. Finally, we conclude with a conjecture concerning the bridge and uniform correlation mixtures. 
 \end{abstract}
 
 %\noindent {\bf Keywords:}  
@@ -98,57 +98,52 @@ Global-local mixture, Scale mixture, Stable laws, Bayes regularization, Lasso, Q
 
 \section{Introduction}
 %\section{Global-Local Mixtures}
-Many statistical problems involve regularization penalties that can be constructed from global-local mixture prior distributions \citep{polson2011data, hans2011comment,bhadra2015horseshoe+}. A $p$-dimensional random variable $X = (x_1, \ldots, x_p)^{\T}$ has a global-local mixture density denoted by $p(x_1, \ldots, x_p)$, if there exists a model of the form 
-\begin{gather*}
+Many statistical problems involve regularization penalties derived from global-local mixture distributions \citep{polson2011data, hans2011comment,bhadra2015horseshoe+}. A global-local mixture density, denoted by $p(x_1, \ldots, x_p)$, takes the form 
+\begin{equation*}
 p(x_1, \ldots, x_p) = \int_{0}^{\infty}\prod_{i=1}^{p}  p(x_i \mid \tau) p(\tau) d\tau \quad \text{ where } \quad
 p( x_i \mid \tau) = \int_{0}^{\infty} p(x_i \mid \lambda_i, \tau) p(\lambda_i \mid \tau) d\lambda_i, 
-\end{gather*}
-where $(\lambda_i \mid \tau) \sim p(\lambda_i \mid \tau )$ are the local mixing parameters and $\tau \sim p(\tau)$ is a global mixing parameter common to all local parameters.
-There is great interest in analytically calculating the marginal prior distribution, $p(x_i \mid \tau)$, of a global-local mixture. The associated negative log-prior is $\phi(x_i, \tau) = -\log p(x_i \mid \tau)$, which defines a regularization penalty to be used in inference when we observe data $y_i$ on $x_i$. Another common problem in Bayesian inference where the need for analytical calculation of an integral is needed is computation of a convolution mixture of the form $p(x_i) = \int p(x_i - \lambda_i) p(\lambda_i) d \lambda_i$ where we take the global parameter $\tau \equiv 1$ to be fixed. 
-
-The purpose of our paper is to show how two simple integral identities, namely the \CS and Liouville transformations, derive closed-form identities very quickly. It also provides a framework for generating new priors and penalties via the transformation $Y = a X - b X^{-1}$ where $a$ and $b$ are hyper-parameters. 
-We start by stating the two key integral identities that we shall use throughout the Cauchy-Schl\"omilch transformation: 
+\end{equation*}
+where $p(x_i \mid \tau)$ is a local mixture with $(\lambda_i \mid \tau) \sim p(\lambda_i \mid \tau )$ as mixing parameters and $p(x_1, \ldots, x_p)$ is a global mixture with $\tau \sim p(\tau)$. There is great interest in analytically calculating the marginal distribution, $p(x_i \mid \tau)$, and the regularization penalty $\phi(x_i, \tau) = -\log p(x_i \mid \tau)$. Another commonly encountered problem requires a convolution mixture of the form $p(x_i) = \int p(x_i - \lambda_i) p(\lambda_i) d \lambda_i$. 
+The purpose of our paper is to show how the \CS and Liouville transformation derive closed-form identities very quickly for global-local mixtures. 
+We start by stating the two key integral identities, the Cauchy-Schl\"omilch transformation: 
 \begin{equation}
 \int_0^\infty f \left\{ ( a x - b x^{-1} )^2 \right\} d x = \frac{1}{2a} \int_0^\infty f(y^2) d y \label{eq:identity}
 \end{equation}
 and the Liouville transformation:
 \begin{equation}
-\int_{0}^{\infty} f\left(ax + \frac{b}{x} \right) \frac{dx}{\sqrt{x}} = \frac{1}{\sqrt{a}} \int_{0}^{\infty} f \left( 2\sqrt{ab} + y \right) \frac{dy}{\sqrt{y}}, a,b >0 \label{eq:liouville}
+\int_{0}^{\infty} f\left(ax + \frac{b}{x} \right) \frac{dx}{\sqrt{x}} = \frac{1}{\sqrt{a}} \int_{0}^{\infty} f \left( 2\sqrt{ab} + y \right) \frac{dy}{\sqrt{y}}, a,b >0. \label{eq:liouville}
 \end{equation}
 See \cite{boros2006irresistible,baker2008probabilistic,amdeberhan2010cauchy,jones2014generating} for a detailed discussion of these identities. 
-
-\begin{proof}
 Equation \eqref{eq:identity} follows from the simple transformation $t = b/ax$: 
 \begin{equation*}
   I = \int_{0}^{\infty} f \left\{(ax - b/x)^2 \right\} dx = \int_{0}^{\infty} f \left\{(at - b/t)^2 \right\} \frac{b}{at^2} dt.
 \end{equation*}
-Now, adding we get $2 I = \int_{0}^{\infty} f \left\{(at - b/t)^2 \right\} \left( 1+\frac{b}{at^2} \right) dt$. Finally transforming $y = b/t - at$ implies $dy = -a (1+b/at^2) dt$, which yields $I = (2a)^{-1} \int_{0}^{\infty} f(y^2) dy$ as required. 
-\end{proof}
-The proof for the Liouville transformation follows in a similar manner which we omit for the sake of brevity. A useful generalization of the \CS transformation is: 
+Adding yields $2 I = \int_{0}^{\infty} f \left\{(at - b/t)^2 \right\} \left( 1+\frac{b}{at^2} \right) dt$ and transforming $y = b/t - at$ implies $dy = -a (1+b/at^2) dt$, which gives $I = (2a)^{-1} \int_{0}^{\infty} f(y^2) dy$ as required. 
+The Liouville transformation follows in a similar manner. A useful generalization of the \CS transformation is given by: 
 \begin{equation}
   \int_0^\infty f \left[ \{x-s(x)\}^2 \right] dx = \int_0^\infty f( y^2 ) dy \label{eq:gen}
 \end{equation}
-where $s(x)=s^{-1}(x)$ is a self-inverse function such as $s(x) = b/x$ or $s(x) = -a^{-1}\log\{1-\exp(a x)\}$. See \citet{amdeberhan2010cauchy} for further discussion. %The proof is along the same lines and we skip it for the sake of brevity. 
-This identity can be used to construct new global-local mixture distributions given absolute density $f(\cdot)$. Specifically, we can construct new densities of the form $f(x) = 2g\{ t(x) \}$ where $t(x)$ has form $x-s(x)$ where $s : \Re^+ \to \Re^+$ is an onto monotone decreasing function that is self-inverse, i.e. $s\{ s(x)\} = x$ \citep{jones2014generating}. This together with the \CS transformation guarantees that the left hand side is a density on the appropriate domain, and rather surprisingly, provides for a way to represent the resulting $g\{t(x)\}$ as a global-local scale mixture. 
+where $s(x)=s^{-1}(x)$ is a self-inverse function such as $s(x) = b/x$ or $s(x) = -a^{-1}\log\{1-\exp(a x)\}$. %See \citet{amdeberhan2010cauchy} for further discussion. %The proof is along the same lines and we skip it for the sake of brevity. 
+This identity can be used to construct new global-local mixture distributions. Let $f(x) = 2g\{ t(x) \}$ where $t(x)$ has form $x-s(x)$ where $s : \Re^+ \to \Re^+$ is an onto monotone decreasing function that is self-inverse, with $s\{ s(x)\} = x$. This together with the \CS transformation guarantees that we have a density, and rather surprisingly, provides for a way to represent the resulting $g\{t(x)\}$ as a global-local scale mixture. 
 
-\citet{jones2014generating} also identifies that only a few choices of $t(\cdot)$ leads to fully tractable formulae for its inverse $t^{-1}= \Pi$ and the integral $\Pi(y) = \int_{-\infty}^{y} \pi(\omega) d\omega$. Two special choices are the $t$ distribution with 2 degrees of freedom and the logistic. 
+\citet{jones2014generating} shows that only a few choices of $t(x)$ leads to fully tractable formulae for its inverse $t^{-1}= \Pi$ and the integral $\Pi(y) = \int_{-\infty}^{y} \pi(\omega) d\omega$. Two special choices are the $t$ distribution with 2 degrees of freedom and the logistic. 
 \begin{align*}
-t(2): \Pi_{T}(y) = (1/2)(y+\sqrt{4b+y^2}) & \Rightarrow \Pi_T^{-1}(x) = t_T(x) = x - (b/x) \\
-Logistic: \Pi_{L}(y) = a^{-1} \log(1+e^{ay}) & \Rightarrow \Pi_L^{-1}(x) = t_L(x) = a^{-1} \log(e^{ax}-1) 
+\mbox{t(2)}: \Pi_{T}(y) = (1/2)(y+\sqrt{4b+y^2}) & \Rightarrow \Pi_T^{-1}(x) = t_T(x) = x - (b/x) \\
+\mbox{Logistic}: \Pi_{L}(y) = a^{-1} \log(1+e^{ay}) & \Rightarrow \Pi_L^{-1}(x) = t_L(x) = a^{-1} \log(e^{ax}-1) 
 \end{align*}
-We can use these results to generate new probability distributions with different choices of simple baseline function $g(\cdot)$ and derive new scale mixture representations that are useful in Bayesian global-local modeling. 
+%We can use these results to generate new probability distributions with different choices of simple baseline function $g(\cdot)$ and derive new scale mixture representations that are useful in Bayesian global-local modeling. 
 
-It follows from the integral identity \eqref{eq:identity} that if $f(x), x \geq 0$ is a density function, so is $g(x) = 2a f(|ax-b/x|), x >0$, and $f(\cdot)$ and $g(\cdot)$ are called the mother and the daughter pdf. As \cite{chaubey2010reciprocal} pointed out, there is an one-to-one correspondence between $f$ and $g$, and furthermore if $f(x)$ is the pdf of a symmetric real-valued random variable $Y$, the daughter pdf $g(x) = f(x-1/x), x>0$ is an R-symmetric density, and vice-versa, there exists a symmetric density $f(x) = g(x+\sqrt{1+x^2})$ for every R-symmetric density $g(x)$. Furthermore, $f(\cdot)$ is unimodal if and only if $g(\cdot)$ is unimodal. \cite{chaubey2010reciprocal} provides a few examples of generating R-symmetric densities $g$ starting from well-known symmetric densities $f$. 
+Now, the integral identity \eqref{eq:identity} shows that if $f(x), x \geq 0$ is a density function, so is $g(x) = 2a f(|ax-b/x|), x >0$, and $f(\cdot)$ and $g(\cdot)$ are called the mother and the daughter pdf. \citet{chaubey2010reciprocal} provide a one-to-one correspondence between $f$ and $g$. Furthermore if $f(x)$ is the pdf of a symmetric real-valued random variable $X$, the daughter pdf $g(x) = f(x-1/x), x>0$ is an R-symmetric density, and vice-versa, there exists a symmetric density $f(x) = g(x+\sqrt{1+x^2})$ for every R-symmetric density $g(x)$. Furthermore, $f(\cdot)$ is unimodal if and only if $g(\cdot)$ is unimodal. \cite{chaubey2010reciprocal} provides a few examples of generating R-symmetric densities $g$ starting from well-known symmetric densities $f$. 
 
-Hence, apart from providing simple proofs for well-known normal scale mixture representations, \CS and Liouville transformations can generate new distributions by a suitable scale transformation $f(x) = 2g\{ t(x) \}$ of a simple baseline function $f$ under some conditions, and for $t(x) = x - 1/x$, we get R-symmetric densities on $\Re^+$ from well-known symmetric densities and vice-versa, and given a density $f(x)$ we can create a new global-local scale family $f(ax-bx^{-1})$, by reallocating its probability mass. 
+Apart from providing simple proofs for well-known normal scale mixture representations, \CS and Liouville transformations can generate new distributions by a suitable scale transformation $f(x) = 2g\{ t(x) \}$ of a simple baseline function $f$ under some conditions, and for $t(x) = x - 1/x$, we get R-symmetric densities on $\Re^+$ from well-known symmetric densities and vice-versa, and given a density $f(x)$ we can create a new global-local scale family $f(ax-bx^{-1})$, by reallocating its probability mass. 
 
-A particularly useful tool for generating univariate and multivariate random variables is Khintchine's theorem for unimodality of univariate distributions \citep{bryson1982constructing}. Khintchine's theorem states that any random variable $X$ with a mode at zero can be written as a product $X = ZU$, where $U \sim U(0,1)$ and $Z$ has the density function $f_Z(z) = -zf_{X}'(z)$. \citet{bryson1982constructing} and successively \citet{jones2010distributions,jones2012khintchine} discuss how Khintchine's theorem allows us to construct both univariate and multivariate distributions, the latter with special dependence structure.\cite{jones2014generating} develops an extended Khintchine's theorem that further lets one generate random variable with unimodal density of the form $2g(t(x))$. 
+A particularly useful tool for generating univariate and multivariate random variables is Khintchine's theorem for unimodality of univariate distributions \citep{bryson1982constructing}. Khintchine's theorem states that any random variable $X$ with a mode at zero can be written as a product $X = ZU$, where $U \sim U(0,1)$ and $Z$ has the density function $f_Z(z) = -zf_{X}'(z)$. \citet{bryson1982constructing} and successively \citet{jones2012khintchine} discuss how Khintchine's theorem allows us to construct both univariate and multivariate distributions, even with special dependence structure.\cite{jones2014generating} develops an extended Khintchine's theorem that further lets one generate random variable with unimodal density of the form $2g(t(x))$. 
 
 The rest of the paper is organized as follows: \S 2 derives scale mixture results for the Lasso, quantile and logistic regression, \S 3 for convolutions of densities via mixtures and finally \S 4 concludes with some open problems. 
 
 \section{Global-local Scale Mixtures}
 \subsection{Lasso as a Normal Scale Mixture}
-The lasso penalty arises as a double exponential or Laplace global-local mixture with normal scale mixtures with a Gamma mixing density \citep{andrews1974scale}. A simple transformation proof follows from the \CS formula \eqref{eq:identity} with $ f(x) = e^{-x} $. The normal integral identity, $ \int_{0}^{\infty} f(y^2) dy = \int_0^\infty e^{-y^2} d y = {\pi}^{1/2}/2 $ becomes $\int_{0}^{\infty} f\{(ax-bx^{-1})^2\} dx$. It follows that: 
+The lasso penalty arises as a double exponential or Laplace global-local mixture with normal scale mixtures with a Gamma mixing density \citep{andrews1974scale}. A simple transformation proof follows from the \CS formula \eqref{eq:identity} with $ f(x) = e^{-x} $. The normal integral identity, $ \int_{0}^{\infty} f(y^2) dy = \int_0^\infty e^{-y^2} d y = {\pi}^{1/2}/2 $ yields: 
 $$
 \int_0^\infty e^{- a^2 x^2 - b^2 / x^2 } d x = \int_0^{\infty} e^{-ab \left( \frac{a}{b} x^2 + \frac{b}{a}x^{-2} \right)} dx =  \frac{{\pi}^{1/2}}{2a} e^{- 2 ab}.
 $$
@@ -156,7 +151,7 @@ Substituting $ t = (a/b)^{1/2} x $ and $c = ab$ we get the classic \citet{andrew
 \begin{align*}
   \int_0^\infty e^{- c (t - t^{-1})^2} d t & = \half (\pi/c)^{1/2} \Rightarrow \int_0^\infty e^{- c (t^2 + t^{-2})} d t = \half (\pi/c)^{1/2} e^{-2c}. %\label{eq:andrews}
 \end{align*}
-The advantage of this short proof is that the Laplace density can be viewed as a transformation of the normal, as the transformation $y = t - t^{-1}$ leads back to the normal density.
+The advantage is that the Laplace density can be viewed as a transformation of the normal via $y = t - t^{-1}$.
 
 \begin{remark}
 %(Need to check this carefully!) 
@@ -183,42 +178,42 @@ $$
 $$
 where the left hand side can be identified as $\mathbb{E} \left[\exp\{-\theta^2/2 G \} \right]$ for $G \sim \mbox{Ga}(1/2,1/2)$. %\qedhere
 \end{proof}
-
+%% hyperbolic-GIG \citep{barndorff1977infinite}
 \subsection{Logit and Quantile as Global-local Mixtures}
-Logistic modeling can be viewed within the global-local mixture framework via the \PG distribution \citep{polson2013bayesian}. This leads to efficient MCMC algorithms for inference. The two key marginal distributions for the hyperbolic-GIG \citep{barndorff1977infinite} and Z-\Polya mixtures \citep{polson2013bayesian,barndorff1982normal} are 
+Logistic modeling can be viewed within the global-local mixture framework via the \PG distribution \citep{polson2013bayesian}. This leads to efficient MCMC algorithms for inference. The two key marginal distributions for the hyperbolic-GIG and Z-\Polya mixtures \citep{polson2013bayesian,barndorff1982normal} are 
 \begin{align}
-\frac{\alpha^2-\kappa^2}{2\alpha} e^{-\alpha|x-\mu| + \kappa(x-\mu)} & = \int_0^{\infty} \phi(x \mid \mu + \kappa \lambda, \lambda) p_{GIG}(\lambda \mid 1,0,\sqrt{(\alpha^2-\kappa^2)}) d\lambda \label{eq:GIG}\\
-\frac{1}{B(\alpha,\kappa)} \frac{e^{\alpha(x-\mu)}}{(1+e^{x-\mu})^{\alpha + \kappa}} & = \int_0^{\infty} \phi( x \mid \mu + \kappa \lambda, \lambda) p_{Polya}(\lambda \mid \alpha,\kappa)  d\lambda \label{eq:polya}
+\frac{\alpha^2-\kappa^2}{2\alpha} e^{-\alpha|x-\mu| + \kappa(x-\mu)} & = \int_0^{\infty} \phi(x \mid \mu + \kappa \lambda, \lambda) p_{\mathrm{GIG}}(\lambda \mid 1,0,\sqrt{(\alpha^2-\kappa^2)}) d\lambda \label{eq:GIG}\\
+\frac{1}{B(\alpha,\kappa)} \frac{e^{\alpha(x-\mu)}}{(1+e^{x-\mu})^{\alpha + \kappa}} & = \int_0^{\infty} \phi( x \mid \mu + \kappa \lambda, \lambda) p_{\mathrm{Polya}}(\lambda \mid \alpha,\kappa)  d\lambda \label{eq:polya}
 \end{align}
-where $\phi(\mu + \kappa \lambda, \lambda)$ denotes a normal density. The corresponding local mixture distributions are Generalized Inverse-Gaussian and the \Polya-Z denoted by $p_{GIG}$ and $p_{Polya}$ respectively. Rather surprisingly, the logit and quantile identities can be derived from the \CS transformation \eqref{eq:identity}. We give the proofs below: 
+where $\phi(\mu + \kappa \lambda, \lambda)$ denotes a normal density. The corresponding local mixture distributions are Generalized Inverse-Gaussian and the \Polya-Z denoted by $p_{\mathrm{GIG}}$ and $p_{\mathrm{Polya}}$ respectively. Rather surprisingly, the logit and quantile identities can be derived from the \CS transformation \eqref{eq:identity}. We give the proofs below: 
 
 \begin{lemma}
 The logistic and quantile mixtures admit a global-local mixture representation via the \CS transformation in \eqref{eq:identity}. 
 \end{lemma}
 \begin{proof}
 %\noindent \textbf{Proof of \eqref{eq:GIG}} \\
-To prove \eqref{eq:GIG}, let $f(x) = e^{-x^2/2}$, $a = \alpha, b = |x-\phi|$ in \eqref{eq:identity}, then we have: 
+Let $f(x) = e^{-x^2/2}$, $a = \alpha, b = |x-\phi|$ in \eqref{eq:identity}, then we have: 
 $$
 \sqrt{\frac{2}{\pi}} \int_{0}^{\infty} e^{-\half \left(\alpha y - \frac{|x-\mu|}{y} \right)^2} dy = \frac{1}{\alpha}\frac{1}{\sqrt{2\pi}} \int_0^{\infty} e^{-\half y^2} dy = \frac{1}{\alpha}
 $$
-Letting $\nu = y^2$ and re-arranging the constant terms, we get the relation:
+Letting $\nu = y^2$, re-arrange the constant terms to get the relation:
 $$
 \frac{1}{\alpha} e^{-\alpha|x-\mu|} = \int_{0}^{\infty} e^{-\left( \frac{(x-\mu)^2}{2\nu} + \frac{\alpha^2}{2} \nu \right)} \frac{1}{\sqrt{(2\pi\nu)}} d\nu.
 $$
-Multiplying by $2^{-1}(\alpha^2-\kappa^2) \exp\{\kappa(x-\mu)\}$, re-arrange terms and complete squares to yield 
+Now, multiply by $2^{-1}(\alpha^2-\kappa^2) \exp\{\kappa(x-\mu)\}$, re-arrange terms and complete squares to yield 
 \begin{equation*}
   \frac{\alpha^2-\kappa^2}{2\alpha} e^{-\alpha|x-\mu| + \kappa(x-\mu)} = \int_0^{\infty} \phi(x \mid \mu + \kappa \nu, \nu) \frac{\alpha^2-\kappa^2}{2} e^{-\frac{\alpha^2-\kappa^2}{2} \nu} d \nu. 
 \end{equation*}
-The mixing distribution on the right hand side is the exponential distribution with rate parameter $(\alpha^2-\kappa^2)/2$, which is a special case of the Generalized inverse Gaussian (or GIG) distribution. Etienne Halphen circa 1941 \citep{seshadri1997halphen} introduced the GIG and \citet{barndorff1977infinite} studied its properties. The density with parameters $(\lambda, \delta, \gamma)$ has the form: 
+The mixing distribution on the right hand side is the exponential distribution with rate parameter $(\alpha^2-\kappa^2)/2$, which is a special case of the Generalized inverse Gaussian (or GIG) distribution introduced by Etienne Halphen circa 1941 \citep{seshadri1997halphen}. The density with parameters $(\lambda, \delta, \gamma)$ has the form: 
 $$
-p_{GIG}(x \mid \lambda, \delta, \gamma) = \frac{(\gamma/\delta)^{\lambda}}{2K_{\lambda}(\delta \gamma)} x^{\lambda-1} \exp \left\{ -\half (\delta^2 x^{-1} + 
+p_{\mathrm{GIG}}(x \mid \lambda, \delta, \gamma) = \frac{(\gamma/\delta)^{\lambda}}{2K_{\lambda}(\delta \gamma)} x^{\lambda-1} \exp \left\{ -\half (\delta^2 x^{-1} + 
 \gamma^2 x )  \right\}; \; x > 0
 $$
 where $K_{\lambda}$ is the modified Bessel function of the second kind. The Liouville formula directly applied here immediately shows its a probability density function. 
 
 When $\delta$ or $\gamma$ is zero, the normalizing constant is to be replaced by the corresponding limits as $K_{\lambda}(u) \sim \Gamma(|\lambda|)2^{|\lambda|-1} u^{|\lambda|}$ when $\lambda \neq 0$. It turns out that if $\delta=0$, GIG is identical to a Gamma distribution with density 
 $$
-p_{GIG}(x \mid \lambda, \delta = 0 , \gamma) = \frac{(\alpha)^{\lambda}}{\Gamma(\lambda)} x^{\lambda-1} \exp\{ -\alpha x \}; \; x > 0, \alpha = \gamma^2 / 2 
+p_{\mathrm{GIG}}(x \mid \lambda, \delta = 0 , \gamma) = \frac{(\alpha)^{\lambda}}{\Gamma(\lambda)} x^{\lambda-1} \exp\{ -\alpha x \}; \; x > 0, \alpha = \gamma^2 / 2 
 $$
 %\end{proof} 
 %
@@ -239,17 +234,17 @@ The logit function corresponds to $a=0,b=1$ in \eqref{eq:pg}. The \CS identity t
   \text{ where } p(\omega) = \sum_{n=0}^{\infty} (-1)^n \frac{2n+1}{\sqrt{(2\pi)} \omega^{3/2}} e^{-\frac{(2n+1)^2}{8\omega}}
   \label{eq:logit}
 \end{equation}
-We will now prove \eqref{eq:logit} by writing the left-hand side as:
+To show \eqref{eq:logit} write the left-hand side using integral and summation interchange:
 \begin{align*}
-I & = \half e^{-\psi/2} \int_0^{\infty} e^{-\frac{\psi^2}{2} \omega} \sum_{n=0}^{\infty} (-1)^n \frac{2n+1}{\sqrt{(2\pi)} \omega^{3/2}} e^{-\frac{(2n+1)^2}{8\omega}}d \omega \\
-& = \half e^{-\psi/2}  \sum_{n=0}^{\infty} (-1)^n \frac{2n+1}{\sqrt{(2\pi)}} \int_0^{\infty} e^{- \left( \frac{\psi^2}{2}  \omega + \frac{(2n+1)^2}{8\omega} \right) } \frac{1}{\omega^{3/2}} d\omega. 
+%I & = \half e^{-\psi/2} \int_0^{\infty} e^{-\frac{\psi^2}{2} \omega} \sum_{n=0}^{\infty} (-1)^n \frac{2n+1}{\sqrt{(2\pi)} \omega^{3/2}} e^{-\frac{(2n+1)^2}{8\omega}}d \omega \\
+I & = \half e^{-\psi/2}  \sum_{n=0}^{\infty} (-1)^n \frac{2n+1}{\sqrt{(2\pi)}} \int_0^{\infty} e^{- \left( \frac{\psi^2}{2}  \omega + \frac{(2n+1)^2}{8\omega} \right) } \frac{1}{\omega^{3/2}} d\omega. 
 \end{align*}
 Using the change of variable $\omega = t^{-2}$, we get 
 \begin{align*}
-I & = e^{-\psi/2}  \sum_{n=0}^{\infty} (-1)^n \frac{(2n+1)}{\sqrt{(2\pi)}} \int_{0}^{\infty} e^{-\left( \frac{\psi^2}{2t^2} + \frac{(2n+1)^2 t^2}{8} \right)} d t \\
-& = \sum_{n=0}^{\infty} (-1)^n \left[  e^{-(n+1)\psi} \frac{(2n+1)}{\sqrt{(2\pi)}} \left\{ \int_{0}^{\infty}e^{-\half \left( \frac{(2n+1)t}{2} - \frac{\psi}{t}\right)^2 } dt \right\} \right].
+% I & = e^{-\psi/2}  \sum_{n=0}^{\infty} (-1)^n \frac{(2n+1)}{\sqrt{(2\pi)}} \int_{0}^{\infty} e^{-\left( \frac{\psi^2}{2t^2} + \frac{(2n+1)^2 t^2}{8} \right)} d t \\
+I & = \sum_{n=0}^{\infty} (-1)^n \left[  e^{-(n+1)\psi} \frac{(2n+1)}{\sqrt{(2\pi)}} \left\{ \int_{0}^{\infty}e^{-\half \left( \frac{(2n+1)t}{2} - \frac{\psi}{t}\right)^2 } dt \right\} \right].
 \end{align*}
-Now, apply \CS transformation to the integral within curly brackets to obtain: 
+Applying the \CS transformation to the inner integral yields: 
 $$ 
 \int_{0}^{\infty}e^{-\half \left( \frac{(2n+1)t}{2} - \frac{\psi}{t}\right)^2 } dt = \int_0^{\infty} e^{-\half y^2} dy \frac{1}{2n+1} = \frac{\sqrt{(2\pi)}}{2n+1}
 $$
@@ -262,7 +257,7 @@ An alternative proof using Laplace transformation is provided in \cite{polson201
 \begin{remark}
 When $\alpha = \kappa$, \eqref{eq:GIG} yields the limiting result: 
 $$
-(\alpha^2-\kappa^2)^{-1}p_{GIG}\{ 1,0,\sqrt{(\alpha^2-\kappa^2)} \} \equiv 1.
+(\alpha^2-\kappa^2)^{-1}p_{\mathrm{GIG}}\{ 1,0,\sqrt{(\alpha^2-\kappa^2)} \} \equiv 1.
 $$
 Or, equivalently in terms of densities, with a marginal improper uniform prior $p(\lambda) = 1$,
 \begin{equation}
@@ -289,15 +284,13 @@ p (\beta \mid \lambda_1, \lambda_2)  =
 \]
 \citet{hans2011comment} then proves the following theorem that comes as a corollary of \eqref{eq:svm}: 
 \begin{theorem}
-Under the orthant normal prior on $\beta$ given above and prior on $\lambda_2$ with the density
-$$
+Under the orthant normal prior on $\beta$ and a prior on $\lambda_2$ with the density
+\begin{equation*}
 p(\lambda_2 \mid \lambda_1, \sigma^2) = \frac{\lambda_1^2}{2\sigma^2\lambda_2^2} \Phi \left( \frac{-\lambda_1}{2\sigma \sqrt{\lambda_2}} \right), \lambda_2 > 0 
-$$
-the induced marginal prior on $\beta$ is a double-exponential, in particular, $(\beta \mid \lambda_1, \sigma^2) \sim \mathrm{DE}(\lambda_1/\sigma^2)$, where $\mathrm{DE(\lambda)}$ denotes the double-exponential distribution with rate parameter $\lambda$. 
+\end{equation*}
+the induced marginal prior is $(\beta \mid \lambda_1, \sigma^2) \sim \mathrm{DE}(\lambda_1/\sigma^2)$, where $\mathrm{DE(\lambda)}$ denotes the double-exponential distribution. 
 \end{theorem}
-
 %This result comes as a corollary of \eqref{eq:svm}. 
-
 %the limiting result stated in the last remark, i.e. it follows from the identity 
 %$$
 %\int_{0}^{\infty} \phi(b \mid -a\lambda, c\lambda) d\lambda = a^{-1} exp(-2 \max(ab/c,0)).
@@ -321,10 +314,10 @@ the induced marginal prior on $\beta$ is a double-exponential, in particular, $(
 %g(x) = \sqrt{\frac{2\lambda}{\pi}} \exp \left\{ - \frac{\lambda}{2} \left( x - \frac{1}{x} \right)^2 \right\}, x >0.
 %$$
 %Once again, the \CS transformation $y = x - x^{-1}$ shows this is a density. 
+\section{Convolution mixtures}
 
-\section{Convolutions}
-As we discussed before, convolution results are particularly useful for evaluating marginal densities for location-scale mixture problems. We show here the case for Cauchy density \citep{pillai2015unexpected} and Inverse-Gamma density \citep{arnold2009some}. The Cauchy density and its folded counterpart, the half-Cauchy density, have remained popular in the Bayesian literature for a long time, going back to \cite{jeffreys61}, who suggested that in model selection, or for testing a sharp null about normal mean, the normal prior does not have the right tail, scale mixtures of normal, e.g. Cauchy-priors are to be preferred. The use of half-Cauchy priors for scale parameters in hierarchical models was popularized by a number of authors, including \citet{gelman2006prior, polson2012half, bhadra2015horseshoe+}. In a recent article, \citet{bhadra2015default} shows that the regularly varying tails of half-Cauchy priors are also key to learning many-to-one functions of normal vector mean, where the flat $\Nor(0,300)$ prior gives badly biased answers. 
-
+Another area of application is convolution mixtures, particularly useful for evaluating marginal densities for location-scale mixture problems. We show here the case for Cauchy density \citep{pillai2015unexpected} and Inverse-Gamma density. The Cauchy density and its folded counterpart, the half-Cauchy density, have remained popular in the Bayesian literature for a long time, going back to \cite{jeffreys61}, who suggested that in model selection, or for testing a sharp null about normal mean, the normal prior does not have the right tail, scale mixtures of normal, e.g. Cauchy-priors are to be preferred. The use of half-Cauchy priors for scale parameters in hierarchical models was popularized by a number of authors, including \citet{gelman2006prior, polson2012half, bhadra2015horseshoe+}. In a recent article, \citet{bhadra2015default} shows that the regularly varying tails of half-Cauchy priors are also key to learning many-to-one functions of normal vector mean, where the flat $\Nor(0,300)$ prior gives badly biased answers. 
+%% Inverse-Gamma appears in \citep{arnold2009some}.
 \begin{lemma}
 Let $X_i \sim \mathrm{Cauchy}(0,1)$ for $i =1,2$, $Z \doteq w_1 X_1 + w_2 X_2 \sim C \left( 0, w_1 + w_2 \right)$.
 \end{lemma}
@@ -344,17 +337,17 @@ f_Z(z) & = 2 \int_{0}^{\infty} \frac{1}{ \pi w_1 \{ (1+ x^2/w_1^2) \} } \frac{1}
 \end{align*}
 Now transform $x \mapsto x + w_2^{-1}z (w_1^{-1} + w_2^{-1})^{-1}$, 
 \begin{align*}
-f_Z(z) & = \frac{2}{\pi^2 w_1 w_2} \int_{0}^{\infty} \left[ \left\{ 1 + \frac{z^2}{(w_1+w_2)^2} - \frac{x^2}{w_1w_2} + xz \frac{w_2-w_1}{(w_1+w_2) w_1 w_2} \right\}^2 + x^2 (\frac{w_1 + w_2}{w_1w_2})^2 \right]^{-1} dx \\
-& = \frac{2}{\pi^2 w_1 w_2} \int_{0}^{\infty} \frac{dx}{ \left( A - B x^2 + Cx \right)^2 + x^2 D^2 } = \frac{2}{\pi^2 w_1 w_2} \int_{0}^{\infty} \frac{dx/x^2}{ \left( A/x - B x + C \right)^2 + D^2 } 
+f_Z(z) & = \frac{2}{\pi^2 w_1 w_2} \int_{0}^{\infty} \left[ \left\{ 1 + \frac{z^2}{(w_1+w_2)^2} - \frac{x^2}{w_1w_2} + xz \frac{w_2-w_1}{(w_1+w_2) w_1 w_2} \right\}^2 + x^2 \left(\frac{w_1 + w_2}{w_1w_2} \right)^2 \right]^{-1} dx \\
+& = \frac{2}{\pi^2 w_1 w_2} \int_{0}^{\infty} \frac{dx}{ \left( a - b x^2 + cx \right)^2 + x^2 d^2 } = \frac{2}{\pi^2 w_1 w_2} \int_{0}^{\infty} \frac{dx/x^2}{ \left(a/x - bx + c \right)^2 + d^2 } 
 \end{align*}
-where $A = 1 + z^2(w_1+w_2)^{-2}, B =(w_1w_2)^{-1}, C = z (w_2-w_1) \{(w_1+w_2) w_1 w_2\}^{-1}, D = z (w_2-w_1)\{(w_1+w_2) w_1 w_2\}^{-1}$. Transforming $y = x^{-1}$ and applying the \CS transformation we arrive at: 
+where $a= 1 + z^2(w_1+w_2)^{-2}$, $b =(w_1w_2)^{-1}$, $c= z (w_2-w_1) \{(w_1+w_2) w_1 w_2\}^{-1}$, $d = z (w_2-w_1)\{(w_1+w_2) w_1 w_2\}^{-1}$. Transforming $y = x^{-1}$ and applying the \CS transformation we arrive at: 
 \begin{align*}
-f_Z(z) & = \frac{2}{\pi w_1 w_2} \int_{0}^{\infty} \frac{dy}{2A (y^2 + D^2)} = \frac{1}{\pi w_1 w_2} \frac{1}{A D} = \frac{1}{\pi (w_1+w_2)} \frac{1}{1+ z^2/(w_1+w_2)^2}
+f_Z(z) & = \frac{2}{\pi w_1 w_2} \int_{0}^{\infty} \frac{dy}{2a (y^2 + d^2)} = \frac{1}{\pi w_1 w_2} \frac{1}{ad} = \frac{1}{\pi (w_1+w_2)} \frac{1}{1+ z^2/(w_1+w_2)^2}
 %& = \frac{1}{\pi w_1 w_2} \frac{1}{1+ z^2/(w_1+w_2)^2} \frac{w_1 w_2}{w_1 + w_2} = \frac{1}{\pi (w_1+w_2)} \frac{1}{1+ z^2/(w_1+w_2)^2}
 \end{align*}
 A simple induction argument proves that the sum of any number of independent Cauchy random variates is also another Cauchy.
 \end{proof}
-One can also use the characteristic function of Cauchy distribution $\psi_X(t) = \exp(it \mu - |t| \sigma^2)$ for $X \sim C(\mu, \sigma)$ and the fact that $\psi_{X+Y}(t) = \psi_X(t) \psi_Y(t)$ to derive the result in just one step. For $X = \sum_{i=1}^{p} \omega_i C_i$ where $C_i \sim C(0,1)$ and $\sum_{i=1}^{p}\omega_i = 1$, we have $\phi_X(t) = \exp(-\sum_{i=1}^{p}\omega_i |t|) = \exp(-|t|) = \phi_C(t)$, where $C \sim C(0,1)$. The most general result in this category is due to \cite{pillai2015unexpected}, where they showed the following: Let $(X_1,\cdots,X_m)$ and $(Y_1, \cdots,Y_m)$ be i.i.d. $\Nor(0,\Sigma)$ for an arbitray positive definite matrix $\Sigma$, then $Z = \sum_{j=1}^{m} w_j X_j(Y_j)^{-1} \sim \mathrm{Cauchy}(0,1),$ as long as $(w_1,\cdots,w_m)$ is independent of $(X,Y)$, $w_j \geq 0, j = 1, \cdots,m$ and $\sum_{j=1}^{m} w_j = 1$. 
+One can also use the characteristic function for $X \sim C(\mu, \sigma)$, $\psi_X(t) = \exp(it \mu - |t| \sigma^2)$  and the relation $\psi_{X+Y}(t) = \psi_X(t) \psi_Y(t)$ to derive the result in just one step. For $X = \sum_{i=1}^{p} \omega_i C_i$ where $C_i \sim C(0,1)$ and $\sum_{i=1}^{p}\omega_i = 1$, we have $\phi_X(t) = \exp(-\sum_{i=1}^{p}\omega_i |t|) = \exp(-|t|) = \phi_C(t)$, where $C \sim C(0,1)$. The most general result in this category is due to \cite{pillai2015unexpected}, where they showed the following: Let $(X_1,\cdots,X_m)$ and $(Y_1, \cdots,Y_m)$ be i.i.d. $\Nor(0,\Sigma)$ for an arbitray positive definite matrix $\Sigma$, then $Z = \sum_{j=1}^{m} w_j X_j(Y_j)^{-1} \sim \mathrm{Cauchy}(0,1),$ as long as $(w_1,\cdots,w_m)$ is independent of $(X,Y)$, $w_j \geq 0, j = 1, \cdots,m$ and $\sum_{j=1}^{m} w_j = 1$. 
 
 \section{Discussion}
 
@@ -371,31 +364,31 @@ where $\Phi(\cdot)$ is the standard normal distribution function and $\vectornor
 \eeq
 Erdelyi's identity \eqref{eq:erdelyi} follows from the Laplace transformation $(1+u)^{-1} = \int_0^{\infty} \e^{-v(1+u)} dv$. 
 \begin{proof}
-Using the transformation $ u = 2z-1$ on the left hand side of \eqref{eq:erdelyi}, denoted by $I$, we get: 
+Let $ u = 2z-1$ on the left hand side of \eqref{eq:erdelyi}, denoted by $I$, to obtain: 
 $$
-I = \int_{0}^{\infty} \frac{\e^{-x^2/2(1+u)}}{4 \pi \sqrt{u} (1+u)} \d u
+I = \int_{0}^{\infty} \frac{\e^{-x^2/2(1+u)}}{4 \pi \sqrt{u} (1+u)} \d u.
 $$
 Using the Laplace transformation $(1+u)^{-1} = \int_0^{\infty} \e^{-v(1+u)} dv$: 
 \begin{align*}
-I & = \int_{0}^{\infty} \frac{\e^{-x^2/2(1+u)}}{4 \pi \sqrt{u}} \int_0^{\infty} \e^{-v(1+u)} \d v \d u \\
-& = \int_{v= 0}^{\infty} \int_{u=0}^{\infty} \frac{\e^{-(\frac{x^2}{2} + v)(1+u)}}{4 \pi \sqrt{u}} \d v \d u = \int_{v= 0}^{\infty} \frac{1}{4\pi} \e^{-(\frac{x^2}{2} + v)} \int_{u=0}^{\infty} u^{-1/2} \e^{-(\frac{x^2}{2} + v) u} \d u \d v \\
-& = \int_{v= 0}^{\infty} \frac{1}{4\pi} \e^{-(\frac{x^2}{2} + v)} \frac{\pi^{1/2}}{(\frac{x^2}{2} + v)^{1/2}} \d v = \int_{v= 0}^{\infty} \frac{1}{2 (2\pi)^{1/2}} \e^{-\half(x^2 + 2v)} \frac{1}{(x^2+ 2v)^{1/2}} \d v
+I & = \int_{0}^{\infty} \frac{\e^{-x^2/2(1+u)}}{4 \pi \sqrt{u}} \int_0^{\infty} \e^{-v(1+u)} \d v \d u = \int_{v= 0}^{\infty} \int_{u=0}^{\infty} \frac{\e^{-(\frac{x^2}{2} + v)(1+u)}}{4 \pi \sqrt{u}} \d v \d u \\
+& = \int_{v= 0}^{\infty} \frac{1}{4\pi} \e^{-(\frac{x^2}{2} + v)} \int_{u=0}^{\infty} u^{-1/2} \e^{-(\frac{x^2}{2} + v) u} \d u \d v = \int_{v= 0}^{\infty} \frac{ \e^{-\half(x^2 + 2v)}}{2 (2\pi)^{1/2}} \frac{1}{(x^2+ 2v)^{1/2}} \d v\\
+%& = \int_{v= 0}^{\infty} \frac{\e^{-(\frac{x^2}{2} + v)}}{4\pi} \frac{\pi^{1/2}}{(\frac{x^2}{2} + v)^{1/2}} \d v = \int_{v= 0}^{\infty} \frac{1}{2 (2\pi)^{1/2}} \e^{-\half(x^2 + 2v)} \frac{1}{(x^2+ 2v)^{1/2}} \d v
 \end{align*}
 Transforming $z^2 = x^2 + 2v$, we get: 
 $$
-I =\half  \int_{z = |x|}^{\infty} \frac{1}{(2\pi)^{1/2}} e^{-\half z^2} \d z = \half (1 - \Phi(|x|)) 
+I =\half  \int_{z = |x|}^{\infty} \frac{1}{(2\pi)^{1/2}} e^{-\half z^2} \d z = \half (1 - \Phi(|x|)).
 $$
 \end{proof}
 Secondly, we note that the Erdelyi's identity \eqref{eq:identity} is same as the identity (9.2) in \citep{amdeberhan2010cauchy} given below: 
 $$
-\int_0^{\infty}\frac{\e^{-\mu^2(x^2+\beta^2)}}{x^2+\beta^2} \d x = \frac{\pi}{2 \beta} \{ 1 - \erf(\mu \beta) \} 
+\int_0^{\infty}\frac{\e^{-\mu^2(x^2+\beta^2)}}{x^2+\beta^2} \d x = \frac{\pi}{2 \beta} \{ 1 - \erf(\mu \beta) \}.
 $$
 Using $\beta = 2^{-1/2}$, $x^2+1/2 = z$, the above identity reduces to \eqref{eq:erdelyi} in terms of $\mu$. 
 
 The second candidate is the symmetric stable distribution, defined by its characteristic function $\phi(t) = \exp\{ -|t|^{\alpha} \}; \alpha \in (0,2]$, also admits a normal scale mixture representation as where the mixing density is: 
 \begin{gather*}
 f(v) = \half s_{\alpha/2} \left( \frac{v}{2} \right), v > 0 \\
-\exp(-|x|^\alpha) = \int_0^{\infty} \exp(-xs) g(s) ds, \; g(s) = \sum_{j=1}^{\infty} (-1)^j \frac{s^{-j\alpha-1}}{j! \Gamma(-\alpha j)}
+\exp(-|x|^\alpha) = \int_0^{\infty} \exp(-xs) g(s) ds, \; g(s) = \sum_{j=1}^{\infty} (-1)^j \frac{s^{-j\alpha-1}}{j! \Gamma(-\alpha j)}.
 \end{gather*}
 where $s_{\alpha/2}$ is the density of the positive stable distribution with index $\alpha / 2$. An important application of this is the Bayesian bridge regression by \cite{polson2014bayesian}, where the regularization is an outcome of a scale mixture of normal distributions with respect to an $\alpha$-stable random variable. We conjecture that these two results follow as upshots of the \CS formula \eqref{eq:identity}. Other fruitful areas could be unearthed by applications of the Liouville formula to recognize and generate global-local mixtures, and other applications such as calculating higher-order `closed-form' moments $E(X^n)$ for random variables $X$ that admit a global-local representation. 
 
