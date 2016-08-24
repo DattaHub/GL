@@ -100,10 +100,9 @@ Global-local mixture, Scale mixture, Stable laws, Bayes regularization, Lasso, Q
 %\section{Global-Local Mixtures}
 Many statistical problems involve regularization penalties derived from global-local mixture distributions \citep{polson2011data, hans2011comment,bhadra2015horseshoe+}. A global-local mixture density, denoted by $p(x_1, \ldots, x_p)$, takes the form 
 \begin{equation*}
-p(x_1, \ldots, x_p) = \int_{0}^{\infty}\prod_{i=1}^{p}  p(x_i \mid \tau) p(\tau) d\tau \quad \text{ where } \quad
-p( x_i \mid \tau) = \int_{0}^{\infty} p(x_i \mid \lambda_i, \tau) p(\lambda_i \mid \tau) d\lambda_i, 
+p(x_1, \ldots, x_p) = \int_{0}^{\infty}\prod_{i=1}^{p}  p(x_i \mid \tau) p(\tau) d\tau, 
 \end{equation*}
-where $p(x_i \mid \tau)$ is a local mixture and $p(x_1, \ldots, x_p)$ is a global mixture over $\tau \sim p(\tau)$. There is great interest in analytically calculating $p(x_i \mid \tau)$, and the associated regularization penalty $\phi(x_i, \tau) = -\log p(x_i \mid \tau)$. Convolution mixture of the form $p(x_i \mid \tau) = \int p(x_i - \lambda_i) p(\lambda_i) d \lambda_i$ are also of interest. We show how \CS and Liouville transformations derive closed-form global-local mixtures. 
+where $p(x_i \mid \tau) = \int_{0}^{\infty} p(x_i \mid \lambda_i, \tau) p(\lambda_i \mid \tau) d\lambda_i$ is a local mixture and $p(x_1, \ldots, x_p)$ is a global mixture over $\tau \sim p(\tau)$. There is great interest in analytically calculating $p(x_i \mid \tau)$, and the associated regularization penalty $\phi(x_i, \tau) = -\log p(x_i \mid \tau)$. Convolution mixture of the form $p(x_i \mid \tau) = \int p(x_i - \lambda_i) p(\lambda_i) d \lambda_i$ are also of interest. We show how \CS and Liouville transformations derive closed-form global-local mixtures. 
 We start by stating the two key integral identities, the Cauchy-Schl\"omilch transformation: 
 \begin{equation}
 \int_0^\infty f \left\{ ( a x - b x^{-1} )^2 \right\} d x = \frac{1}{2a} \int_0^\infty f(y^2) d y, \label{eq:identity}
