@@ -122,28 +122,30 @@ represent the resulting $g\{t(x)\}$ as a global-local scale mixture.
 \end{description}
 %We can use these results to generate new probability distributions with different choices of simple baseline function $g(\cdot)$ and derive new scale mixture representations that are useful in Bayesian global-local modeling. 
 
-Now, the integral identity in \eqref{eq:identity} shows that if $f(x), x \geq 0$
-is a density function, so is $g(x) = 2a f(|ax-b/x|), x >0$, where $f(\cdot)$ and
-$g(\cdot)$ are called the mother and the daughter density functions, respectively.
-\citet{chaubey2010reciprocal} provide a one-to-one correspondence between $f$
-and $g$. 
+Now, the integral identity in \eqref{eq:identity} shows that if $f(x)$ with $x
+\geq 0$ is a density function, so is $g(x) = 2a f(|ax-b/x|)$ with $x > 0$.  The
+functions $f$ and $g$ are called mother and daughter
+density functions, respectively.  \citet{chaubey2010reciprocal} provide a
+one-to-one correspondence between $f$ and $g$. 
 
-Apart from simplifying proofs involving global-local mixtures, \CS{} and Liouville
-transformations can generate new distributions through suitable scale
-transformations, $f(x) = 2g\{ t(x) \}$, of simple baseline functions, $f(x)$, under
-suitable conditions.  Given a density $f(x)$ we can create a new global-local
-scale family $f(ax-bx^{-1})$, by effectively reallocating its probability mass.  A
-particularly useful tool for generating univariate and multivariate random
-variables is Khintchine's theorem for unimodal, univariate distributions.  
-Khintchine's theorem states that any random variable $X$ with a mode at zero
-can be written as a product $X = ZU$, where $U \sim U(0,1)$ and $Z$ has the
-density function $f_Z(z) = -z {f_{X}}^{\prime}(z)$.
+Apart from simplifying proofs involving global-local mixtures, the \CS{} and Liouville
+transformations can generate new distributions via scale transformations.  
+These transformations can take the form $f(x) = 2 g\{ t(x) \}$ 
+for certain $f(x)$ under suitable conditions.  
+For example, given a density $f(x)$ we can create a new global-local
+scale family, $f(a x - b/x)$, by effectively reallocating its probability mass.
+A particularly useful tool for generating univariate and multivariate random
+variables is Khintchine's theorem.  
+Khintchine's theorem states that any random variable $X$ with a unimodal,
+univariate distribution and a mode at zero can be written as a product 
+$X = Z U$, where $U \sim U(0,1)$ and $Z$ has the density function 
+$f_Z(z) = -z f^{\prime}_{X}(z)$.
 \citet{bryson1982constructing}, and successively \citet{jones2012khintchine},
-discuss how Khintchine's theorem allows us to construct both univariate and
+discuss how Khintchine's theorem allows one to construct both univariate and
 multivariate distributions, even with special dependence structure.
 \cite{jones_generating_2014} develops an extended Khintchine's theorem that
 further allows one to generate random variables with unimodal densities of the
-form $2 g(t(x))$. 
+form $2 g\{t(x)\}$. 
 
 %%% maybe add one or two lines
 %Furthermore if $f(x)$ is the pdf of a symmetric real-valued random variable $X$, the daughter pdf $g(x) = f(x-1/x), x>0$ is an R-symmetric density, and vice-versa, there exists a symmetric density $f(x) = g(x+\sqrt{1+x^2})$ for every R-symmetric density $g(x)$. Furthermore, $f(\cdot)$ is unimodal if and only if $g(\cdot)$ is unimodal. \cite{chaubey2010reciprocal} provides a few examples of generating R-symmetric densities $g$ starting from well-known symmetric densities $f$. 
@@ -152,27 +154,30 @@ form $2 g(t(x))$.
 %
 %A particularly useful tool for generating univariate and multivariate random variables is Khintchine's theorem for unimodality of univariate distributions \citep{bryson1982constructing}. Khintchine's theorem states that any random variable $X$ with a mode at zero can be written as a product $X = ZU$, where $U \sim U(0,1)$ and $Z$ has the density function $f_Z(z) = -zf_{X}'(z)$. \citet{bryson1982constructing} and successively \citet{jones2012khintchine} discuss how Khintchine's theorem allows us to construct both univariate and multivariate distributions, even with special dependence structure.\cite{jones2014generating} develops an extended Khintchine's theorem that further lets one generate random variable with unimodal density of the form $2g(t(x))$. 
 
-The rest of the paper is organized as follows: \S 2 derives scale mixture
-results for the Lasso, quantile and logistic regression, \S 3 for convolutions
-of densities via mixtures and finally \S 4 concludes with two open problems. 
+The rest of the paper is organized as follows: \S\ref{sec:gls_mixes} derives scale mixture
+results for the Lasso, quantile and logistic regression, \S\ref{sec:convolutions} for convolutions
+of densities via mixtures and finally \S\ref{sec:discussion} concludes with two open problems. 
 
 \section{Global-local Scale Mixtures}
+\label{sec:gls_mixes}
 \subsection{Lasso as a Normal Scale Mixture}
 The lasso penalty arises as a Laplace global-local mixture
 \citep{andrews_scale_1974}.  A simple transformation proof follows using \CS{}
 with $f(x) = e^{-x}$.  Starting with the normal integral identity, 
-$\int_{0}^{\infty} f(y^2) dy = \int_0^\infty e^{-y^2} d y = \pi^{1/2}/2 $, we
+$\int_{0}^{\infty} f(y^2) dy = \int_0^\infty e^{-y^2} dy = \pi^{1/2}/2 $, we
 obtain
 $$
-\int_0^\infty e^{-(a x)^2 - (b/x)^2} d x = \int_0^{\infty} 
+\int_0^\infty e^{-(a x)^2 - (b/x)^2} d x 
+= \int_0^{\infty} 
 \exp\left\{-a b \left(\frac{a}{b} x^2 + \frac{b}{a} x^{-2} \right)\right\} dx 
-= \frac{\pi^{1/2}}{2a} e^{- 2 ab}
+= \frac{\pi^{1/2}}{2a} e^{-2 a b}
 \;.
 $$
 Substituting $t = (a/b)^{1/2} x$ and $c = ab$ yields the Laplace or Lasso penalty:  
 \begin{align*}
-  \int_0^\infty e^{- c (t - t^{-1})^2} d t & = \half (\pi/c)^{1/2} 
-  \Rightarrow \int_0^\infty e^{- c (t^2 + t^{-2})} d t 
+  \int_0^\infty e^{- c (t - t^{-1})^2} dt 
+  &= \half (\pi/c)^{1/2} 
+  \Rightarrow \int_0^\infty e^{- c (t^2 + t^{-2})} dt 
   = \half (\pi/c)^{1/2} e^{-2c}
   \;. 
   %\label{eq:andrews}
@@ -183,16 +188,17 @@ The Laplace density can be viewed as a transformed normal, via $y = t - t^{-1}$.
 %(Need to check this carefully!) 
 The usual identity for lasso can also be obtained from \citet{levy1940certains}:
 \begin{equation}
-  \int_{0}^{\infty} \frac{a}{\sqrt{2 \pi} t^{3/2}} e^{-a^2/(2t)} e^{-\lambda t} dt 
-  = e^{-a\sqrt{2 \lambda}} 
+  \int_{0}^{\infty} \frac{a}{\sqrt{2 \pi} t^{3/2}} 
+  e^{-\frac{a^2}{2 t}} e^{-\lambda t} dt 
+  = e^{-a \sqrt{2 \lambda}} 
   \label{eq:levy}
 \end{equation}
 %\end{remark}
 %Must apply to other exponential family mixtures? $ f(x ) = x^{\alpha-1} e^{-x} $ etc.
 %\begin{remark} 
-For $a = 1$, and $\theta = (2\lambda)^{1/2}$, this can be written as 
+For $a = 1$, and $\theta = (2 \lambda)^{1/2}$, this can be written as 
 \begin{equation}
-  E\left(e^{-\theta^2/(2 G) } \right) = e^{-\theta}
+  E\left(e^{-\frac{\theta^2}{2 G}}\right) = e^{-\theta}
   \;, 
   \quad\text{where}\quad 
   G \sim \operatorname{Ga}(1/2, 1/2) 
@@ -204,19 +210,20 @@ For $a = 1$, and $\theta = (2\lambda)^{1/2}$, this can be written as
 First substitute $t^{-1} = x^2$, which makes the left hand side in
 \eqref{eq:levy} equal to 
 \begin{align*}
-  \int_{0}^{\infty} \frac{a}{\sqrt{(2\pi)} t^{3/2}} e^{-a^2/(2 t)} e^{-\lambda t} dt 
-  & = \sqrt{\frac{2}{\pi}} a e^{-a \sqrt{(2\lambda)}} 
-  \int_0^{\infty} e^{-\left(\frac{a}{\sqrt{2}} x - \lambda x^{-1}\right)^2} dx 
+  \int_{0}^{\infty} \frac{a}{\sqrt{2 \pi} t^{3/2}} e^{-\frac{a^2}{2 t}} e^{-\lambda t} dt 
+  & = \frac{\sqrt{2} a}{\sqrt{\pi}} e^{-a \sqrt{2 \lambda}} 
+  \int_0^{\infty} \exp\left\{-\left(\frac{a}{\sqrt{2}} x - \lambda x^{-1}\right)^2\right\} dx 
   \\
-  &= \exp(-a\sqrt{(2\lambda)})
+  &= e^{-a \sqrt{2 \lambda}}
   \;.
 \end{align*}
 The last step follows directly from \CS{} formula.  The second relationship
 \eqref{eq:gamma} follows by fixing $a = 1$, $\theta = (2\lambda)^{1/2}$ and
 substituting $t = x^{-1}$: 
 $$
-\int_{0}^{\infty} \frac{a}{\sqrt{(2\pi)} t^{3/2}} e^{-a^2/(2 t)} e^{-\lambda t} dt 
-= \int_{0}^{\infty} e^{-\frac{\theta^2}{2x}} \sqrt{\left(\frac{1}{2\pi}\right)} 
+\int_{0}^{\infty} \frac{a}{\sqrt{2 \pi} t^{3/2}} 
+e^{-\frac{a^2}{2 t}} e^{-\lambda t} dt 
+= \frac{1}{\sqrt{2 \pi}} \int_{0}^{\infty} e^{-\frac{\theta^2}{2x}} 
 x^{-\half} e^{-\half x} dx.
 $$
 The left hand side can be identified as 
@@ -232,14 +239,14 @@ Markov chain Monte Carlo algorithms for inference.  The two key marginal
 distributions for the hyperbolic generalized inverse Gaussian 
 \citep{barndorff1982normal} and \PG{} mixtures are
 \begin{align}
-  \frac{\alpha^2-\kappa^2}{2\alpha} e^{-\alpha|x-\mu| + \kappa(x-\mu)} 
-  & = \int_0^{\infty} \phi(x \mid \mu + \kappa \lambda, \lambda) 
-  p_{\mathrm{GIG}}(\lambda \mid 1,0,\sqrt{(\alpha^2-\kappa^2)}) d\lambda
+  \frac{\alpha^2 - \kappa^2}{2\alpha} e^{-\alpha|x-\mu| + \kappa (x-\mu)} 
+  &= \int_0^{\infty} \phi(x \mid \mu + \kappa \lambda, \lambda) 
+  p_{\mathrm{GIG}}\left(\lambda \mid 1,0, (\alpha^2 - \kappa^2)^{1/2}\right) d\lambda
   \;, 
   \label{eq:GIG}
   \\
-  \frac{1}{B(\alpha,\kappa)} \frac{e^{\alpha(x-\mu)}}{(1+e^{x-\mu})^{\alpha + \kappa}} 
-  & = \int_0^{\infty} \phi( x \mid \mu + \kappa \lambda, \lambda) 
+  \frac{1}{B(\alpha,\kappa)} \frac{e^{\alpha (x-\mu)}}{(1+e^{x-\mu})^{\alpha + \kappa}} 
+  &= \int_0^{\infty} \phi(x \mid \mu + \kappa \lambda, \lambda) 
   p_{\mathrm{Polya}}(\lambda \mid \alpha,\kappa)  d\lambda
   \;, 
   \label{eq:polya}
@@ -257,9 +264,9 @@ identities can be derived using \CS{} transformations.
 Let $f(x) = e^{-x^2/2}$, $a = \alpha$ and $b = |x-\phi|$ in \eqref{eq:identity}
 and we have 
 $$
-\sqrt{\frac{2}{\pi}} \int_{0}^{\infty} 
-e^{-\half \left(\alpha y - \frac{|x-\mu|}{y} \right)^2} dy 
-= \frac{1}{\alpha}\frac{1}{\sqrt{2\pi}} \int_0^{\infty} e^{-\half y^2} dy 
+\frac{\sqrt{2}}{\sqrt{\pi}} \int_{0}^{\infty} 
+\exp\left\{-\half \left(\alpha y - \frac{|x-\mu|}{y} \right)^2 \right\} dy 
+= \frac{1}{\alpha} \frac{1}{\sqrt{2\pi}} \int_0^{\infty} e^{-\half y^2} dy 
 = \frac{1}{\alpha}
 \;.
 $$
@@ -271,12 +278,12 @@ $$
 d\nu
 \;.
 $$
-Multiplying by $2^{-1}(\alpha^2-\kappa^2) \exp\{\kappa(x-\mu)\}$ and
+Multiplying by $2^{-1}(\alpha^2-\kappa^2) e^{\kappa(x-\mu)}$ and
 completing the square yields
 \begin{equation*}
-  \frac{\alpha^2-\kappa^2}{2\alpha} e^{-\alpha|x-\mu| + \kappa(x-\mu)} 
+  \frac{\alpha^2-\kappa^2}{2\alpha} \exp\left(-\alpha|x-\mu| + \kappa(x-\mu)\right) 
   = \int_0^{\infty} \phi(x \mid \mu + \kappa \nu, \nu) 
-  \frac{\alpha^2-\kappa^2}{2} e^{-\frac{\alpha^2-\kappa^2}{2} \nu} d \nu. 
+  \frac{\alpha^2-\kappa^2}{2} \exp\left(-\frac{\alpha^2-\kappa^2}{2} \nu \right) d \nu. 
 \end{equation*}
 The mixing distribution is exponential with rate parameter
 $(\alpha^2-\kappa^2)/2$, a special case of the generalized inverse Gaussian
@@ -285,8 +292,8 @@ distribution introduced by Etienne Halphen circa 1941
 has the form 
 \begin{equation*}
   p_{\mathrm{GIG}}(x \mid \lambda, \delta, \gamma) = 
-  \frac{(\gamma/\delta)^{\lambda}}{2K_{\lambda}(\delta \gamma)} x^{\lambda-1} 
-  \exp\left\{ -\half (\delta^2 x^{-1} + \gamma^2 x )  \right\}
+  \frac{(\gamma/\delta)^{\lambda}}{2 K_{\lambda}(\delta \gamma)} x^{\lambda-1} 
+  \exp\left\{ -\half (\delta^2 x^{-1} + \gamma^2 x )\right\}
   \;, 
   \quad\text{for}\quad x > 0, \lambda >0, \delta > 0,  p \in \Re
   \;,
@@ -300,7 +307,7 @@ for $\lambda > 0$.  If $\delta=0$, the generalized
 inverse Gaussian is identical to a gamma distribution:
 $$
 p_{\mathrm{GIG}}(x \mid \lambda, \delta = 0 , \gamma) 
-= \frac{(\alpha)^{\lambda}}{\Gamma(\lambda)} x^{\lambda-1} \exp\{ -\alpha x \}
+= \frac{\alpha^{\lambda}}{\Gamma(\lambda)} x^{\lambda-1} \exp(-\alpha x) 
 \;, \quad\text{for}\quad x > 0, \alpha = \gamma^2 / 2.
 $$
 %\end{proof} 
@@ -311,52 +318,58 @@ $$
 We now present a simple proof for the \PG{} mixture in \eqref{eq:polya}. 
 First, write $\kappa$ for $a-b/2$: 
 \begin{equation}
-  \frac{(e^{\psi})^a}{(1+e^{\psi})^b} = 2^{-b} e^{\kappa \omega} \int_0^{\infty} 
-  e^{-\omega \psi^2/2} p(\omega) d\omega
+  \frac{(e^{\psi})^a}{(1+e^{\psi})^b} = 2^{-b} e^{\kappa \omega} 
+  \int_0^{\infty} e^{-\omega \psi^2/2} p(\omega) d\omega
   \;, 
   \label{eq:pg}
 \end{equation}
 where $\omega \sim \operatorname{PG}(b,0)$, the \PG{} distribution with density is
 $$
-p(\omega \mid b, 0) = \frac{2^{(b-1)}}{\Gamma(b)} 
+p(\omega \mid b, 0) = \frac{2^{b-1}}{\Gamma(b)} 
 \sum_{n=0}^{\infty} (-1)^n \frac{\Gamma(n+b)}{\Gamma(n+1)} 
-\frac{2n+b}{\sqrt{(2\pi)} \omega^{3/2}} 
-\exp\left(-\frac{(2n + b)^2}{8 \omega} \right).
+\frac{2n + b}{\sqrt{2 \pi} \omega^{3/2}} 
+\exp\left(-\frac{(2 n + b)^2}{8 \omega} \right).
 $$
 The logit function corresponds to $a=0,b=1$ in \eqref{eq:pg}. \CS{} yields:  
 \begin{equation}
   \frac{1}{1+e^{\psi}} = \half e^{-\half \psi} \int_0^{\infty} 
   e^{-\frac{\psi^2}{2} \omega} p(\omega) d\omega,
   \quad \text{ where } 
-  p(\omega) = \sum_{n=0}^{\infty} (-1)^n \frac{2n+1}{\sqrt{(2\pi)} \omega^{3/2}} 
-  e^{-\frac{(2n+1)^2}{8\omega}}
+  p(\omega) = \sum_{n=0}^{\infty} (-1)^n \frac{2n+1}{\sqrt{2 \pi} \omega^{3/2}} 
+  e^{-\frac{(2n+1)^2}{8 \omega}}
   \label{eq:logit}
   \;.
 \end{equation}
 To show \eqref{eq:logit}, write the left-hand side interchanging integral and summation:
 \begin{align*}
 %I & = \half e^{-\psi/2} \int_0^{\infty} e^{-\frac{\psi^2}{2} \omega} \sum_{n=0}^{\infty} (-1)^n \frac{2n+1}{\sqrt{(2\pi)} \omega^{3/2}} e^{-\frac{(2n+1)^2}{8\omega}}d \omega \\
-I & = \half e^{-\psi/2}  \sum_{n=0}^{\infty} (-1)^n \frac{2n+1}{\sqrt{(2\pi)}} \int_0^{\infty} e^{- \left( \frac{\psi^2}{2}  \omega + \frac{(2n+1)^2}{8\omega} \right) } \frac{1}{\omega^{3/2}} d\omega. 
+  I & = \half e^{-\psi/2} \sum_{n=0}^{\infty} (-1)^n \frac{2n+1}{\sqrt{2 \pi}} 
+  \int_0^{\infty} 
+  \exp\left\{-\left(\frac{\psi^2}{2} \omega + \frac{(2n+1)^2}{8 \omega} \right)\right\} 
+  \frac{1}{\omega^{3/2}} d\omega
+  \;. 
 \end{align*}
 Using the change of variable $\omega = t^{-2}$ gives
 \begin{align*}
   % I & = e^{-\psi/2}  \sum_{n=0}^{\infty} (-1)^n \frac{(2n+1)}{\sqrt{(2\pi)}} \int_{0}^{\infty} e^{-\left( \frac{\psi^2}{2t^2} + \frac{(2n+1)^2 t^2}{8} \right)} d t \\
   I & = \sum_{n=0}^{\infty} (-1)^n e^{-(n+1)\psi} 
-  \frac{(2n+1)}{\sqrt{(2\pi)}} 
+  \frac{2n + 1}{\sqrt{2 \pi}} 
   \left\{ \int_{0}^{\infty} 
-  e^{-\half \left( \frac{(2n+1)t}{2} - \frac{\psi}{t}\right)^2 } dt 
+    \exp\left\{-\half \left( \frac{(2n+1)t}{2} - \frac{\psi}{t}\right)^2 \right\} dt 
   \right\}
   \;.
 \end{align*}
 Applying \CS{} to the inner integral yields 
 $$ 
-\int_{0}^{\infty} e^{-\half \left( \frac{(2n+1)t}{2} - \frac{\psi}{t}\right)^2 } dt 
+\int_{0}^{\infty} 
+\exp\left\{-\half \left(\frac{(2n+1)t}{2} - \frac{\psi}{t}\right)^2 \right\} dt 
 = \int_0^{\infty} e^{-\half y^2} dy \frac{1}{2n+1} 
 \\
-= \frac{\sqrt{(2\pi)}}{2n+1},
+= \frac{\sqrt{(2\pi)}}{2n+1}
+\;,
 $$
 which implies 
-$I = \sum_{n=0}^{\infty} (-1)^n \exp\{-(n+1)\psi\} = \{1+\exp(\psi)\}^{-1}$. 
+$I = \sum_{n=0}^{\infty} (-1)^n \exp\{-(n+1) \psi\} = \{1+\exp(\psi)\}^{-1}$. 
 %An alternative proof using Laplace transformation is provided in \cite{polson2013bayesian}. 
 %\end{proof}
 
@@ -382,7 +395,7 @@ This pseudo-likelihood represents support vector machines as a global-local mixt
 $$
 \int_0^{\infty} \frac{p}{\sqrt{2 \pi \lambda}} 
 \exp\left\{-\half \left(p^2 \lambda+q^2 \lambda^{-1}\right)\right\} d\lambda 
-= \exp(-|pq|)
+= e^{-|pq|}
 \;.
 $$ 
 We apply Liouville formula and obtain
@@ -455,6 +468,7 @@ has a density function with the following form:
 %$$
 %Once again, the \CS transformation $y = x - x^{-1}$ shows this is a density. 
 \section{Convolution mixtures}
+\label{sec:convolutions}
 
 Another interesting area of application is convolution mixtures and marginal
 densities for location-scale mixture problems. We show that the Cauchy
@@ -486,10 +500,14 @@ Both of these results will follow from a straight-forward application of the \CS
 transformation. We give the proof for the Cauchy convolution identity below.
 
 \begin{proof}
-Exploiting the symmetry and the Lagrange identity $(a^2 + b^2)(c^2 + d^2) = (ac+bd)^2 + (ad-bc)^2$, leads us to the convolution density
+Exploiting the symmetry and the Lagrange identity 
+$(a^2 + b^2)(c^2 + d^2) = (ac+bd)^2 + (ad-bc)^2$, leads us to the convolution density
 \begin{align*} 
-f_Z(z) & = 2 \int_{0}^{\infty} \frac{1}{ \pi w_1 \{ (1+ x^2/w_1^2) \} } \frac{1}{\pi w_2 \{1+ (z-x)^2/w_2^2 \} } dx, \\
-& = \frac{2}{\pi^2 w_1 w_2} \int_{0}^{\infty} \frac{1}{ \{1+ w_1^{-1} w_2^{-1} x (z-x) \}^2 + \{w_2^{-1}z - (w_1^{-1}+ w_2^{-1}) x \}^2 } dx.
+  f_Z(z) &= 2 \int_{0}^{\infty} 
+  \frac{1}{ \pi w_1 (1+ x^2/w_1^2)} \frac{1}{\pi w_2 \{1+ (z-x)^2 / w_2^2 \} } dx
+  , \\
+  & = \frac{2}{\pi^2 w_1 w_2} \int_{0}^{\infty} 
+  \frac{1}{ \{1+ w_1^{-1} w_2^{-1} x (z-x) \}^2 + \{w_2^{-1}z - (w_1^{-1}+ w_2^{-1}) x \}^2 } dx.
 \end{align*}
 Transforming $x \mapsto x + w_2^{-1}z (w_1^{-1} + w_2^{-1})^{-1}$, 
 using $a = 1 + z^2(w_1+w_2)^{-2}$, $b =(w_1w_2)^{-1}$, 
@@ -540,44 +558,73 @@ as long as $(w_1, \cdots, w_m)$ is independent of $(X,Y)$,
 $w_j \geq 0\ (j = 1, \cdots, m)$ and $\sum_{j=1}^{m} w_j = 1$. 
 
 \section{Discussion}
+\label{sec:discussion}
 
-The \CS{} and Liouville transformations not only guarantee an `astonishingly simple' normalizing constant for $f(\cdot)$, it also establishes the wide class of unimodal densities as global-local scale mixtures. Global-local scale mixtures that are conditionally Gaussian hold a special place in statistical modeling and can be rapidly fit using an expectation-maximization algorithm as pointed out by \cite{polson_data_2013}. \cite{palmer_amica:_2011} provides a similar tool for modeling multivariate dependence by writing general non-Gaussian multivariate densities as multivariate Gaussian scale mixtures. Our future goal is to extend the \CS{} transformation to express the wide multivariate Gaussian scale mixture models as global-local mixtures that also facilitate easy computation.
+The \CS{} and Liouville transformations not only guarantee an `astonishingly
+simple' normalizing constant for $f(\cdot)$, it also establishes the wide class
+of unimodal densities as global-local scale mixtures. Global-local scale
+mixtures that are conditionally Gaussian hold a special place in statistical
+modeling and can be rapidly fit using an expectation-maximization algorithm as
+pointed out by \cite{polson_data_2013}. \cite{palmer_amica:_2011} provides a
+similar tool for modeling multivariate dependence by writing general
+non-Gaussian multivariate densities as multivariate Gaussian scale mixtures.
+Our future goal is to extend the \CS{} transformation to express the wide
+multivariate Gaussian scale mixture models as global-local mixtures that also
+facilitate easy computation.
 
-We end our paper with conjectures that two other remarkable identities arise as corollaries of such transformation identities. The first one is a recent result by \cite{zhang2014uniform} that proves the uniform correlation mixture of the bivariate Gaussian density with unit variance is a function of the maximum norm: 
+We end our paper with conjectures that two other remarkable identities arise as
+corollaries of such transformation identities. The first one is a recent result
+by \cite{zhang2014uniform} that proves a uniform correlation mixture of a
+bivariate Gaussian density with unit variance is a function of the maximum
+norm: 
 \begin{equation}
-  \int_{-1}^{1} \half \frac{1}{2\pi\sqrt{1-\rho^2}} \exp \left\{ - \frac{x_1^2 + x_2^2 - 2 \rho x_1 x_2}{2(1-\rho^2)} \right\} d \rho = 
-  \half (1- \Phi(\vectornorm{x}_{\infty})) \label{eq:bivar}, 
+  \int_{-1}^{1} \frac{1}{4 \pi \sqrt{1-\rho^2}} 
+  \exp\left\{ - \frac{x_1^2 + x_2^2 - 2 \rho x_1 x_2}{2 (1-\rho^2)} \right\} d\rho = 
+  \half \left\{1- \Phi(\vectornorm{x}_{\infty})\right\} 
+  \;, 
+  \label{eq:bivar}
 \end{equation}
-where $\Phi(\cdot)$ is the standard normal distribution function and $\vectornorm{x}_{\infty} = \max \{ x_1, x_2\}$. The bivariate density on the right side of \eqref{eq:bivar} was introduced before in \cite{bryson1982constructing} as uniform mixtures of a $\chi_3$ random variate, but the representation as a uniform correlation mixture is a surprising new find. We make a couple of remarks connected to the Erdelyi's integral identity, which is key to the proof of the uniform correlation mixture \eqref{eq:bivar}: 
+where $\Phi(\cdot)$ is the standard normal distribution function and
+$\vectornorm{x}_{\infty} = \max\{ x_1, x_2\}$. The bivariate density on the
+right side of \eqref{eq:bivar} was introduced before in
+\cite{bryson1982constructing} as uniform mixtures of a $\chi_3$ random variate,
+but the representation as a uniform correlation mixture is a surprising new
+find.  We make a couple of remarks connected to the Erdelyi's integral identity,
+which is key to the proof of the uniform correlation mixture \eqref{eq:bivar}. 
+\begin{theorem}
+Erdelyi's identity, defined by
 \begin{equation}
-  \int_{\half}^{\infty} \frac{\e^{-x^2 z}}{4 \pi z 	\sqrt{2z-1}} \d z = 
-  \half (1-\Phi(x))
-  \;, \quad \text{where}\quad x \geq 0 
+  \int_{\half}^{\infty} \frac{e^{-x^2 z}}{4 \pi z 	\sqrt{2z-1}} dz = 
+  \half \left\{1-\Phi(x)\right\}
+  \;, \quad \text{for}\quad x \geq 0 
   \label{eq:erdelyi}
 \end{equation}
-Erdelyi's identity in \eqref{eq:erdelyi} follows from the Laplace transformation
-$(1+u)^{-1} = \int_0^{\infty} \e^{-v(1+u)} dv$. 
+follows from the Laplace transformation $(1+u)^{-1} = \int_0^{\infty} e^{-v(1+u)} dv$. 
+\end{theorem}
 
 \begin{proof}
-Let $ u = 2z-1$ on the left hand side of \eqref{eq:erdelyi}, denoted by $I$, to obtain: 
+Let $ u = 2z-1$ on the left hand side of \eqref{eq:erdelyi}, denoted by $I$, to obtain 
 $$
-I = \int_{0}^{\infty} \frac{\e^{-x^2/(2(1+u))}}{4 \pi \sqrt{u} (1+u)} \d u.
+I = \int_{0}^{\infty} \frac{e^{-x^2/(2(1+u))}}{4 \pi \sqrt{u} (1+u)} du.
 $$
-Using the Laplace transformation $(1+u)^{-1} = \int_0^{\infty} \e^{-v(1+u)} dv$, 
+Using the Laplace transformation $(1+u)^{-1} = \int_0^{\infty} e^{-v(1+u)} dv$, 
 \begin{align*}
-  I & = \int_{0}^{\infty} \frac{\e^{-x^2/(2(1+u))}}{4 \pi \sqrt{u}} 
-  \int_0^{\infty} \e^{-v(1+u)} \d v \d u 
+  I &= \int_{0}^{\infty} \frac{e^{-x^2/(2(1+u))}}{4 \pi \sqrt{u}} 
+  \int_0^{\infty} e^{-v(1+u)} dv du 
   = \int_{v= 0}^{\infty} \int_{u=0}^{\infty} 
-  \frac{\e^{-(\frac{x^2}{2} + v)(1+u)}}{4 \pi \sqrt{u}} \d v \d u \\
-  & = \int_{v= 0}^{\infty} \frac{1}{4\pi} \e^{-(\frac{x^2}{2} + v)} 
-  \int_{u=0}^{\infty} u^{-1/2} \e^{-(\frac{x^2}{2} + v) u} \d u \d v 
-  = \int_{v= 0}^{\infty} \frac{ \e^{-\half(x^2 + 2v)}}{2 (2\pi)^{1/2}} 
-  \frac{1}{(x^2+ 2v)^{1/2}} \d v\\
-%& = \int_{v= 0}^{\infty} \frac{\e^{-(\frac{x^2}{2} + v)}}{4\pi} \frac{\pi^{1/2}}{(\frac{x^2}{2} + v)^{1/2}} \d v = \int_{v= 0}^{\infty} \frac{1}{2 (2\pi)^{1/2}} \e^{-\half(x^2 + 2v)} \frac{1}{(x^2+ 2v)^{1/2}} \d v
+  \frac{e^{-(\frac{x^2}{2} + v)(1+u)}}{4 \pi \sqrt{u}} dv du
+  \\
+  &= \int_{v= 0}^{\infty} \frac{1}{4\pi} e^{-(\frac{x^2}{2} + v)} 
+  \int_{u=0}^{\infty} u^{-1/2} e^{-(\frac{x^2}{2} + v) u} du dv 
+  = \int_{v= 0}^{\infty} \frac{ e^{-\half(x^2 + 2v)}}{2 (2\pi)^{1/2}} 
+  \frac{1}{(x^2+ 2v)^{1/2}} dv
+  \\
+  %&= \int_{v= 0}^{\infty} \frac{\e^{-(\frac{x^2}{2} + v)}}{4\pi} \frac{\pi^{1/2}}{(\frac{x^2}{2} + v)^{1/2}} dv 
+  %= \int_{v= 0}^{\infty} \frac{1}{2 (2\pi)^{1/2}} e^{-\half(x^2 + 2v)} \frac{1}{(x^2+ 2v)^{1/2}} dv
 \end{align*}
 Transforming $z^2 = x^2 + 2v$, we get 
 $$
-I =\half  \int_{z = |x|}^{\infty} \frac{1}{(2\pi)^{1/2}} e^{-\half z^2} \d z 
+I =\half  \int_{z = |x|}^{\infty} \frac{1}{(2\pi)^{1/2}} e^{-\half z^2} dz 
 = \half (1 - \Phi(|x|))
 \;.
 $$
@@ -585,19 +632,19 @@ $$
 Secondly, Erdelyi's identity in \eqref{eq:erdelyi} follows from (9.2) of
 \cite{amdeberhan_cauchy-schlomilch_2010}: 
 $$
-\int_0^{\infty}\frac{\e^{-\mu^2(x^2+\beta^2)}}{x^2+\beta^2} \d x 
+\int_0^{\infty} \frac{e^{-\mu^2 (x^2 + \beta^2)}}{x^2+\beta^2} dx 
 = \frac{\pi}{2 \beta} \{ 1 - \erf(\mu \beta) \}.
 $$
 If we let $\beta = 2^{-1/2}$ and $x^2+1/2 = z$, the above identity reduces to
 \eqref{eq:erdelyi} in $\mu$. 
 
 The second candidate is the symmetric stable distribution, defined by its
-characteristic function $\phi(t) = \exp\{ -|t|^{\alpha} \}$ for $\alpha \in (0,2]$.  
+characteristic function $\phi(t) = \exp( -|t|^{\alpha})$ for $0 < \alpha \leq 2$.  
 It admits a normal scale mixture representation with mixing density 
 \begin{gather*}
-  f(v) = \half s_{\alpha/2} \left( \frac{v}{2} \right), v > 0 
+  f(v) = \half s_{\alpha/2} \frac{v}{2},\quad v > 0 
   \\
-  \exp(-|x|^\alpha) = \int_0^{\infty} \exp(-xs) g(s) ds, \; g(s) 
+  e^{-|x|^\alpha} = \int_0^{\infty} e^{-xs} g(s) ds, \quad g(s) 
   = \sum_{j=1}^{\infty} (-1)^j \frac{s^{-j\alpha-1}}{j! \Gamma(-\alpha j)}
   \;,
 \end{gather*}
