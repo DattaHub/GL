@@ -80,7 +80,6 @@
 \newcommand{\K}{{\bf K}}
 \renewcommand{\L}{{\bf L}}
 \newcommand{\M}{{\bf M}}
-\newcommand{\Nor}{{\cal N}}  % for normal density
 %\newcommand{\N}{{\bf N}}
 \renewcommand{\O}{{\bf O}}
 \renewcommand{\P}{{\bf P}}
@@ -141,13 +140,13 @@
 \newcommand{\beq}{\begin{equation}}
 \newcommand{\eeq}{\end{equation}}
 
- \newcommand{\notS}{{\backslash S}}
- \newcommand{\nots}{{\backslash s}}
- \newcommand{\noti}{{\backslash i}}
- \newcommand{\notj}{{\backslash j}}
- \newcommand{\nott}{\backslash t}
- \newcommand{\notone}{{\backslash 1}}
- \newcommand{\nottp}{\backslash t+1}
+\newcommand{\notS}{{\backslash S}}
+\newcommand{\nots}{{\backslash s}}
+\newcommand{\noti}{{\backslash i}}
+\newcommand{\notj}{{\backslash j}}
+\newcommand{\nott}{\backslash t}
+\newcommand{\notone}{{\backslash 1}}
+\newcommand{\nottp}{\backslash t+1}
 % \newcommand{\notz}{\backslash z}
 
 \newcommand{\notk}{{^{\backslash k}}}
@@ -173,7 +172,12 @@
 \newcommand{\norm}[1]{\lVert#1\rVert}
 \newcommand{\vectornorm}[1]{\left|\left|#1\right|\right|}
 
-\newcommand{\Norm}{\mathcal{N}}
+\newcommand{\NormRV}{\mathcal{N}}
+\newcommand{\InvGaussRV}{\mathcal{IG}}
+\newcommand{\CauchyRV}{\mathcal{C}}
+\newcommand{\GammaRV}{\mathcal{G}}
+\newcommand{\UnifRV}{\mathcal{U}}
+
 \newcommand{\bx}{{\bf x}}
 \newcommand{\ba}{{\bf a}}
 \newcommand{\bb}{{\bf b}}
@@ -181,7 +185,6 @@
 \newcommand{\bd}{{\bf d}}
 \newcommand{\bX}{{\bf X}}
 \newcommand{\by}{{\bf y}}
-\newcommand{\IG}{\mathcal{IG}}
 \newcommand{\dd}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\lhat}[1][i]{\hat\lambda_{#1}^{-1(g)}}
 \newcommand{\what}[1][j]{\hat\omega_{#1}^{-1(g)}}
@@ -198,79 +201,3 @@
 \newcommand{\estHs}{\ensuremath{{\hat{\theta}}_{HS}}{}}
 \newcommand{\estJs}{\ensuremath{{\hat{\theta}}_{JS}}{}}
 \newcommand{\MSE}{\mathrm{MSE}}
-%
-% Meijer-G additions
-%
-%\DeclarePairedDelimiterX\MeijerM[3]{\lparen}{\rparen}%
-%{\begin{smallmatrix}#1 \\ #2\end{smallmatrix}\delimsize\vert\,#3}
-%
-%\newcommand\MeijerG[8][]{%
-%  G^{\,#2,#3}_{#4,#5}\MeijerM[#1]{#6}{#7}{#8}}
-%
-%\WithSuffix\newcommand\MeijerG*[7]{G^{\,#1,#2}_{#3,#4}\MeijerM*{#5}{#6}{#7}}
-%% end Meijer-G
-%
-%%
-%% Generalized Hypergeometric Function (pFq)
-%%
-%\DeclarePairedDelimiterX\pFqM[3]{\lparen}{\rparen}%
-%{\begin{smallmatrix}#1 \\ #2\end{smallmatrix}\delimsize\vert\,#3}
-%
-%\newcommand\pFq[6][]{%
-%  {}_{#2}F_{#3}\pFqM[#1]{#4}{#5}{#6}}
-
-%\WithSuffix\newcommand\pFq*[5]{{}_{#1}F_{#2}\pFqM*{#3}{#4}{#5}}
-% end pFq
-
-%\newtheorem{theorem}{Theorem}
-%\numberwithin{theorem}{section}
-%\newtheorem{Proof}{Proof}
-%\newtheorem{Def}{Definition}
-%\numberwithin{Def}{section}
-%\newtheorem{remark}{Remark}
-%\numberwithin{remark}{section}
-%\newtheorem{Qes}{Question}
-%\newtheorem{proposition}{Proposition}
-%\numberwithin{proposition}{section}
-%\newtheorem{lemma}{Lemma}
-%\numberwithin{lemma}{section}
-%\newtheorem{Cor}{Corollary}
-%\numberwithin{Cor}{section}
-%\newtheorem{Exa}{Example}
-%\newtheorem{Eq}{Equation}
-%\newtheorem{assn}{Assumption}
-%\newtheorem{result}[theorem]{Result}
-
-
-%\usepackage{booktabs,array}
-%\def\Midrule{\midrule[\heavyrulewidth]}
-%\newcount\rowc
-%
-%\makeatletter
-%\def\ttabular{%
-%\hbox\bgroup
-%\let\\\cr
-%\def\rulea{\ifnum\rowc=\@ne \hrule height 1.0pt \fi}
-%\def\ruleb{
-%\ifnum\rowc=1\hrule height 1.0pt  \else
-%\ifnum\rowc=3\hrule height 0.0pt%\heavyrulewidth 
-%\ifnum\rowc= 3  \hrule height 0.5pt \else%\heavyrulewidth 
-%\ifnum\rowc= 5  \hrule height 0.5pt \else%\heavyrulewidth 
-%\ifnum\rowc= 7  \hrule height 0.5pt \else%\heavyrulewidth 
-%\ifnum\rowc= 9  \hrule height 0.5pt \else%\heavyrulewidth 
-%\ifnum\rowc= 11  \hrule height 0.5pt %\heavyrulewidth 
-  %\else \hrule height 0pt%\lightrulewidth
-%\fi\fi\fi\fi\fi\fi}
-%\valign\bgroup
-%\global\rowc\@ne
-%\rulea
-%\hbox to 7em{\strut \hfill##\hfill}%
-%\ruleb
-%&&%
-%\global\advance\rowc\@ne
-%\hbox to 7em{\strut\hfill##\hfill}%
-%\ruleb
-%\cr}
-%\def\endttabular{%
-%\crcr\egroup\egroup}
-
