@@ -4,40 +4,12 @@
 % Revised by Jyotishka Datta & Brandon Willard
 % Acknowledgement: JD received this from Prof. Alan Qi.
 %
-% TODO: should/could we put includes for dependencies in here?
-%
 
-%\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-%\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-%\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-
-\makeatletter
-\renewcommand{\algocf@captiontext}[2]{#1\algocf@typo. \AlCapFnt{}#2} % text of caption
-\renewcommand{\AlTitleFnt}[1]{#1\unskip}% default definition
-\def\@algocf@capt@plain{top}
-\renewcommand{\algocf@makecaption}[2]{%
-  \addtolength{\hsize}{\algomargin}%
-  \sbox\@tempboxa{\algocf@captiontext{#1}{#2}}%
-  \ifdim\wd\@tempboxa >\hsize%     % if caption is longer than a line
-    \hskip .5\algomargin%
-    \parbox[t]{\hsize}{\algocf@captiontext{#1}{#2}}% then caption is not centered
-  \else%
-    \global\@minipagefalse%
-    \hbox to\hsize{\box\@tempboxa}% else caption is centered
-  \fi%
-  \addtolength{\hsize}{-\algomargin}%
-}
-\makeatother
-
-\def\Bka{{\it Biometrika}}
-\def\AIC{\textsc{aic}}
-\def\T{{ \mathrm{\scriptscriptstyle T} }}
-\def\v{{\varepsilon}}
 
 %% Special shortcuts for us
-\def\Polya{P{\'o}lya }
-\def\CS{Cauchy-Schl\"omilch }
-\def\PG{P{\'o}lya--Gamma }
+\def\Polya{P{\'o}lya}
+\def\CS{Cauchy-Schl\"omilch}
+\def\PG{P{\'o}lya-Gamma}
 
 %\setlength{\textfloatsep}{10pt plus 1.0pt minus 2.0pt}
 %\setlength{\floatsep}{12.0pt plus 2.0pt minus 5.0pt}

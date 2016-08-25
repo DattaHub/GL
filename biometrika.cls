@@ -1304,6 +1304,7 @@
 \def\jslugname#1{\jslugnamefalse\gdef\@jslugname{#1}}
 \def\jmonth#1{\gdef\@jmonth{#1}}
 \def\jyear#1{\gdef\@jyear{#1}}
+\def\cyear#1{\gdef\@cyear{#1}}
 \def\jend#1{\gdef\@jend{#1}}
 \def\issn#1{\gdef\@issn{#1}}
 %
@@ -1386,15 +1387,15 @@
                 \hfil\crcr \mathhexbox20D}}}}
 %
 \def\copyrightinfo#1{\gdef\@copyrightinfo{\let\copyright\Copyright\leavevmode#1}}
-\copyrightinfo{\Copyright\ 2007 Biometrika Trust\goodbreak {\em Printed in Great Britain}}
+\copyrightinfo{{\em Printed in Great Britain}}
 
 \def\firstpage#1{\xdef\@firstpage{#1}}
 \firstpage{}%
 
 \def\punc{,\ }
 \def\ps@plain{\firstpage{\thepage}\let\@mkboth\@gobbletwo%
-       \def\@evenfoot{}%
-       \def\@oddfoot{}%
+       \def\@evenfoot{{\slugfont\Copyright\ \@cyear\ Biometrika Trust\hfill}}%
+       \def\@oddfoot{{\slugfont\Copyright\ \@cyear\ Biometrika Trust\hfill}}%
        \def\@oddhead{\smash{\vbox to 6pt{\hsize\textwidth\slugfont{\itshape\@jname}%
        \ifx\@jyear\@empty\else\ (\@jyear)\fi%
        \ifx\@jvol\@empty\else\punc{\bfseries\@jvol}\fi%
@@ -1976,6 +1977,8 @@
 %
 \voffset-3pc
 \hoffset-4pc
+
+\cyear{2016}
 
 %====================
 \endinput
