@@ -667,34 +667,37 @@ follows from the Laplace transformation $(1+u)^{-1} = \int_0^{\infty} e^{-v(1+u)
 \end{theorem}
 
 \begin{proof}
-Let $ u = 2z-1$ on the left hand side of \eqref{eq:erdelyi}, denoted by $I$, to obtain 
-$$
-I = \int_{0}^{\infty} \frac{e^{-x^2/(2(1+u))}}{4 \pi \sqrt{u} (1+u)} du.
-$$
-Using the Laplace transformation $(1+u)^{-1} = \int_0^{\infty} e^{-v(1+u)} dv$, 
-\begin{align*}
-  I &= \int_{0}^{\infty} \frac{e^{-x^2/(2(1+u))}}{4 \pi \sqrt{u}} 
-  \int_0^{\infty} e^{-v(1+u)} dv du 
-  = \int_{v= 0}^{\infty} \int_{u=0}^{\infty} 
-  \frac{e^{-(\frac{x^2}{2} + v)(1+u)}}{4 \pi \sqrt{u}} dv du
-  \\
-  &= \int_{v= 0}^{\infty} \frac{1}{4\pi} e^{-(\frac{x^2}{2} + v)} 
-  \int_{u=0}^{\infty} u^{-1/2} e^{-(\frac{x^2}{2} + v) u} du dv 
-  = \int_{v= 0}^{\infty} \frac{ e^{-\half(x^2 + 2v)}}{2 (2\pi)^{1/2}} 
-  \frac{1}{(x^2+ 2v)^{1/2}} dv
-  %&= \int_{v= 0}^{\infty} \frac{\e^{-(\frac{x^2}{2} + v)}}{4\pi} \frac{\pi^{1/2}}{(\frac{x^2}{2} + v)^{1/2}} dv 
-  %= \int_{v= 0}^{\infty} \frac{1}{2 (2\pi)^{1/2}} e^{-\half(x^2 + 2v)} \frac{1}{(x^2+ 2v)^{1/2}} dv
-  \;,
-\end{align*}
-and letting $z^2 = x^2 + 2v$ we get 
-$$
-I =\half  \int_{z = |x|}^{\infty} \frac{1}{(2\pi)^{1/2}} e^{-\half z^2} dz 
-= \half \left\{1 - \Phi(|x|)\right\}
-\;.
-$$
+  Apply the transform $u = 2z-1$ to the left hand side of \eqref{eq:erdelyi},
+  denoted by $I$, to obtain 
+  $$
+  I = \int_{0}^{\infty} \frac{e^{-x^2/(2(1+u))}}{4 \pi \sqrt{u} (1+u)} du
+  \;.
+  $$
+  Using the Laplace transformation $(1+u)^{-1} = \int_0^{\infty} e^{-v(1+u)} dv$, 
+  \begin{align*}
+    I &= \int_{0}^{\infty} \frac{e^{-x^2/(2(1+u))}}{4 \pi \sqrt{u}} 
+    \int_0^{\infty} e^{-v(1+u)} dv du 
+    = \int_{v= 0}^{\infty} \int_{u=0}^{\infty} 
+    \frac{e^{-(\frac{x^2}{2} + v)(1+u)}}{4 \pi \sqrt{u}} dv du
+    \\
+    &= \int_{v= 0}^{\infty} \frac{1}{4\pi} e^{-(\frac{x^2}{2} + v)} 
+    \int_{u=0}^{\infty} u^{-1/2} e^{-(\frac{x^2}{2} + v) u} du dv 
+    = \int_{v= 0}^{\infty} \frac{e^{-\half(x^2 + 2v)}}{2 (2\pi)^{1/2}} 
+    \frac{1}{\sqrt{x^2+ 2v}} dv
+    %&= \int_{v= 0}^{\infty} \frac{\e^{-(\frac{x^2}{2} + v)}}{4\pi} \frac{\pi^{1/2}}{(\frac{x^2}{2} + v)^{1/2}} dv 
+    %= \int_{v= 0}^{\infty} \frac{1}{2 (2\pi)^{1/2}} e^{-\half(x^2 + 2v)} \frac{1}{(x^2+ 2v)^{1/2}} dv
+    \;,
+  \end{align*}
+  and letting $z^2 = x^2 + 2v$ we get 
+  \begin{equation*}
+    I = \half \int_{z = |x|}^{\infty} \frac{1}{(2\pi)^{1/2}} e^{-\half z^2} dz 
+    = \half \left\{1 - \Phi(|x|)\right\} \;.
+  \end{equation*} 
+  %\proofSymbol
+  \ % hack for automatic qed symbol
 \end{proof}
 
-Secondly, Erdelyi's identity in \eqref{eq:erdelyi} follows from (9.2) of
+Erdelyi's identity in \eqref{eq:erdelyi} follows from (9.2) of
 \cite{amdeberhan_cauchy-schlomilch_2010}: 
 $$
 \int_0^{\infty} \frac{e^{-\mu^2 (x^2 + \beta^2)}}{x^2+\beta^2} dx 
