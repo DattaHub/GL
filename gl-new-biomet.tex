@@ -91,12 +91,12 @@ Equation \eqref{eq:identity} follows from the simple transformation $t = b/(a x)
   = \int_{0}^{\infty} f \left\{(at - b/t)^2 \right\} \frac{b}{a t^2} dt.
 \end{equation*}
 Adding the two terms in the last equality yields 
-$2 I = \int_{0}^{\infty} f \left\{(at - b/t)^2 \right\} \left\{ 1+\frac{b}{a t^2} \right\} dt$ 
+$2 I = \int_{0}^{\infty} f \left\{(at - b/t)^2 \right\} \left( 1+\frac{b}{a t^2} \right) dt$ 
 and transforming $y = b/t - at$ gives $dy = -a (1+\frac{b}{a t^2}) dt$, which yields 
 $I = (2a)^{-1} \int_{0}^{\infty} f(y^2) dy$ as required. A useful generalization
 of the \CS{} transformation is
 \begin{equation}
-  \int_0^\infty f \left[ \{x-s(x)\}^2 \right] dx = 
+  \int_0^\infty f\left[ \{x-s(x)\}^2 \right] dx = 
   \int_0^\infty f( y^2 ) dy 
   \label{eq:gen}
 \end{equation}
@@ -467,7 +467,7 @@ vector mean, where the flat prior gives poorly calibrated inference.
 \begin{lemma}
 Let $X_i \sim \operatorname{Cauchy}(0,1)$, then for 
 $i =1, 2$ we have 
-$Z = w_1 X_1 + w_2 X_2 \sim \opertorname{C}\left( 0, w_1 + w_2 \right)$.
+$Z = w_1 X_1 + w_2 X_2 \sim \operatorname{C}\left( 0, w_1 + w_2 \right)$.
 \end{lemma}
 
 \begin{lemma}
