@@ -1,0 +1,129 @@
+\begin{thebibliography}{20}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{Andrews \& Mallows(1974)}]{andrews_scale_1974}
+\textsc{Andrews, D.} \& \textsc{Mallows, C.} (1974).
+\newblock Scale mixtures of normal distributions.
+\newblock \textit{Journal of the Royal Statistical Society Series B
+  Methodological} \textbf{36}, 99--102.
+
+\bibitem[{Baker(2008)}]{baker2008probabilistic}
+\textsc{Baker, R.} (2008).
+\newblock Probabilistic applications of the {{Schl{\"o}milch}} transformation.
+\newblock \textit{Communications in Statistics -- Theory and Methods}
+  \textbf{37}, 2162--2176.
+
+\bibitem[{Barndorff-Nielsen et~al.(1982)Barndorff-Nielsen, Kent \&
+  S\o{}rensen}]{barndorff1982normal}
+\textsc{Barndorff-Nielsen, O.}, \textsc{Kent, J.} \& \textsc{S\o{}rensen, M.}
+  (1982).
+\newblock Normal variance-mean mixtures and z distributions.
+\newblock \textit{International Statistical Review/Revue Internationale de
+  Statistique} \textbf{50}, 145--159.
+
+\bibitem[{Bhadra et~al.(2016{\natexlab{a}})Bhadra, Datta, Polson \&
+  Willard}]{bhadra2015horseshoe+}
+\textsc{Bhadra, A.}, \textsc{Datta, J.}, \textsc{Polson, N.~G.} \&
+  \textsc{Willard, B.} (2016{\natexlab{a}}).
+\newblock The {{Horseshoe}}+ {{Estimator}} of {{Ultra-Sparse Signals}}.
+\newblock \textit{Bayesian Analysis (to appear)} .
+
+\bibitem[{Bhadra et~al.(2016{\natexlab{b}})Bhadra, Datta, Polson \&
+  Willard}]{bhadra_default_2016}
+\textsc{Bhadra, A.}, \textsc{Datta, J.}, \textsc{Polson, N.~G.} \&
+  \textsc{Willard, B.~T.} (2016{\natexlab{b}}).
+\newblock Default {{Bayesian Analysis}} with {{Global-Local Shrinkage Priors}}.
+\newblock \textit{Biometrika (to appear)} .
+
+\bibitem[{Boros et~al.(2006)Boros, Moll \& Foncannon}]{boros2006irresistible}
+\textsc{Boros, G.}, \textsc{Moll, V.~H.} \& \textsc{Foncannon, J.} (2006).
+\newblock Irresistible integrals: symbolics, analysis and experiments in the
+  evaluation of integrals.
+\newblock \textit{The Mathematical Intelligencer} \textbf{28}, 65--68.
+
+\bibitem[{Bryson \& Johnson(1982)}]{bryson1982constructing}
+\textsc{Bryson, M.~C.} \& \textsc{Johnson, M.~E.} (1982).
+\newblock Constructing and simulating multivariate distributions using
+  {{Khintchine}}'s theorem.
+\newblock \textit{Journal of Statistical Computation and Simulation}
+  \textbf{16}, 129--137.
+
+\bibitem[{Hans(2011)}]{hans2011comment}
+\textsc{Hans, C.} (2011).
+\newblock Comment on {{Article}} by {{Polson}} and {{Scott}}.
+\newblock \textit{Bayesian Analysis} \textbf{6}, 37--41.
+
+\bibitem[{Jones(2002)}]{jones2012khintchine}
+\textsc{Jones, M.} (2002).
+\newblock On {{Khintchine}}'s theorem and its place in random variate
+  generation.
+\newblock \textit{The American Statistician} \textbf{16}, 304--307.
+
+\bibitem[{Jones(2014)}]{jones_generating_2014}
+\textsc{Jones, M.~C.} (2014).
+\newblock Generating distributions by transformation of scale.
+\newblock \textit{Statist. Sinica} \textbf{24}, 749--772.
+
+\bibitem[{L{\'e}vy(1940)}]{levy1940certains}
+\textsc{L{\'e}vy, P.} (1940).
+\newblock Sur certains processus stochastiques homog{\`e}nes.
+\newblock \textit{Compositio mathematica} \textbf{7}, 283--339.
+
+\bibitem[{Palmer et~al.(2011)Palmer, Kreutz-Delgado \&
+  Makeig}]{palmer_amica:_2011}
+\textsc{Palmer, J.~A.}, \textsc{Kreutz-Delgado, K.} \& \textsc{Makeig, S.}
+  (2011).
+\newblock {{AMICA}}: {{An}} adaptive mixture of independent component analyzers
+  with shared components.
+\newblock Tech. rep., San Diego, CA: Technical report, Swartz Center for
+  Computational Neuroscience.
+
+\bibitem[{Pillai \& Meng(2016)}]{pillai2015unexpected}
+\textsc{Pillai, N.~S.} \& \textsc{Meng, X.-L.} (2016).
+\newblock An unexpected encounter with {{Cauchy}} and
+  {{L}}\ensuremath{\backslash}'evy.
+\newblock \textit{Annals of Statistics (to appear)} .
+
+\bibitem[{Polson \& Scott(2012)}]{polson_halfcauchy_2012}
+\textsc{Polson, N.~G.} \& \textsc{Scott, J.~G.} (2012).
+\newblock On the {{Half-Cauchy Prior}} for a {{Global Scale Parameter}}.
+\newblock \textit{Bayesian Analysis} \textbf{7}, 887--902.
+
+\bibitem[{Polson \& Scott(2013)}]{polson_data_2013}
+\textsc{Polson, N.~G.} \& \textsc{Scott, J.~G.} (2013).
+\newblock Data augmentation for non-{{Gaussian}} regression models using
+  variance-mean mixtures.
+\newblock \textit{Biometrika} \textbf{100}, 459--471.
+
+\bibitem[{Polson et~al.(2013)Polson, Scott \& Windle}]{polson_bayesian_2013}
+\textsc{Polson, N.~G.}, \textsc{Scott, J.~G.} \& \textsc{Windle, J.} (2013).
+\newblock Bayesian inference for logistic models using
+  {{P{\'o}lya\textendash{}Gamma}} latent variables.
+\newblock \textit{Journal of the American Statistical Association}
+  \textbf{108}, 1339--1349.
+
+\bibitem[{Polson et~al.(2014)Polson, Scott \& Windle}]{polson_bayesian_2014}
+\textsc{Polson, N.~G.}, \textsc{Scott, J.~G.} \& \textsc{Windle, J.} (2014).
+\newblock The {{Bayesian}} bridge.
+\newblock \textit{Journal of the Royal Statistical Society. Series B:
+  Statistical Methodology} \textbf{76}, 713--733.
+
+\bibitem[{Polson et~al.(2011)Polson, Scott \& {others}}]{polson_data_2011}
+\textsc{Polson, N.~G.}, \textsc{Scott, S.~L.} \& \textsc{{others}} (2011).
+\newblock Data augmentation for support vector machines.
+\newblock \textit{Bayesian Analysis} \textbf{6}, 1--23.
+
+\bibitem[{Seshadri(2004)}]{seshadri1997halphen}
+\textsc{Seshadri, V.} (2004).
+\newblock Halphen's laws.
+\newblock In \textit{Encyclopedia of Statistical Sciences}. John Wiley and
+  Sons, Inc.
+
+\bibitem[{Zhang et~al.(2014)Zhang, Brown, George \& Zhao}]{zhang2014uniform}
+\textsc{Zhang, K.}, \textsc{Brown, L.~D.}, \textsc{George, E.} \& \textsc{Zhao,
+  L.} (2014).
+\newblock Uniform {{Correlation Mixture}} of {{Bivariate Normal Distributions}}
+  and {{Hypercubically Contoured Densities That Are Marginally Normal}}.
+\newblock \textit{The American Statistician} \textbf{68}, 183--187.
+
+\end{thebibliography}
