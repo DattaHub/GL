@@ -1,11 +1,11 @@
-\begin{thebibliography}{20}
+\begin{thebibliography}{21}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 
 \bibitem[{Andrews \& Mallows(1974)}]{andrews_scale_1974}
 \textsc{Andrews, D.} \& \textsc{Mallows, C.} (1974).
 \newblock Scale mixtures of normal distributions.
-\newblock \textit{Journal of the Royal Statistical Society Series B
-  Methodological} \textbf{36}, 99--102.
+\newblock \textit{Journal of the Royal Statistical Society. Series B:
+  Statistical Methodology} \textbf{36}, 99--102.
 
 \bibitem[{Baker(2008)}]{baker2008probabilistic}
 \textsc{Baker, R.} (2008).
@@ -17,9 +17,8 @@
   S\o{}rensen}]{barndorff1982normal}
 \textsc{Barndorff-Nielsen, O.}, \textsc{Kent, J.} \& \textsc{S\o{}rensen, M.}
   (1982).
-\newblock Normal variance-mean mixtures and z distributions.
-\newblock \textit{International Statistical Review/Revue Internationale de
-  Statistique} \textbf{50}, 145--159.
+\newblock Normal variance-mean mixtures and $z$ distributions.
+\newblock \textit{International Statistical Review} \textbf{50}, 145--159.
 
 \bibitem[{Bhadra et~al.(2016{\natexlab{a}})Bhadra, Datta, Polson \&
   Willard}]{bhadra2015horseshoe+}
@@ -47,6 +46,12 @@
   {{Khintchine}}'s theorem.
 \newblock \textit{Journal of Statistical Computation and Simulation}
   \textbf{16}, 129--137.
+
+\bibitem[{Gneiting(1997)}]{gneiting1997normal}
+\textsc{Gneiting, T.} (1997).
+\newblock Normal scale mixtures and dual probability densities.
+\newblock \textit{Journal of Statistical Computation and Simulation}
+  \textbf{59}, 375--384.
 
 \bibitem[{Hans(2011)}]{hans2011comment}
 \textsc{Hans, C.} (2011).
@@ -80,8 +85,7 @@
 
 \bibitem[{Pillai \& Meng(2016)}]{pillai2015unexpected}
 \textsc{Pillai, N.~S.} \& \textsc{Meng, X.-L.} (2016).
-\newblock An unexpected encounter with {{Cauchy}} and
-  {{L}}\ensuremath{\backslash}'evy.
+\newblock An unexpected encounter with {{Cauchy}} and {{L}}\'evy.
 \newblock \textit{Annals of Statistics (to appear)} .
 
 \bibitem[{Polson \& Scott(2012)}]{polson_halfcauchy_2012}
@@ -108,16 +112,16 @@
 \newblock \textit{Journal of the Royal Statistical Society. Series B:
   Statistical Methodology} \textbf{76}, 713--733.
 
-\bibitem[{Polson et~al.(2011)Polson, Scott \& {others}}]{polson_data_2011}
-\textsc{Polson, N.~G.}, \textsc{Scott, S.~L.} \& \textsc{{others}} (2011).
+\bibitem[{Polson \& Scott(2011)}]{polson_data_2011}
+\textsc{Polson, N.~G.} \& \textsc{Scott, S.~L.} (2011).
 \newblock Data augmentation for support vector machines.
 \newblock \textit{Bayesian Analysis} \textbf{6}, 1--23.
 
 \bibitem[{Seshadri(2004)}]{seshadri1997halphen}
 \textsc{Seshadri, V.} (2004).
 \newblock Halphen's laws.
-\newblock In \textit{Encyclopedia of Statistical Sciences}. John Wiley and
-  Sons, Inc.
+\newblock In \textit{Encyclopedia of Statistical Sciences}. Hoboken, New
+  Jersey: John Wiley and Sons, Inc.
 
 \bibitem[{Zhang et~al.(2014)Zhang, Brown, George \& Zhao}]{zhang2014uniform}
 \textsc{Zhang, K.}, \textsc{Brown, L.~D.}, \textsc{George, E.} \& \textsc{Zhao,
