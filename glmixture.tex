@@ -1,0 +1,660 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                               %%
+%% This is the sample.tex file for the ejpecp document class.    %%
+%% This file is for ejpecp version 1.0                           %%
+%% Please be sure that you are using the lastest version:        %%
+%%  http://mirror.ctan.org/macros/latex/contrib/ejpecp/          %%
+%%                                                               %%
+%% The ejpecp class works *only* with a pdflatex engine.         %%
+%% You need the ejpecp.cls in your current directory or in any   %%
+%% directory scanned for cls files by your pdflatex engine.      %%
+%%                                                               %%
+%% Manual inclusion of page layout commands is useless.          %%
+%%                                                               %%
+%% Note that any complex file will produce delayed publication!  %%
+%%                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                               %%
+%% Journal selection: ECP or EJP.                                %%
+%%                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[ECP]{ejpecp} % replace ECP by EJP if needed.  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                               %%
+%% Please uncomment and adapt to your encoding if needed:        %%
+%%                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                               %%
+%% Please add here your own packages (be minimalistic please!):  %%
+%% Please avoid using exotic packages and keep things simple.    %%
+%% It is not necessary to include ams* and graphicx packages     %%
+%% since they are automatically included by the ejpecp class.    %%
+%%                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\usepackage{enumerate}  % uncomment to use this package
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                               %%
+%% Title (please edit and customize):                            %%
+%%                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\SHORTTITLE{Global-Local Mixtures} 
+
+\TITLE{A Short Note on Global-Local Mixtures} % \thanks is optional. Insert line breaks with \\
+
+%\DEDICATORY{Dedicated to the memory of ...} % Optional
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                               %%
+%% Authors (please edit and customize):                          %%
+%%                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\AUTHORS{%
+  Anindya~Bhadra\footnote{Department of Statistics, Purdue University. 
+   \EMAIL{bhadra@stat.purdue.edu}}
+  \and %% remove this line and below if single author
+  Jyotishka~Datta\footnote{Department of Mathematical Sciences, University of Arkansas. \BEMAIL{jd033@uark.edu}}
+  \and %% remove this line and below if single author
+  Nicholas~G.~Polson\footnote{The University of Chicago Booth School of Business. \BEMAIL{ngp@chicagobooth.edu}}
+  \and %% remove this line and below if single author
+  Brandon~Willard\footnote{The University of Chicago Booth School of Business. \BEMAIL{brandonwillard@gmail.com}}
+}
+
+%\AUTHORS{Anindya Bhadra  \footnote{{\em Address:} 250 N. University St., West Lafayette, IN 47907, \EMAIL{bhadra@purdue.edu.} \\ Purdue University}
+%\and Jyotishka Datta  \footnote{{\em Address:} Department of Mathematical Sciences, SCEN 309, 1 University of Arkansas, Fayetteville, AR, 72701,\BEMAIL{jd033@uark.edu.}\\ University of Arkansas}
+%\and Nicholas G. Polson \footnote{{\em Address:} 5807 S. Woodlawn Ave., Chicago, IL 60637, \EMAIL{ngp@chicagobooth.edu.}}  
+%Brandon Willard \footnote{{\em Address:} 5807 S. Woodlawn Ave., Chicago, IL 60637, \EMAIL{ brandonwillard@gmail.com.} \\The University of Chicago Booth School of
+%Business}}
+
+
+%AUTHORS
+%% Type \and between all consecutive authors (not only before the last author).
+%% Note: you may use \BEMAIL to force a line break before e-mail display.
+
+%% Here is a compact example with two authors with same affiliation
+%% \AUTHORS{%
+%%  Michael~First\footnote{Some University. \EMAIL{mf,js@uni.edu}
+%%  \and 
+%%  John~Second\footnotemark[2]}%AUTHORS
+%% Note: The \footnotemark is the footnote number that you wish to reuse. Here
+%% it is [2] (we took into account the footnote generated by \thanks in title).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                               %%
+%% Please edit and customize the following items:                %%
+%%                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\KEYWORDS{Bayes regularization; Cauchy; Convolution; Global-local mixture; Lasso;  Logistic; Quantile; Stable law.} % Separate items with ;
+
+\AMSSUBJ{NA} % Edit. Separate items with ;
+%\AMSSUBJSECONDARY{FIXME:} % Optional, separate items with ;
+
+\SUBMITTED{January 2, 2013} % Edit.
+\ACCEPTED{December 13, 2014} % Edit.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                               %%
+%% Please uncomment and edit if you have an arXiv ID:            %%
+%%                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ARXIVID{1604.07487} % Edit.
+%\HALID{hal-NNN} % Edit.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                               %%
+%% The following items will be set by the Managing Editor.       %%
+%%                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\VOLUME{0}
+\YEAR{2016}
+\PAPERNUM{0}
+\DOI{10.1214/YY-TN}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                               %%
+%% Please edit and customize the abstract:                       %%
+%%                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ABSTRACT{Global-local mixtures are derived from the \CS{} and Liouville integral transformation identities. We characterize well-known normal-scale mixture distributions including the Laplace or lasso, logit and quantile as well as new global-local mixtures. We also apply our methodology to convolutions that commonly arise in Bayesian inference. Finally, we conclude with a conjecture concerning bridge and uniform correlation mixtures. }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                               %%
+%% Please add your own macros and environments below:            %%
+%%                                                               %%
+%% If possible, avoid using \def and use instead \newcommand     %%
+%% If possible, avoid defining your own environments, and use    %%
+%% instead the environments already defined by ejpecp:           %%
+%%  assumption, assumptions, claim, condition, conjecture,       %%
+%%  corollary, definition, definitions, example, exercise, fact, %%
+%%  facts, heuristics, hypothesis, hypotheses, lemma, notation,  %%
+%%  notations, problem, proposition, remark, theorem             %%
+%%                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\ABS}[1]{\left(#1\right)} % example of author macro
+\newcommand{\veps}{\varepsilon} % another example of author macro
+
+
+%%%%%%%%%%%% Macros by JD 
+
+% this order is important
+%\RequirePackage[hyphens]{url}
+%\RequirePackage[colorlinks,citecolor=blue,urlcolor=blue]{hyperref}
+%\usepackage{natbib}
+
+%% For compressing some space: 
+%\setlength{\textfloatsep}{10pt plus 1.0pt minus 2.0pt}
+%\setlength{\floatsep}{12.0pt plus 2.0pt minus 5.0pt}
+%\setlength{\intextsep}{12.0pt plus 2.0pt minus 5.0pt}
+%\setlength{\belowcaptionskip}{-2pt}
+
+%\setlength{\textheight}{9in}
+%\setlength{\textwidth}{6in}
+%\setlength{\topmargin}{-36pt}
+%\setlength{\oddsidemargin}{0pt}
+%\setlength{\evensidemargin}{0pt}
+
+%\usepackage{array}
+%\include{math-commands}
+
+%% Special shortcuts for us
+\def\Polya{P{\'o}lya}
+\def\CS{Cauchy-Schl\"omilch}
+\def\PG{P{\'o}lya-Gamma}
+
+\newcommand{\dif}{\mathrm{d}}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\vectornorm}[1]{\left|\left|#1\right|\right|}
+
+\newcommand{\NormRV}{\mathcal{N}}
+\newcommand{\InvGaussRV}{\mathcal{IG}}
+\newcommand{\CauchyRV}{\mathcal{C}}
+\newcommand{\GammaRV}{\mathcal{G}}
+\newcommand{\UnifRV}{\mathcal{U}}
+
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\quart}{\frac{1}{4}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                               %%
+%% No macro definitions below this line please!                  %%
+%%                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                               %%
+%% No need for \maketitle.                                       %%
+%%                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                               %%
+%% Please replace what follows by the body of your article       %%
+%% (up to the bibliography):                                     %%
+%%                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{abstract}
+Global-local mixtures are derived from the \CS{} and Liouville integral transformation identities. We characterize well-known normal-scale mixture distributions including the Laplace or lasso, logit and quantile as well as new global-local mixtures. We also apply our methodology to convolutions that commonly arise in Bayesian inference. Finally, we conclude with a conjecture concerning bridge and uniform correlation mixtures. 
+\end{abstract}
+
+%\begin{keywords}
+\noindent {\bf Keywords:}  
+Bayes regularization; Cauchy; Convolution; Global-local mixture; Lasso;  Logistic; Quantile; Stable law. % 3 to 8 kwds, alphabetically. Deleted Scale mixture;
+%\end{keywords}
+
+\section{Introduction}
+Many statistical problems involve regularization penalties derived from global-local mixture distributions \cite{polson_data_2011, hans2011comment, bhadra2015horseshoe+}. A global-local mixture density, denoted by $p(x_1, \ldots, x_p)$, takes the form 
+\[
+p(x_1, \ldots, x_p) = \int_{0}^{\infty}\prod_{i=1}^{p} p(x_i \mid \tau) p(\tau) d\tau, 
+\]
+where $p(x_i \mid \tau) = \int_{0}^{\infty} p(x_i \mid \lambda_i, \tau) p(\lambda_i \mid \tau) d\lambda_i$ is a local mixture and $p(x_1, \ldots, x_p)$ is a global mixture over $\tau \sim p(\tau)$. There is great interest in analytically calculating $p(x_i \mid \tau)$, and the associated regularization penalty $\phi(x_i, \tau) = -\log p(x_i \mid \tau)$. Convolution mixtures of the form $p(x_i \mid \tau) = \int p(x_i - \lambda_i) p(\lambda_i) d \lambda_i$ are also of interest. We show how the \CS{} and Liouville transformations can be used to derive closed-form global-local mixtures.  We start by stating two key integral identities: the \CS{} transformation:
+\begin{equation}
+  \int_0^\infty f \left\{ ( a x - b x^{-1} )^2 \right\} d x = \frac{1}{2a} \int_0^\infty f(y^2) d y, \quad a, b >0  \;, \label{eq:identity}
+\end{equation}
+and the Liouville transformation:
+\begin{equation}
+  \int_{0}^{\infty} f\left(ax + \frac{b}{x} \right) x^{-1/2}dx = a^{-1/2} \int_{0}^{\infty} f\left\{ 2 (ab)^{1/2} + y \right\} y^{-1/2} dy, \quad a, b >0  \;. 
+  \label{eq:liouville}
+\end{equation}
+See \cite{boros2006irresistible}, \cite{baker2008probabilistic} and \cite{jones_generating_2014} for further discussion. Identity \eqref{eq:identity} follows from the simple transformation $t = b/(a x)$ as
+\begin{equation*}
+  I = \int_{0}^{\infty} f \left\{(ax - b/x)^2 \right\} dx = \int_{0}^{\infty} f \left\{(at - b/t)^2 \right\} \frac{b}{a t^2} dt, \quad a, b >0.
+\end{equation*}
+Adding the two terms in the last equality yields 
+\[
+2 I = \int_{0}^{\infty} f \left\{(at - b/t)^2 \right\} \left\{ 1+{b}/({a t^2}) \right\} dt,
+\]
+\sloppy
+and transforming $y = b/t - at$ gives $dy = -a \{1+{b}/({a t^2})\} dt$, yielding $I = (2a)^{-1} \int_{0}^{\infty} f(y^2) dy$, as required. A useful generalization of the \CS{} transformation is as follows: 
+\begin{equation}
+  \int_0^\infty f\left[ \{x-s(x)\}^2 \right] dx =  \int_0^\infty f( y^2 ) dy, \label{eq:gen}
+\end{equation}
+where $s(x)=s^{-1}(x)$ is a self-inverse function such as $s(x) = b/x$ or $s(x) = -a^{-1}\log\{1-\exp(a x)\}$. The proof for the Liouville transformation identity follows in a similar manner, and is omitted for the sake of brevity. %These identities can be used to construct new global-local mixture distributions. 
+
+We can use these results to generate new probability distributions with different choices of simple baseline function $g(\cdot)$ and derive new scale mixture representations that are useful in Bayesian global-local modeling. The \CS{} and Liouville transformations can generate new distributions via scale transformations that can take the form $f(x) = 2 g\{ t(x) \}$ for certain $f(x)$ under suitable conditions. The simplest example is creating a new global-local scale family, $f(a x - b/x)$ by effectively reallocating the probability mass of a given density $f(x)$. 
+
+More generally, let $f(x) = 2g\{ t(x) \}$ and let $t(x)$ be of the form $x-s(x)$, where $s : \Re^+ \to \Re^+$ is a self-inverse, onto and monotone decreasing function.    \cite{jones_generating_2014} shows that only a few choices of $t(x)$ leads to fully tractable formulae for its inverse $t^{-1}= \Pi$ and the integral 
+$\Pi(y) = \int_{-\infty}^{y} \pi(\omega) d\omega$. Two special choices are the $t$-distribution with 2 degrees of freedom and the logistic, as shown below:
+\begin{align*}
+\Pi_{T}(y) = (1/2)\{ y+(4b+y^2)^{1/2}\}, \quad \Pi_T^{-1}(x) = t_T(x) = x - b/x, \quad b >0,\\
+\Pi_{L}(y) = a^{-1} \log(1+e^{ay}), \quad \Pi_L^{-1}(x) = t_L(x) = a^{-1} \log(e^{ax}-1), \quad a>0.
+\end{align*}
+Now, the integral identity in \eqref{eq:gen} shows that if $f(x)$, $x \geq 0$ is a density function, so is $g(x) = f\{\lvert x-s(x) \rvert\}$, $x \ge 0$.  The functions $f(\cdot)$ and $g(\cdot)$ are called mother and daughter density functions, respectively.  %\cite{chaubey2010reciprocal} provide a one-to-one correspondence between $f(\cdot)$ and $g(\cdot)$. 
+
+%%% maybe add one or two lines
+The mother and daughter density functions, $f(\cdot)$ and $g(\cdot)$ are linked via a dual relationship with respect to symmetry and reciprocal symmetry for densities supported on the whole real line or its positive half $\Re^{+}$, respectively. The density function $f(\cdot)$ on $\Re^{+}$ is defined to have reciprocal symmetry (or, R-symmetry) if $f(\theta y) = f(\theta / y)$ for all $y > 0$ and some $\theta >0$. It turns out that if $f(x)$ is the pdf of a symmetric real-valued random variable $X$, the daughter pdf $g(x) = f(x-1/x), x>0$ is an R-symmetric density, and vice-versa, there exists a symmetric density $f(x) = g(x+\sqrt{1+x^2})$ for
+every R-symmetric density $g(x)$. Furthermore, $f(\cdot)$ is unimodal if and only if $g(\cdot)$ is unimodal. \cite{chaubey2010reciprocal} provide a few examples of generating R-symmetric densities $g$ starting from well-known symmetric densities $f$. The most well-known example of this duality is perhaps the normal density as $f$ that gives rise to the root reciprocal inverse Gaussian, abbreviated as RRIG, distribution, with density given by: 
+\[
+g(x) = \sqrt{\frac{2\lambda}{\pi}} \exp \left\{ - \frac{\lambda}{2} \left( x - \frac{1}{x} \right)^2 \right\}, x >0.  
+\]
+Once again, the \CS{} transformation $y = x - x^{-1}$ guarantees that this is a valid probability density function.
+
+A particularly useful tool for generating univariate and multivariate random variables is Khintchine's theorem, which states that any random variable $X$ with a unimodal, univariate distribution and a mode at zero can be written as a product $X = Z U$, where $U \sim \UnifRV(0,1)$ and $Z$ has the density function $f_Z(z) = -z f^{\prime}_{X}(z), z \in \Re$. \cite{bryson1982constructing}, and subsequently \cite{jones2012khintchine}, discuss how Khintchine's theorem allows us to construct both univariate and multivariate densities, even with special dependence structure. \cite{jones_generating_2014} develops an extended Khintchine's theorem that further allows us to generate random variables with unimodal densities of the form $2 g\{t(x)\}$. 
+
+The rest of the paper is organized as follows: \S\ref{sec:gls_mixes} derives scale mixture results for the Lasso, quantile and logistic regression, \S\ref{sec:convolutions} for convolutions of densities via mixtures and finally \S\ref{sec:discussion} concludes with two open problems.
+
+\section{Global-local Scale Mixtures}
+\label{sec:gls_mixes}
+\subsection{Lasso as a normal scale mixture}
+
+The Lasso penalty arises as a Laplace global-local mixture \cite{andrews_scale_1974}.  A simple transformation proof follows using \CS{} with $f(x) = e^{-x}$.  Starting with the normal integral identity, $\int_{0}^{\infty} f(y^2) dy = \int_0^\infty e^{-y^2} dy = \pi^{1/2}/2 $, we obtain:
+\[
+\int_0^\infty e^{-(a x)^2 - (b/x)^2} d x = \int_0^{\infty}\exp\left\{-a b \left(\frac{a}{b} x^2 + \frac{b}{a} x^{-2} \right)\right\} dx = \frac{\pi^{1/2}}{2a} e^{-2 a b}, \quad a,b \in \Re.
+\]
+Substituting $t = (a/b)^{1/2} x$ and $c = ab$ yields the Laplace or Lasso penalty as
+\begin{align*}
+  \int_0^\infty e^{- c (t - t^{-1})^2} dt &= \half (\pi/c)^{1/2} \Rightarrow \int_0^\infty e^{- c (t^2 + t^{-2})} dt  = \half (\pi/c)^{1/2} e^{-2c}\;. 
+  %\label{eq:andrews}
+\end{align*}
+The Laplace density can be viewed as a transformed normal, via $y = t - t^{-1}$.
+
+\begin{proposition}
+The usual identity for the Lasso also follows from \cite{levy1940certains} as
+\begin{equation}
+  \int_{0}^{\infty} \frac{a}{(2 \pi)^{1/2} t^{3/2}} e^{-{a^2}/({2 t})} e^{-\lambda t} dt = e^{-a (2 \lambda)^{1/2} } \;.\label{eq:levy}
+\end{equation}
+For $a = 1$, and $\theta = (2 \lambda)^{1/2}$, this can be written as 
+\begin{equation}
+  E \left[ \exp\{-\theta^2/(2G)\} \right] = \exp(-\theta),\quad \mbox{where} \; G \sim \GammaRV(1/2, 1/2).
+  \label{eq:gamma}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+First substitute $t^{-1} = x^2$, which makes the left hand side in \eqref{eq:levy} equal to 
+\[
+  \int_{0}^{\infty} \frac{a}{(2 \pi)^{1/2} t^{3/2}} e^{-{a^2}/({2 t})} e^{-\lambda t} dt = \left(\frac{2}{\pi}\right)^{1/2}ae^{-a (2 \lambda)^{1/2}} 
+  \int_0^{\infty} e^{-({2}^{-1/2} ax - \lambda x^{-1})^2} dx = e^{-a (2 \lambda)^{1/2}}\;.
+\]
+The last step follows from \CS{} formula.  The second relationship \eqref{eq:gamma} follows by fixing $a = 1$, $\theta = (2\lambda)^{1/2}$ and
+substituting $t = x^{-1}$.
+\[
+\int_{0}^{\infty} \frac{a}{(2 \pi)^{1/2} t^{3/2}} e^{-{a^2}/({2 t})} e^{-\lambda t} dt = \frac{1}{(2 \pi)^{1/2}} \int_{0}^{\infty} e^{-{\theta^2}/({2x})} 
+x^{-1/2} e^{-x/2} dx.
+\]
+The left hand side can be identified as $E \left[ \exp\{-\theta^2/(2G)\} \right]$ for $G \sim \GammaRV(1/2, 1/2)$. 
+\end{proof}
+
+%% hyperbolic-GIG \cite{barndorff1977infinite}
+\subsection{Logit and quantile as global-local mixtures}
+
+Logistic modeling can be viewed within the global-local mixture framework via the \PG{} distribution \cite{polson_bayesian_2013}. As \cite{polson_bayesian_2013} show, this mixture representation leads to efficient Markov chain Monte Carlo algorithms for inference. 
+\begin{proposition}
+The two key marginal distributions for the hyperbolic generalized inverse Gaussian \cite{barndorff1982normal} and \PG{} mixtures are
+\begin{align}
+ \frac{\alpha^2 - \kappa^2}{2\alpha} e^{-\alpha|x-\mu| + \kappa (x-\mu)} &= \int_0^{\infty} \phi(x \mid \mu + \kappa \lambda, \lambda) p_{\mathrm{GIG}}\left\{ \lambda \mid 1,0, (\alpha^2 - \kappa^2)^{1/2}\right\} d\lambda, \; \alpha \geq \kappa \geq 0, \label{eq:GIG}\\
+\frac{1}{B(\alpha,\kappa)} \frac{e^{\alpha (x-\mu)}}{(1+e^{x-\mu})^{\alpha + \kappa}}&= \int_0^{\infty} \phi(x \mid \mu + \kappa \lambda, \lambda)p_{\mathrm{Polya}}(\lambda \mid \alpha,\kappa)  d\lambda\;, \label{eq:polya}
+\end{align}
+where $\phi(\mu + \kappa \lambda, \lambda)$ denotes the normal density function with mean $(\mu + \kappa \lambda)$ and variance $\lambda$.  The functions $p_{\mathrm{GIG}}$ and $p_{\mathrm{Polya}}$ are the corresponding local mixture densities for the generalized inverse Gaussian and the \PG{}, respectively. The logit and quantile identities can be derived using \CS{} identity. 
+\end{proposition}
+
+\begin{proof}
+Let $f(x) = e^{-x^2/2}$, $a = \alpha$ and $b = |x-\phi|$ in \eqref{eq:identity}. Then,
+\[
+(2/\pi)^{1/2} \int_{0}^{\infty} \exp\left\{-\half \left(\alpha y - \frac{|x-\mu|}{y} \right)^2 \right\} dy = \frac{1}{\alpha} (2\pi)^{-1/2} \int_0^{\infty} e^{-\half y^2} dy 
+= \frac{1}{\alpha} \;.
+\]
+Let $\nu = y^2$. Rearranging the constant terms yields
+\[
+\frac{1}{\alpha} e^{-\alpha|x-\mu|} = \frac{1}{(2 \pi \nu)^{1/2}} \int_{0}^{\infty} \exp\left[-\left\{ \frac{(x-\mu)^2}{2\nu} + \frac{\alpha^2}{2} \nu \right\} \right]
+d\nu \;.
+\]
+Multiplying by $2^{-1}(\alpha^2-\kappa^2) e^{\kappa(x-\mu)}$ and completing the square yields
+\begin{equation*}
+  \frac{\alpha^2-\kappa^2}{2\alpha} \exp\left\{-\alpha|x-\mu| + \kappa(x-\mu)\right\} 
+  = \int_0^{\infty} \phi(x \mid \mu + \kappa \nu, \nu) 
+  \frac{\alpha^2-\kappa^2}{2} \exp\left(-\frac{\alpha^2-\kappa^2}{2} \nu \right) d \nu. 
+\end{equation*}
+The mixing distribution is exponential with rate parameter $(\alpha^2-\kappa^2)/2$, a special case of the generalized inverse Gaussian distribution introduced by Etienne Halphen circa 1941 \cite{seshadri1997halphen}. The density with parameters $(\lambda, \delta, \gamma)$ has the form 
+\begin{equation*}
+  p_{\mathrm{GIG}}(x \mid \lambda, \delta, \gamma) = \frac{(\gamma/\delta)^{\lambda}}{2 K_{\lambda}(\delta \gamma)} x^{\lambda-1} 
+  \exp\left\{ -\half (\delta^2 x^{-1} + \gamma^2 x )\right\}, \quad x, \lambda, \delta > 0,\;  p \in \Re \;,
+\end{equation*}
+where $K_{\lambda}$ is the modified Bessel function of the second kind.  The Liouville formula can be used to show that the above is a valid probability density
+function.  When $\delta$ or $\gamma$ is zero, the normalizing constant takes the limiting values given by $K_{\lambda}(u) \asymp \Gamma(|\lambda|) 2^{|\lambda|-1} u^{|\lambda|}$ for $\lambda > 0$.  If $\delta=0$, the generalized inverse Gaussian is identical to a gamma distribution:
+\[
+p_{\mathrm{GIG}}(x \mid \lambda, \delta = 0 , \gamma) = \frac{\alpha^{\lambda}}{\Gamma(\lambda)} x^{\lambda-1} \exp(-\alpha x), \quad x > 0,\; \alpha = \gamma^2 / 2.
+\]
+%\end{proof} 
+%
+%%%%%%%%%%%
+%\begin{proof}
+%\noindent \textbf{Proof of \eqref{eq:polya}} \\
+We now present a simple proof for the \PG{} mixture in \eqref{eq:polya}. First, write $\kappa$ for $a-b/2$: 
+\begin{equation}
+  \frac{(e^{\psi})^a}{(1+e^{\psi})^b} = 2^{-b} e^{\kappa \omega} 
+  \int_0^{\infty} e^{-\omega \psi^2/2} p(\omega) d\omega
+  \;, 
+  \label{eq:pg}
+\end{equation}
+where $\omega \sim \operatorname{PG}(b,0)$, a \PG{} random variable with density
+\[
+p(\omega \mid b, 0) = \frac{2^{b-1}}{\Gamma(b)} \sum_{n=0}^{\infty} (-1)^n \frac{\Gamma(n+b)}{\Gamma(n+1)} \frac{2n + b}{(2 \pi)^{1/2} \omega^{3/2}} 
+\exp\left\{-\frac{(2 n + b)^2}{8 \omega} \right\}.
+\]
+The logit function corresponds to $a=0,b=1$ in \eqref{eq:pg}. The \CS{} identity yields
+\begin{equation}
+  \frac{1}{1+e^{\psi}} = \half e^{- \psi/2} \int_0^{\infty} e^{-(\psi^2\omega)/2} p(\omega) d\omega, \; \mbox{where} \; p(\omega) = \sum_{n=0}^{\infty} (-1)^n \frac{2n+1}{ (2 \pi \omega^3)^{1/2}} e^{-(2n+1)^2/(8 \omega)}
+  \label{eq:logit}\;.
+\end{equation}
+To show \eqref{eq:logit}, write the right-hand side interchanging the integral and summation:
+\begin{align*}
+  %I & = \half e^{-\psi/2} \int_0^{\infty} e^{-\frac{\psi^2}{2} \omega}
+  %\sum_{n=0}^{\infty} (-1)^n \frac{2n+1}{\sqrt{(2\pi)} \omega^{3/2}}
+  %e^{-\frac{(2n+1)^2}{8\omega}}d \omega \\
+  I & = \half e^{-\psi/2} \sum_{n=0}^{\infty} (-1)^n \frac{2n+1}{(2 \pi)^{1/2}}  \int_0^{\infty} \exp\left[-\left\{ \frac{\psi^2}{2} \omega + \frac{(2n+1)^2}{8 \omega} \right\} \right] \frac{1}{\omega^{3/2}} d\omega \;. 
+\end{align*}
+Using the change of variable $\omega = t^{-2}$ gives
+\begin{align*}
+  % I & = e^{-\psi/2}  \sum_{n=0}^{\infty} (-1)^n \frac{(2n+1)}{\sqrt{(2\pi)}}
+  % \int_{0}^{\infty} e^{-\left( \frac{\psi^2}{2t^2} + \frac{(2n+1)^2 t^2}{8}
+  % \right)} d t \\
+  I & = \sum_{n=0}^{\infty} (-1)^n e^{-(n+1)\psi} 
+  \frac{2n + 1}{(2 \pi)^{1/2}} 
+  \left( \int_{0}^{\infty} 
+    \exp\left[-\half \left\{ \frac{(2n+1)t}{2} - \frac{\psi}{t}\right\}^2 \right] dt 
+  \right)
+  \;.
+\end{align*}
+Applying the \CS{} identity to the inner integral yields 
+\[
+\int_{0}^{\infty} 
+\exp\left[-\half \left\{ \frac{(2n+1)t}{2} - \frac{\psi}{t}\right \}^2 \right] dt 
+= \int_0^{\infty} \frac{e^{-y^2/2}}{2n+1} dy= \frac{(2\pi)^{1/2}}{2n+1}
+\;,
+\]
+which implies $I = \sum_{n=0}^{\infty} (-1)^n \exp\{-(n+1) \psi\} = \{1+\exp(\psi)\}^{-1}$. 
+%An alternative proof using Laplace transformation is provided in
+%\cite{polson2013bayesian}.  
+\end{proof}
+
+\begin{remark}
+When $\alpha = \kappa$, we have the limiting result $(\alpha^2-\kappa^2)^{-1} p_{\mathrm{GIG}}\{1,0, (\alpha^2-\kappa^2)^{1/2} \} = 1,$
+or equivalently in terms of densities, with a marginal improper uniform prior, $p(\lambda) = 1$,
+\begin{equation}
+  \int_{0}^{\infty} \phi(b \mid -a\lambda, c\lambda) d\lambda = a^{-1} \exp\left\{-2 \max(ab/c,0)\right\}
+  \;. 
+  \label{eq:svm}
+\end{equation}
+This pseudo-likelihood represents support vector machines as a global-local mixture. The identity for quantile regression, which is a limiting case of the above identities by applying Fatou-Lebesgue theorem, is the following: 
+\[
+c^{-1}\exp\{ 2c^{-1} \rho_q(b) \}= \int_{0}^{\infty} \phi( b \mid \lambda - 2\tau \lambda, c \lambda){\rm e}^{-2\tau(1-\tau)\lambda} d\lambda, \quad c, \tau > 0,
+\]
+where $\rho_q(b) = \rvert b \lvert / 2 + (q-1/2) b$ is the check-loss function \cite{polson_data_2013}.
+\end{remark}
+
+\cite{polson_data_2011} derive this as a direct consequence of the Lasso identity 
+\[
+\int_0^{\infty} p/(2 \pi \lambda)^{1/2} \exp\left\{-\left(p^2 \lambda+q^2 \lambda^{-1}\right)/2\right\} d\lambda = e^{-\lvert pq \rvert}.
+\]
+Applying the Liouville identity yields
+\[
+\int_{0}^{\infty} f\left(ax + \frac{b}{x} \right) x^{-1/2} dx = a^{-1/2} \int_{0}^{\infty} f\left\{ 2 (ab)^{1/2} + y \right\} y^{-1/2} dy, \quad a, b > 0.
+\]
+Setting $f(x) = e^{-x}$, $a = p^2/2$, and $b = q^2/2$ we get
+%\[
+\begin{align*}
+  \int_0^{\infty} \frac{e^{-(p^2 \lambda + q^2 \lambda^{-1})/2}}{\lambda^{1/2}} d\lambda
+  & = \frac{2^{1/2}}{p} \int_0^{\infty} e^{-|pq| + y} y^{-1/2} d y \\
+  & = \frac{2^{1/2} e^{-|pq|}}{p} \int_0^{\infty} e^{-y} y^{-1/2} d y 
+  = \frac{(2\pi)^{1/2} e^{-|pq|}}{p}
+  \;.
+\end{align*}
+%\]
+
+\cite{hans2011comment} shows that the elastic-net regression can be recast as a
+global-local mixture with a mixing density belonging to the orthant-normal
+family of distributions.  The orthant-normal prior on a single regression
+coefficient, $\beta$, given hyper-parameters $\lambda_1$ and $\lambda_2$, 
+has a density function with the following form:
+\begin{equation}
+  p(\beta \mid \lambda_1, \lambda_2)  = 
+  \begin{cases} 
+   \phi(\beta \mid \frac{\lambda_1}{2\lambda_2}, \frac{\sigma^2}{\lambda_2}) 
+   / 2\Phi\left(-\frac{\lambda_1}{2\sigma \lambda_2^{1/2} }\right), & \quad \beta < 0, 
+   \\
+   \phi(\beta \mid \frac{-\lambda_1}{2\lambda_2}, \frac{\sigma^2}{\lambda_2}) / 
+   2\Phi\left(-\frac{\lambda_1}{2\sigma \lambda_2^{1/2} }\right), & \quad \beta \geq 0.
+  \end{cases} 
+  \;
+  \label{eq:hans}
+\end{equation}
+
+\section{Convolution mixtures}
+\label{sec:convolutions}
+
+Another interesting area of application is convolution mixtures and marginal densities for location-scale mixture problems. We show that the Cauchy
+convolution \cite{pillai2015unexpected} and inverse-gamma convolution can be derived similarly \cite{polson_halfcauchy_2012}. \cite{bhadra_default_2016} show that the regularly varying tails of half-Cauchy priors work well for low-dimensional functions of normal vector mean, where flat priors give poorly calibrated inference. 
+%% Inverse-Gamma appears in \cite{arnold2009some}.
+\begin{lemma}
+  Let $X_i \sim \CauchyRV(0,1)$ $(i = 1, 2)$ be Cauchy distributed random variates, then $Z = w_1 X_1 + w_2 X_2 \sim \CauchyRV( 0, w_1 + w_2).$ where $w_1,w_2 > 0$.
+\end{lemma}
+\begin{lemma}
+  Let $X_i \sim \InvGaussRV(\alpha t_i, \alpha t_i^2)$ $(i = 1, 2)$, then $Z = X_1 + X_2 \sim \InvGaussRV\{\alpha (t_1 + t_2), \alpha (t_1^2+t_2^2)\},$ where $\alpha, t_1, t_2 \geq 0$, and $\InvGaussRV(\alpha t, \alpha t^2)$ is an inverse-Gaussian random variable with density
+\[
+    f(x) = \frac{t \alpha^{1/2} e^t}{(2 \pi)^{1/2} x^{3/2}} 
+    \exp\left( -\frac{\alpha t^2}{2x} - \frac{x}{2\alpha} \right), \quad x \geq 0.
+\]
+\end{lemma}
+
+Both of these results follow from straightforward applications of the \CS{} 
+transformation. We give a proof for the Cauchy convolution identity below.
+
+\begin{proof}
+Exploiting symmetry and the Lagrange identity $(a^2 + b^2)(c^2 + d^2) = (ac+bd)^2 + (ad-bc)^2,$ leads to the convolution density
+\begin{align*} 
+  f_Z(z) &= 2 \int_{0}^{\infty} 
+  \frac{1}{ \pi w_1 (1+ x^2/w_1^2)} \frac{1}{\pi w_2 \{1+ (z-x)^2 / w_2^2 \} } dx
+  \\
+  & = \frac{2}{\pi^2 w_1 w_2} \int_{0}^{\infty} 
+  \frac{1}{\{1+ w_1^{-1} w_2^{-1} x (z-x) \}^2 + \{w_2^{-1}z - (w_1^{-1}+ w_2^{-1}) x \}^2 } dx.
+\end{align*}
+Transforming $x$ to $x + w_2^{-1}z (w_1^{-1} + w_2^{-1})^{-1}$ and letting $a = 1 + z^2(w_1+w_2)^{-2}$, $b =(w_1 w_2)^{-1}$, $c = z (w_2-w_1) \{(w_1+w_2) w_1 w_2\}^{-1}$, $d = z (w_2-w_1)\{(w_1+w_2) w_1 w_2\}^{-1}$ gives
+\begin{align*}
+  f_Z(z) &= \frac{2}{\pi^2 w_1 w_2} \int_{0}^{\infty} 
+  \left[ 
+    \left\{ 1 + \frac{z^2}{(w_1+w_2)^2} - \frac{x^2}{w_1w_2} + 
+      xz \frac{w_2-w_1}{(w_1+w_2) w_1 w_2} \right\}^2 + 
+    x^2 \left(\frac{w_1 + w_2}{w_1w_2} \right)^2 
+  \right]^{-1} dx 
+  \\
+  &= \frac{2}{\pi^2 w_1 w_2} \int_{0}^{\infty} 
+  \frac{dx}{\left( a - b x^2 + cx \right)^2 + x^2 d^2} 
+  = \frac{2}{\pi^2 w_1 w_2} \int_{0}^{\infty} 
+  \frac{dx/x^2}{\left(a/x - bx + c \right)^2 + d^2 }.
+\end{align*}
+If we let $y = x^{-1}$ and apply the \CS{} transformation, we arrive at 
+\[
+  f_Z(z) = \frac{2}{\pi w_1 w_2} \int_{0}^{\infty} \frac{dy}{2a (y^2 + d^2)} 
+  = \frac{1}{\pi w_1 w_2} \frac{1}{ad}= \frac{1}{\pi (w_1+w_2)} \frac{1}{1+ z^2/(w_1+w_2)^2}.
+%& = \frac{1}{\pi w_1 w_2} \frac{1}{1+ z^2/(w_1+w_2)^2} \frac{w_1 w_2}{w_1 + w_2} = \frac{1}{\pi (w_1+w_2)} \frac{1}{1+ z^2/(w_1+w_2)^2}
+\]
+A simple induction argument proves that the sum of any number of independent
+Cauchy random variates is also another Cauchy.
+\end{proof}
+
+One can also use the characteristic function of $X \sim \CauchyRV(\mu, \sigma)$, $\psi_X(t) = \exp(it \mu - |t| \sigma^2)$, and the relation $\psi_{X+Y}(t) = \psi_X(t) \psi_Y(t)$ to derive the result in just one step. For $X = \sum_{i=1}^{p} \omega_i C_i$ and $C_i \sim \CauchyRV(0,1)$, when $\sum_{i=1}^{p} \omega_i = 1$ we have 
+$\phi_X(t) = \exp\left(-\sum_{i=1}^{p}\omega_i |t|\right) = \exp(-|t|) = \phi_C(t),$ where $C \sim \CauchyRV(0, 1)$. 
+
+The most general result in this category is due to \cite{pillai2015unexpected},
+who they showed the following: 
+Let $(X_1,\ldots,X_m)$ and $(Y_1, \ldots, Y_m)$ be independent and
+identically distributed $\NormRV(0, \Sigma)$ for an arbitrary
+positive definite matrix $\Sigma$, then 
+$Z = \sum_{j=1}^{m} w_j X_j / Y_j \sim \CauchyRV(0, 1)$, 
+as long as $(w_1, \ldots, w_m)$ is independent of $(X, Y)$,
+$w_j \geq 0\ (j = 1, \ldots, m)$ and $\sum_{j=1}^{m} w_j = 1$. 
+
+\section{Discussion}
+\label{sec:discussion}
+
+The \CS{} and Liouville transformations not only guarantee simple normalizing constants for $f(\cdot)$, they also establish the wide class of unimodal densities as global-local scale mixtures. Global-local scale mixtures that are conditionally Gaussian hold a special place in statistical modeling and can be rapidly fit using an expectation-maximization algorithm, as pointed out by \cite{polson_data_2013}. \cite{palmer_amica:_2011} provide a similar tool for modeling multivariate dependence by writing general non-Gaussian multivariate densities as multivariate Gaussian scale mixtures. Our future goal is to extend the \CS{} transformation to express the wide multivariate Gaussian scale mixture models as global-local mixtures that also facilitate easy computation.
+
+We end our paper with conjectures that two other remarkable identities arise as corollaries of such transformation identities. The first one is a recent result by \cite{zhang2014uniform} that proves a uniform correlation mixture of a bivariate Gaussian density with unit variance is a function of the maximum norm: 
+\begin{equation}
+  \int_{-1}^{1} \frac{1}{4 \pi (1-\rho^2)^{1/2} } 
+  \exp\left\{ - \frac{x_1^2 + x_2^2 - 2 \rho x_1 x_2}{2 (1-\rho^2)} \right\} d\rho = 
+  \half \left\{1- \Phi(\vectornorm{x}_{\infty})\right\} 
+  \;, 
+  \label{eq:bivar}
+\end{equation}
+where $\Phi(\cdot)$ is the standard normal distribution function and $\vectornorm{x}_{\infty} = \max\{ x_1, x_2\}$. The bivariate density on the
+right side of \eqref{eq:bivar} was introduced by \cite{bryson1982constructing} as uniform mixtures of a chi random variate with 3 degrees of freedom, but the representation as a uniform correlation mixture is a new find.  We make a few remarks connected to the Erdelyi's integral identity, which is key to the proof of the uniform correlation mixture of \eqref{eq:bivar}. 
+%revise
+\begin{lemma}
+Erdelyi's identity, defined by
+\begin{equation}
+  \int_{1/2}^{\infty} \frac{e^{-x^2 z}}{4 \pi z 	(2z-1)^{1/2}} dz = \half \left\{1-\Phi(x)\right\}, \quad x \geq 0, \label{eq:erdelyi}
+\end{equation}
+follows from the Laplace transformation $(1+u)^{-1} = \int_0^{\infty} \exp\{-v(1+u)\} dv$. 
+\end{lemma}
+
+\begin{proof}
+  Apply the transform $u = 2z-1$ to the left hand side of \eqref{eq:erdelyi}, denoted by $I$, to obtain 
+  \[
+  I = \int_{0}^{\infty} \frac{e^{-x^2/\{2(1+u)\}}}{4 \pi {u}^{1/2} (1+u)} du \;.
+  \]
+  Using the Laplace transformation $(1+u)^{-1} = \int_0^{\infty} e^{-v(1+u)} dv$ yields
+  \begin{align*}
+    I &= \int_{0}^{\infty} \frac{e^{-x^2/\{2(1+u)\}}}{4 \pi {u}^{1/2}} 
+    \int_0^{\infty} e^{-v(1+u)} dv du 
+    = \int_{v= 0}^{\infty} \int_{u=0}^{\infty} 
+    \frac{e^{-({x^2}/{2} + v)(1+u)}}{4 \pi {u}^{1/2}} dv du
+    \\
+    &= \int_{v= 0}^{\infty} \frac{1}{4\pi} e^{-({x^2}/{2} + v)} 
+    \int_{u=0}^{\infty} u^{-1/2} e^{-({x^2}/{2} + v) u} du dv 
+    = \int_{v= 0}^{\infty} \frac{e^{-(x^2 + 2v)/2}}{2 (2\pi)^{1/2}} 
+    \frac{1}{(x^2+ 2v)^{1/2} } dv
+    %&= \int_{v= 0}^{\infty} \frac{\e^{-(\frac{x^2}{2} + v)}}{4\pi} \frac{\pi^{1/2}}{(\frac{x^2}{2} + v)^{1/2}} dv 
+    %= \int_{v= 0}^{\infty} \frac{1}{2 (2\pi)^{1/2}} e^{-\half(x^2 + 2v)} \frac{1}{(x^2+ 2v)^{1/2}} dv
+    \;,
+  \end{align*}
+  and letting $z^2 = x^2 + 2v$ we get 
+  \begin{equation*}
+    I = \half \int_{z = |x|}^{\infty} \frac{1}{(2\pi)^{1/2}} e^{-z^2/2} dz 
+    = \half \left\{1 - \Phi(|x|)\right\} \;.
+  \end{equation*} 
+  %\proofSymbol
+  % hack for automatic qed symbol
+\end{proof}
+
+%%% [[ Commented out as Amdeberhan is not published yet and Biometrika won't let us cite ArXiv articles ~ JD. ]] %%%%
+
+%Erdelyi's identity in \eqref{eq:erdelyi} follows from (9.2) of \cite{amdeberhan_cauchy-schlomilch_2010}: 
+%\[
+%\int_0^{\infty} \frac{e^{-\mu^2 (x^2 + \beta^2)}}{x^2+\beta^2} dx = \frac{\pi}{2 \beta} \{ 1 - \erf(\mu \beta) \},
+%\]
+%If we let $\beta = 2^{-1/2}$ and $x^2+1/2 = z$, the above identity reduces to \eqref{eq:erdelyi} in $\mu$. 
+
+The second candidate is the symmetric stable distribution, defined by its characteristic function $\phi(t) = \exp( -|t|^{\alpha}), 0 < \alpha \leq 2$. It admits a normal scale mixture representation with mixing density as $f(v) = 2^{-1} s_{\alpha/2}(v/2), v > 0$, where $s_{\alpha/2}$ is the positive stable density with index $\alpha / 2$ \cite{gneiting1997normal}. The exponential power density arising as a dual of the symmetric stable density also has a normal scale mixture representation with important application in
+Bayesian bridge regression \cite{polson_bayesian_2014}.
+\[
+e^{-|x|^\alpha} = \int_0^{\infty} e^{-x\eta} g(\eta) d\eta, \quad g(\eta) = \sum_{j=1}^{\infty} (-1)^j \frac{\eta^{-j \alpha-1}}{j! \Gamma(-\alpha j)}
+  \;,
+\]
+\cite{polson_bayesian_2014} derive this as a limiting result of the scale-mixture of beta representation for $k$-montone densities and utilizing the complete monotonicity of exponential power density. Regularization, in this case, is an outcome of a normal scale mixture with respect to an $\alpha$-stable random variable.  We conjecture that these two results follow from the \CS{} formula \eqref{eq:identity}. Other potential applications include using Liouville formula to recognize and generate global-local mixtures, and to calculate higher-order closed-form moments $E(X^n)$ for random variables $X$ that admit a global-local representation. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                               %%
+%% Use the two commands below for producing your bibliography    %%
+%% with bibtex, then comment again the commands and include the  %%
+%% content of the .bbl file in this file below the commands.     %%
+%%                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{amsplain}
+%\bibliography{yourbibfilename}
+%\bibliographystyle{plainnat}
+\bibliography{glref}
+
+%% add below the content of your .bbl file produced by bibtex.
+%
+%\begin{thebibliography}{99}
+%
+%\bibitem{doob} Doob, J. L.: Heuristic approach to the Kolmogorov-Smirnov
+%  theorems. \emph{Ann. Math. Statistics} \textbf{20}, (1949), 393--403.
+%  \MR{0030732}
+%
+%\bibitem{gnekol} Gnedenko, B. V. and Kolmogorov, A. N.: Limit distributions for
+%  sums of independent random variables. Translated and annotated by K. L.
+%  Chung. With an Appendix by J. L. Doob. \emph{Addison-Wesley}, Cambridge,
+%  1954. ix+264 pp. \MR{0062975}
+%
+%\bibitem{ito} It\^o, K.: Multiple Wiener integral. \emph{J. Math. Soc. Japan}
+%  \textbf{3}, (1951), 157--169. \MR{0044064}
+%
+%\bibitem{levy} L\'evy, P.: Sur certains processus stochastiques homog\`enes.
+%  \emph{Compositio Math.} \textbf{7}, (1939), 283--339. \MR{0000919}
+%
+%\bibitem{grisha} Perelman, G.: The entropy formula for the Ricci flow and its
+%  geometric applications, \ARXIV{math.DG/0211159}
+%
+%\bibitem{smisch} Smirnov, S. and Schramm, O.: On the scaling limits of planar
+%  percolation, \ARXIV{1101.5820}
+%
+%\end{thebibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                               %%
+%% You may add acknowledgments (optional).                       %%
+%%                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\ACKNO{The first author was supported by NSF-DMS.}
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                               %%
+%% You have reached the end of your document.                    %%
+%%                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                               %%
+%% You may put below funny messages to the Managing Editor:      %%
+%%                                                               %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% EOF
